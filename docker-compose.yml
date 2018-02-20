@@ -1,0 +1,11 @@
+version: "3.3"
+
+services:
+  angular-frontend:
+    build: './angular-src'
+    # working_dir: /home/node/webapp
+    ports:
+    - "4200:4200"
+    # volumes:
+    # - ./angular-src:/home/node/webapp
+    # entrypoint: "/home/node/webapp/scripts/entrypoint.sh"
