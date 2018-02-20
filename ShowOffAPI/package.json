@@ -1,5 +1,5 @@
 {
-  "name": "RSRCapi",
+  "name": "ShowOffAPI",
   "version": "1.0.0",
   "description": "RSRC API",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaala/HelpingHandsAPI/branches"
+    "url": "git+https://github.com/brandynm34/showOffStatic/branches"
   },
   "keywords": [
     "\"restful\"",
@@ -19,9 +19,9 @@
   "author": "christa fox",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shaala/HelpingHandsAPI/issues"
+    "url": "https://github.com/brandynm34/showOffStatic/issues"
   },
-  "homepage": "https://github.com/shaala/HelpingHandsAPI/blob/master/README.md",
+  "homepage": "https://github.com/brandynm34/showOffStatic",
   "devDependencies": {
     "nodemon": "^1.12.1"
   },
