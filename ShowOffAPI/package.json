@@ -1,0 +1,33 @@
+{
+  "name": "RSRCapi",
+  "version": "1.0.0",
+  "description": "RSRC API",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaala/HelpingHandsAPI/branches"
+  },
+  "keywords": [
+    "\"restful\"",
+    "\"API\"",
+    "\"RSRC\""
+  ],
+  "author": "christa fox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaala/HelpingHandsAPI/issues"
+  },
+  "homepage": "https://github.com/shaala/HelpingHandsAPI/blob/master/README.md",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.6",
+    "mongoose-version": "^1.1.0"
+  }
+}
