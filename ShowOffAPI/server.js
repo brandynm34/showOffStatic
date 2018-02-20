@@ -32,18 +32,18 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/user_routes');
+//var routes = require('./api/routes/user_routes');
 
 // Test route
-router.get('/', function (req, res) {
+router.get('/test', function (req, res) {
   res.json({ message: 'api works!' });
 });
 
 // Prefix routes with /api
 app.use('/api', router);
 
-// var routes = require('./api/routes/doneRoutes'); //importing route
-// routes(app); //register the route
+//var routes = require('./api/routes/doneRoutes'); //importing route
+//routes(app); //register the route
 
 
 // START THE SERVER
