@@ -62,6 +62,8 @@ const routes = [{
 
 export class RoutingModule {}
 
-export const RoutingComponents = [ LandingComponent, AppComponent, DashboardComponent,
+export const RoutingComponents = [ LandingComponent, 
+    AppComponent, 
+     DashboardComponent,
      LoginPageComponent, RegisterPageComponent, PublicViewComponent,
      EditPortfolioComponent, EditProfileComponent, AdvancedSearchComponent, SearchResultsComponent ];
