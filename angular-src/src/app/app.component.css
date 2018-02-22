@@ -25,3 +25,7 @@
 //     text-align: center;
 //     font-size: 0.8em;
 //   } */
+
+.no_margin{
+    margin: 0;
+}
