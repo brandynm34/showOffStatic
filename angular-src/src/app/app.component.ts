@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {OverlayContainer} from "~@angular/material/theming";
+//import {OverlayContainer} from "~@angular/material/theming";
 import { OnInit } from '@angular/core'
 
 @Component({
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
 
   title = 'app';
   themeClass: string;
-  overlayContainer;
+  //overlayContainer;
 
   constructor(
     //private overlayContainer: OverlayContainer

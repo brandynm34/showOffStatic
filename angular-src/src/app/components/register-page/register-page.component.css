@@ -23,3 +23,7 @@ img {
     left: 0;
     display: block;
 }
+
+.backButton {
+    position: absolute;
+}
