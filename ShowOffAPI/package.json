@@ -1,11 +1,11 @@
 {
-  "name": "ShowOffAPI",
+  "name": "showoffapi",
   "version": "1.0.0",
   "description": "RSRC API",
   "main": "index.js",
   "scripts": {
     "test": "\"echo \\\"",
-    "start": "nodemon server.js"
+    "start": "nodemon -L server.js"
   },
   "repository": {
     "type": "git",

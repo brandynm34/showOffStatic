@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 // Test route
 router.get('/test', function (req, res) {
-  res.json({ message: 'api works!' });
+  res.json({ message: 'api really works!' });
 });
 
 // Prefix routes with /api
