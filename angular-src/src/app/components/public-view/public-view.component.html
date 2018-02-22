@@ -1,3 +1,59 @@
-<p>
-  public-view works!
-</p>
+<div class="public-component"> <!-- begin public view component -->
+  <div class="public-banner"> <!-- begin banner -->
+    <div class="public-user-icon"></div>
+    <h1>Your Name Here</h1>
+    <div class="public-hamburger">
+    </div>
+  </div> <!-- end banner -->
+  <div class="container public-about-me-container">
+    <h2 class="text-center">About me</h2>
+    <div class="row public-about-me-box">
+      <div class="col-md-3  public-about-me-box-left">
+        <div class="public-about-me-icon"></div>
+      </div> <!-- end left side of about me (icon) -->
+      <div class="col-md-9 public-about-me-box-right">
+        <p class="public-arimo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita quae quod natus pariatur ipsa? Quam recusandae repellat deserunt laudantium similique, nihil ea perferendis, temporibus incidunt, quis doloribus distinctio sapiente!</p>
+        <button class="btn btn-success">Get My Resume</button>      
+      </div><!-- end right side of about me (text blurb/resume button) -->
+    </div> <!-- end about me box -->
+  </div> <!-- end about me container -->
+  <div class="public-skills-container container">
+    <h2 class="text-center">My Skills</h2>
+    <div class="public-icon-box row">
+      <!-- NOTE: Public icons will be built dynamically with ngFor -->
+      <div *ngFor="let icon of skillsArr" class="public-icon"></div>
+    </div> <!-- end icon box -->
+  </div> <!-- end skills container -->
+  <div class="public-projects-container">
+    <h2 class="text-center" id="projectTitle">My Projects</h2>
+    <div class="container">
+      <div class="row" id="projectsParent">
+        <div *ngFor="let project of projectsArr; let index = index" class="public-project-thumbnail" id="project{{index}}"></div>
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </div> <!-- end public projects container -->
+  <div class="public-contact-container">
+    <h2 class="text-center">Contact me</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 public-contact-icon-box">
+          <div class="public-contact-icon public-icon-email"></div>
+          <p>My@email.com</p>
+        </div>
+        <div class="col-sm-3 public-contact-icon-box">
+          <div class="public-contact-icon public-icon-github"></div>
+          <p>Github account: MyGit</p>
+        </div>
+        <div class="col-sm-3 public-contact-icon-box">
+          <div class="public-contact-icon public-icon-phone"></div>
+          <p>(559) 867-5309</p>
+        </div>
+        <div class="col-sm-3 public-contact-icon-box">
+          <div class="public-contact-icon public-icon-site"></div>
+          <p>www.myawesomesite.com</p>
+        </div>
+      </div> <!-- end bootstrap row class -->
+    </div> <!-- end bootstrap container class -->
+
+  </div> <!-- end contact container -->
+</div> <!-- end public view component -->
