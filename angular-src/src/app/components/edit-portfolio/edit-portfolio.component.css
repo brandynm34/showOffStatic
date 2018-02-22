@@ -7,3 +7,9 @@
 .allProjects{
     margin-top: 2em;
 }
+button {
+    width: 300px;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
