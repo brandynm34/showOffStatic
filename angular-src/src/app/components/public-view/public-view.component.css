@@ -123,3 +123,43 @@
     border: 3px solid #7ba4ab;
     background-color: #232122;
 }
+
+.public-contact-container {
+    margin-top: 40px;
+}
+
+.public-contact-icon-box {
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.public-contact-icon-box p {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.public-contact-icon {
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+}
+
+.public-icon-email {
+    background-image: url(./../../../assets/img/public-icons/black-envelope-64.png);
+}
+
+.public-icon-phone {
+    background-image: url(./../../../assets/img/public-icons/smartphone-call.png);
+}
+
+.public-icon-site {
+    background-image: url(./../../../assets/img/public-icons/internet.png);
+}
+
+.public-icon-github {
+    background-image: url(./../../../assets/img/public-icons/github-logo.png);
+}
