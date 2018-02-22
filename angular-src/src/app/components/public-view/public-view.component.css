@@ -93,3 +93,33 @@
     border-radius: 50%;
     background-color: #232122;
 }
+
+.public-skills-container {
+    margin-top: 40px;
+}
+
+.public-icon-box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.public-icon {
+    height: 50px;
+    width: 50px;
+    border: 2px solid #232122;
+}
+
+.public-projects-container {
+    margin-top: 40px;
+}
+
+.public-projects-container h2 {
+    margin-bottom: 20px;
+}
+
+.public-project-thumbnail {
+    height: 200px;
+    border: 3px solid #7ba4ab;
+    background-color: #232122;
+}

@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicViewComponent implements OnInit {
 
+  private _numOfSkills = 6;
+  private _numOfProjects = 6;
+  public skillsArr = [];
+  public projectsArr = [];
   constructor() { }
 
   ngOnInit() {
+    for (let i = 0; i < this._numOfSkills; i++) {
+      this.skillsArr.push('Skill!');
+    }
+
+    for (let i = 0; i < this._numOfProjects; i++) {
+      this.projectsArr.push('Project!');
+    }
   }
 
 }

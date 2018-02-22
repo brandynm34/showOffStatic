@@ -16,11 +16,26 @@
     <div class="public-about-me-box">
       <div class="public-about-me-box-left">
         <div class="public-about-me-icon"></div>
-      </div>
+      </div> <!-- end left side of about me box -->
       <div class="public-about-me-box-right">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita quae quod natus pariatur ipsa? Quam recusandae repellat deserunt laudantium similique, nihil ea perferendis, temporibus incidunt, quis doloribus distinctio sapiente!</p>
           <button class="btn btn-success">Get My Resume</button>
-      </div>
-    </div>
+      </div> <!-- end right side of about me box -->
+    </div> <!-- end about me box -->
   </div> <!-- end about me container -->
+  <div class="public-skills-container">
+    <h2 class="text-center">My Skills</h2>
+    <div class="public-icon-box">
+      <!-- NOTE: Public icons will be built dynamically with ngFor -->
+      <div *ngFor="let icon of skillsArr" class="public-icon"></div>
+    </div> <!-- end icon box -->
+  </div> <!-- end skills container -->
+  <div class="public-projects-container">
+    <h2 class="text-center">My Projects</h2>
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let project of projectsArr" class="col-sm-6 col-md-4 public-project-thumbnail"></div>
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </div> <!-- end public projects container -->
 </div> <!-- end public view component -->
