@@ -1,0 +1,15 @@
+.top-page{
+    padding-top: 2em;
+}
+.personalIcon, .selectSkills{
+    margin-top: 1em;
+}
+.allProjects{
+    margin-top: 2em;
+}
+button {
+    width: 300px;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
