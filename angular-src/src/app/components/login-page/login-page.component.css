@@ -11,3 +11,8 @@
 img {
     width: 50%;
 }
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
