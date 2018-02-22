@@ -134,6 +134,13 @@
     background-color: #232122;
 }
 
+.public-projects-none {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "Your projects here!"
+}
+
 .public-contact-container {
     margin-top: 40px;
 }

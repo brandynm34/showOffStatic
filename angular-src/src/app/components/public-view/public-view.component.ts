@@ -8,7 +8,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
   private _numOfSkills = 10;
-  private _numOfProjects = 4;
+  private _numOfProjects = 0;
   public skillsArr = [];
   public projectsArr = [];
   constructor() { }
@@ -25,6 +25,10 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     switch (this.projectsArr.length) {
+      case 0:
+      document.getElementById('projectTitle').style.display = 'none';
+      break;
+
       case 1:
       document.getElementById('project0').classList.add('col-sm-4', 'offset-sm-4');
       break;

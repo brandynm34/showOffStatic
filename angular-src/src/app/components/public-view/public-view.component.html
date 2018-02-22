@@ -28,9 +28,9 @@
     </div> <!-- end icon box -->
   </div> <!-- end skills container -->
   <div class="public-projects-container">
-    <h2 class="text-center">My Projects</h2>
+    <h2 class="text-center" id="projectTitle">My Projects</h2>
     <div class="container">
-      <div class="row">
+      <div class="row" id="projectsParent">
         <div *ngFor="let project of projectsArr; let index = index" class="public-project-thumbnail" id="project{{index}}"></div>
       </div> <!-- end row -->
     </div> <!-- end container -->
