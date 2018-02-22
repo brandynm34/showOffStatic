@@ -1,4 +1,13 @@
 /* BASE COLOR SCHEME: LIGHT GREY: #DDDEDE, BLACKISH: #232122, HOUSEPLANT: #A5C05B, BLUE GREY #7BA4A8 */
+@import url('https://fonts.googleapis.com/css?family=Muli|Yeseva+One');
+
+.public-arimo {
+    font-family: 'Muli', 'sans-serif'
+}
+
+.public-component {
+    font-family: 'Yeseva One', 'cursive'    
+}
 
 .public-fake-nav-bar {
     height: 50px;
@@ -30,14 +39,15 @@
 }
 
 .public-hamburger {
-    height: 100px;
+    display: hidden;
+    /* height: 100px;
     width: 100px;
     background-color: #7ba4ab;
     margin-right: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
 }
 
 .public-hamburger-line {
@@ -61,24 +71,24 @@
 
 .public-about-me-box {
     border: 3px solid #a5c05b;
-    height: 250px;
+    min-height: 175px;
+    height: 100%;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
 }
 
 .public-about-me-box-left {
-    width: 20%;
-    float: left;
+    /* width: 20%;
+    float: left; */
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #a5c05b;
-    height: 100%
 }
 
 .public-about-me-box-right {
-    width: 80%;
+    /* width: 80%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,4 +172,8 @@
 
 .public-icon-github {
     background-image: url(./../../../assets/img/public-icons/github-logo.png);
+}
+
+.public-contact-text {
+    color: #a5c05b;
 }

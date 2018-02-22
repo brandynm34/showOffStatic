@@ -1,4 +1,4 @@
-<div> <!-- begin public view component -->
+<div class="public-component"> <!-- begin public view component -->
   <div class="public-fake-nav-bar">
     <p>Nav bar will go here!</p>
   </div>
@@ -6,26 +6,23 @@
     <div class="public-user-icon"></div>
     <h1>Your Name Here</h1>
     <div class="public-hamburger">
-      <div class="public-hamburger-line public-hamburger-top"></div>
-      <div class="public-hamburger-line"></div>
-      <div class="public-hamburger-line public-hamburger-bottom"></div>
     </div>
   </div> <!-- end banner -->
-  <div class="public-about-me-container">
+  <div class="container public-about-me-container">
     <h2 class="text-center">About me</h2>
-    <div class="public-about-me-box">
-      <div class="public-about-me-box-left">
+    <div class="row public-about-me-box">
+      <div class="col-md-3  public-about-me-box-left">
         <div class="public-about-me-icon"></div>
-      </div> <!-- end left side of about me box -->
-      <div class="public-about-me-box-right">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita quae quod natus pariatur ipsa? Quam recusandae repellat deserunt laudantium similique, nihil ea perferendis, temporibus incidunt, quis doloribus distinctio sapiente!</p>
-          <button class="btn btn-success">Get My Resume</button>
-      </div> <!-- end right side of about me box -->
+      </div> <!-- end left side of about me (icon) -->
+      <div class="col-md-9 public-about-me-box-right">
+        <p class="public-arimo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita quae quod natus pariatur ipsa? Quam recusandae repellat deserunt laudantium similique, nihil ea perferendis, temporibus incidunt, quis doloribus distinctio sapiente!</p>
+        <button class="btn btn-success">Get My Resume</button>      
+      </div><!-- end right side of about me (text blurb/resume button) -->
     </div> <!-- end about me box -->
   </div> <!-- end about me container -->
-  <div class="public-skills-container">
+  <div class="public-skills-container container">
     <h2 class="text-center">My Skills</h2>
-    <div class="public-icon-box">
+    <div class="public-icon-box row">
       <!-- NOTE: Public icons will be built dynamically with ngFor -->
       <div *ngFor="let icon of skillsArr" class="public-icon"></div>
     </div> <!-- end icon box -->
@@ -34,7 +31,7 @@
     <h2 class="text-center">My Projects</h2>
     <div class="container">
       <div class="row">
-        <div *ngFor="let project of projectsArr" class="col-sm-6 col-md-4 public-project-thumbnail"></div>
+        <div *ngFor="let project of projectsArr; let index = index" class="public-project-thumbnail" id="project{{index}}"></div>
       </div> <!-- end row -->
     </div> <!-- end container -->
   </div> <!-- end public projects container -->
