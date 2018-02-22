@@ -1,0 +1,16 @@
+h1{
+    padding-top: 1em;
+}
+img {
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+button{
+    margin-top: 2em;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 420px;
+}

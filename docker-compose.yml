@@ -1,11 +1,24 @@
 version: "3.3"
 
+# Notes: Build - Location of the dockerfile relative to this docker-compose.yml that contains instructions for building teh container
+# ports - connects a port locally to the port on the container 
+# volumes - 'syncs' a folder on the local machine to a directory in the container
+# entrypoint - something i cant get to work yet :(
+
 services:
   angular-frontend:
     build: './angular-src'
-    # working_dir: /home/node/webapp
     ports:
     - "4200:4200"
-    # volumes:
-    # - ./angular-src:/home/node/webapp
+    - "49153:49153"
+    volumes:
+    - ./angular-src:/usr/src/app
     # entrypoint: "/home/node/webapp/scripts/entrypoint.sh"
+
+  api-server:
+    build: './ShowOffAPI'
+    ports:
+    - "3000:8100"
+    volumes:
+    - ./ShowOffAPI:/home/node/server
+    # entrypoint: "/home/node/server/entrypoint.sh"
