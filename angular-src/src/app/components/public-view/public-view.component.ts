@@ -7,7 +7,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
-  private _numOfSkills = 10;
+  private _numOfSkills = 0;
   private _numOfProjects = 0;
   public skillsArr = [];
   public projectsArr = [];
