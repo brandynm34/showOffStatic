@@ -46,3 +46,17 @@
     position: fixed;
     top: 48px;
 }
+.profilePic {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: #007bff;
+    margin-left: 35px;
+    margin-bottom: 2em;
+    /* margin-right: auto; */
+}
+@media only screen and (max-width: 1025px) {
+    .profilePic {
+        margin-left: 20px;
+    }
+}
