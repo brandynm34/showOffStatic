@@ -5,22 +5,23 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const bodyParser = require('body-parser');
 
+const profile = require('./api/routes/profile');
 const port = process.env.PORT || 8100;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CONNECT TO DATABASE
-mongoose.Promise = global.Promise;
-mongoose.connect(config.database, (err) => {
-  useMongoClient: true;
-  if (err) {
-    console.log('Could NOT connect to database: ', err);
-  } else {
-    console.log('Connected to database: ' + 'showoff');
-  }
-});
-app.set('superSecret', config.secret);
+// mongoose.Promise = global.Promise;
+// mongoose.connect(config.database, (err) => {
+//   useMongoClient: true;
+//   if (err) {
+//     console.log('Could NOT connect to database: ', err);
+//   } else {
+//     console.log('Connected to database: ' + 'showoff');
+//   }
+// });
+// app.set('superSecret', config.secret);
 
 // API ROUTING
 // middleware to use for all requests
@@ -38,6 +39,8 @@ app.use(bodyParser.json());
 router.get('/test', function (req, res) {
   res.json({ message: 'api really works!' });
 });
+
+app.use('/api/profile', profile);
 
 // Prefix routes with /api
 app.use('/api', router);
