@@ -14,6 +14,6 @@ mongoose.connect("mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff", (e
 const Portfolio = mongoose.model('PORTFOLIO', portfolioModel.portfolioSchema);
 
 router.get('/', function(req, res, next){
-    console.log('Base protfolio activated');
+    console.log('Base portfolio activated');
     
 })
