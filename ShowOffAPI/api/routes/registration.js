@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const registrationModel = require('../models/registration');
+
 
 mongoose.connect('mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff', (err) => {
     if (err) {
@@ -10,16 +12,7 @@ mongoose.connect('mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff', (e
     }
 });
 
-const profileSchema = mongoose.Schema({
-    Username: String,
-    FirstName: String,
-    LastName: String,
-    Password: String,
-    Email: String
-
-})
-
-const Profile = mongoose.model('REGISTRATION', profileSchema);
+const Profile = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
 
 router.get('/', function(req, res, next) {
     console.log('Base profile activated');
