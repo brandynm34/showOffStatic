@@ -2,15 +2,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    email: { type:String, required: true, unique: true },
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true },
-    street_address: {type: String, required: false},
-    state: {type: String, required: false},
-    zip: { type: String, required: true },
-    phone-num: { type: String, required: true },
-    password: { type: String, required: true }
+const profileSchema = new Schema({
+    Email: { type:String, required: true, unique: true },
+    FirstName: { type: String, required: true },
+    LastName: { type: String, required: true },
+    Username: {type: String, required: true, unique: true },
+    Password: { type: String, required: true }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('REGISTRATION', profileSchema);
