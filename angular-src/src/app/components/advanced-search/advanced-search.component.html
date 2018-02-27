@@ -1,3 +1,199 @@
-<p>
-  advanced-search works!
-</p>
+<div>
+  <h1 class="text-center">Advanced Search</h1>
+  <div class="backButton">
+      <a href="" routerLink="/"><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form action="" class="advanced-search-form">
+          <div class="form-field">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Search by name</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              </div>
+          </div> <!-- end name search -->
+          <div class="form-field">
+            <label class="radio-label" for="">Does user have a LinkedIn account?</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="linkedInInlineRadioOptions" id="linkedInInlineRadio1" value="linkedInYes">
+                <label class="form-check-label" for="linkedInInlineRadio1">Yes</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="linkedInInlineRadioOptions" id="linkedInInlineRadio2" value="linkedInNow">
+                <label class="form-check-label" for="linkedInInlineRadio2">No</label>
+              </div>
+          </div> <!-- end linked-in check -->
+          <div class="form-field">
+              <label class="radio-label" for="">Does user have a GitHub account?</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gitHubInlineRadioOptions" id="gitHubInlineRadio1" value="gitHubYes">
+                  <label class="form-check-label" for="gitHubInlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gitHubInlineRadioOptions" id="gitHubInlineRadio2" value="gitHubNo">
+                  <label class="form-check-label" for="gitHubInlineRadio2">No</label>
+                </div>
+            </div> <!-- end linked-in check -->
+            <div class="form-field">
+              <div class="form-group">
+                <label for="minProjects">Minimum number of projects:</label>
+                <select class="form-control" id="minProjectsSelect">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+              </div>
+            </div> <!-- end min number of projects -->
+            <div class="form-field">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Angular
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Bootstrap
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        C
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        C++
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        C#
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        CSS
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        HTML
+                      </label>
+                    </div>
+                  </div> <!-- end left row of checkboxes -->
+                  <div class="col-md-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Javascript
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        MongoDB
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        mySQL
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        NodeJS
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        PHP
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Postgres
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Python
+                      </label>
+                    </div>
+                  </div> <!-- end middle row of skill boxes -->
+                  <div class="col-md-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        R
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Ruby
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        SAS
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        SASS
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Selenium
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        SQL
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Wordpress
+                      </label>
+                    </div>
+                  </div> <!-- end right column of skill boxes -->
+                </div> <!-- end skills 'row' -->
+              </div> <!-- end container fluid -->
+            </div> <!-- end skills search -->
+            <div class="form-field submit-row">
+              <button class="btn btn-primary">Submit Search</button>
+            </div> <!-- end submit-button -->
+        </form>
+      </div><!-- end col -->
+    </div><!-- end row -->
+  </div><!-- end container -->
+  
+</div>
