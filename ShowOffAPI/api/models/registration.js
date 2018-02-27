@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const profileSchema = new Schema({
+const registrationSchema = new Schema({
     Email: { type:String, required: true, unique: true },
     FirstName: { type: String, required: true },
     LastName: { type: String, required: true },
@@ -10,4 +10,4 @@ const profileSchema = new Schema({
     Password: { type: String, required: true }
 });
 
-module.exports = mongoose.model('REGISTRATION', profileSchema);
+module.exports = mongoose.model('REGISTRATION', registrationSchema);
