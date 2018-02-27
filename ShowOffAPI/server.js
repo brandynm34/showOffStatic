@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const bodyParser = require('body-parser');
 
-const profile = require('./api/routes/profile');
+const profile = require('./api/routes/registration');
 const port = process.env.PORT || 8100;
 
 app.use(bodyParser.urlencoded({ extended: true }));
