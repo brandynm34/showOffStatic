@@ -18,8 +18,3 @@ router.get('/', function(req, res, next){
     console.log('Base portfolio activated');
     
 })
-
-// this.router.route("id/:id")
-//   .get(this.controller.findbyID)
-//   .put(this.controller.update)
-//   .delete(this.controller.remove);
