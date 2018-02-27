@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const userProfileModel = require('../models/user');
+const userProfileModel = require('../models/registration');
 
 
 mongoose.connect('mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff', (err) => {
