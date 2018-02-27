@@ -12,7 +12,8 @@ var AccountController = function (userModel, session, mailer) {
 
 module.exports = AccountController;
 
-exports.read_all_users = function(req, User.find({}, function(err, task){
+exports.read_all_users = function(req, res) {
+    User(req.params.userId, function(err, task) {
 		if (err)
 			res.send(err);
 		res.send({type: GET});
@@ -53,7 +54,7 @@ exports.delete_user = function(req, res) {
 		if (err)
 			res.send(err);
 		res.send({type: DELETE});
-		res.json(message: 'User was succesfully deleted'});
+		res.json({message: 'User was succesfully deleted'});
 	});
 };
 
