@@ -14,4 +14,4 @@ const portfolioSchema = new Schema({
     Theme: { type: String, required: false}
 }); 
 
-module.exports = mongoose.model('PORTFOLIO', portfolioSchema);
+module.exports = mongoose.model('USER_PORTFOLIO', portfolioSchema);
