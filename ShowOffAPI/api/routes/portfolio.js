@@ -13,7 +13,13 @@ mongoose.connect("mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff", (e
 
 const Portfolio = mongoose.model('PORTFOLIO', portfolioModel.portfolioSchema);
 
+//you can test in postman with this, but get rid of later and don't put info here.
 router.get('/', function(req, res, next){
     console.log('Base portfolio activated');
     
 })
+
+// this.router.route("id/:id")
+//   .get(this.controller.findbyID)
+//   .put(this.controller.update)
+//   .delete(this.controller.remove);
