@@ -14,3 +14,13 @@ module.exports = function(app) {
     .put(update_user)
     .delete(delete_user);
 };
+
+module.exports = function(app) {
+  app.route('/login')
+    .post(AccountController.prototype.logon);
+};
+
+module.exports = function(app) {
+  app.route('/logout')
+    .get(AccountController.prototype.logoff);
+};
