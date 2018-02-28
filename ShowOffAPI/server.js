@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 //registering routes
 const profile = require('./api/routes/registration');
 const user_profile = require('./api/routes/user_profile');
+const portfolio = require('./api/routes/portfolio');
 const port = process.env.PORT || 8100;
 
 app.use(bodyParser.urlencoded({ extended: true }));
