@@ -1,0 +1,13 @@
+.error-container {
+    height: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
