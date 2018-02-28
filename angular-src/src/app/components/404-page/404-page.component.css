@@ -1,0 +1,18 @@
+.error-container {
+    height: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-message {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.error-button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
