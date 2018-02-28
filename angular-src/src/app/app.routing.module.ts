@@ -11,6 +11,7 @@ import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfol
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { FourOhFourComponent } from './components/404-page/404-page.component';
 
 
 const routes = [{
@@ -50,8 +51,13 @@ const routes = [{
     component: SearchResultsComponent
 },
 {
+    path: '',
+    redirectTo: 'landing',
+    pathMatch: 'full'
+},
+{
     path: '**',
-    component: LandingComponent
+    component: FourOhFourComponent
 },
 ];
 
@@ -62,8 +68,6 @@ const routes = [{
 
 export class RoutingModule {}
 
-export const RoutingComponents = [ LandingComponent, 
-    AppComponent, 
-     DashboardComponent,
+export const RoutingComponents = [ LandingComponent, AppComponent, FourOhFourComponent, DashboardComponent,
      LoginPageComponent, RegisterPageComponent, PublicViewComponent,
      EditPortfolioComponent, EditProfileComponent, AdvancedSearchComponent, SearchResultsComponent ];
