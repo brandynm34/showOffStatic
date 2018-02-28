@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from 'express';
+//import { Router, Request, Response, NextFunction } from 'express';
 var AccountController = function (userModel, session, mailer) {
 		this.crypto = require('crypto');
 		this.uuid = require('node-uuid');
@@ -8,7 +8,7 @@ var AccountController = function (userModel, session, mailer) {
         this.registrationModel = require('../models/registration');
 		this.userProfileModel = userProfileModel;
 		this.session = session;
-		//this.mailer = mailer;
+		this.mailer = mailer;
 };
 
 module.exports = AccountController;

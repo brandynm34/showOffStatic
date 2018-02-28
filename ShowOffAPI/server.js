@@ -43,7 +43,7 @@ router.get('/test', function (req, res) {
 });
 
 app.use('/api/profile', profile);
-
+app.use('../models/user_profile:_id');
 // Prefix routes with /api
 app.use('/api', router);
 
