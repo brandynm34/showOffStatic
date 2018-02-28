@@ -6,11 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  
+  display='none';
 
   constructor() {}
 
   ngOnInit() {
+  }
+  openModal(){
+    this.display="block"
+    console.log("hello");
+  }
+  onCloseHandled(){
+    this.display="none"
   }
  
 }
