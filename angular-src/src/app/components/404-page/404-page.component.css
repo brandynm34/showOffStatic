@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.error-message {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
 .error-button-row {
     display: flex;
     justify-content: center;
