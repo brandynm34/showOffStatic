@@ -24,3 +24,8 @@ module.exports = function(app) {
   app.route('/logout')
     .get(AccountController.prototype.logoff);
 };
+
+module.exports = function(app) {
+  app.route('/forgot_password')
+    .get(AccountController.prototype.resetPassword);
+};
