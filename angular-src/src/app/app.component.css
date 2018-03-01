@@ -27,33 +27,6 @@
     font-size: 0.8em;
   }
 
-  button {
-    padding: 0;
-    font-size: inherit;
-    margin: 0;
-    height: 38px;
-  }
-
-  nav {
-    display: flex;
-    justify-content: flex-end;
-    justify-content: space-between;
-
-  }
-
-  .nav-right-div {
-    width: 40%;
-  }
-
-  form {
-    display: flex;
-    justify-content: right;
-  }
-
-  .logoff-button {
-    margin-left: 5%;
-  }
-
 .no_margin {
   margin: 0;
 }
