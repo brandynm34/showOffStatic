@@ -4,3 +4,15 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Yeseva One', 'cursive';
 }
+
+:host {
+    display: block;
+    font-family: "Muli", sans-serif;
+    background-color: #DDDEDE;
+    text-decoration-color: #A5C05B;
+    -webkit-text-fill-color: #232122;
+    text-decoration-style: #7BA4A8;
+    border-top-color: #7BA4A8;
+    border-block-start-color: #7BA4A8; 
+    border-right-color: #7BA4A8;
+  }

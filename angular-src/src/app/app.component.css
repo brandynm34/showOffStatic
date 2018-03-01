@@ -1,11 +1,6 @@
 /* styles applied on :host are applied on the current component, "app" in this case */
-  :host {
-    display: block;
-    font-family: "Muli", sans-serif;
-  }
 
   header {
-    background-color: #fff;
     padding: 16px;
     position: fixed;
     top: 0;
@@ -53,6 +48,10 @@
     margin-left: 5%;
   }
 
-.no_margin {
-  margin: 0;
-}
+  .no_margin {
+    margin: 0;
+  }
+
+  .button-primary {
+    color: #7BA4A8;
+  }
