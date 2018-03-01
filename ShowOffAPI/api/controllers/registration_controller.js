@@ -53,7 +53,7 @@ class AccountController {
             if (result) {
                 // if passwords match, return status 1 and the username...
                 console.log('Login successful');
-                res.json({status: 1, Username: req.body.Username});
+                res.json({status: 1, Username: req.body.Username, id: usernameCheck._id});
             } else {
                 // ..otherwise, return status 3
                 console.log(`Password doesn't match`);
