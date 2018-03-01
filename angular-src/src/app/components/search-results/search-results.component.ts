@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultsComponent implements OnInit {
 
+  private _numOfResults = 4;
+  public resultsArr = [];
   constructor() { }
 
   ngOnInit() {
+    this.resultsArr = [];
+
+    for (let i = 0; i < this._numOfResults; i++) {
+      this.resultsArr.push('result');
+    }
   }
 
 }

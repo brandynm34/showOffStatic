@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const bodyParser = require('body-parser');
 
+//registering routes
 const profile = require('./api/routes/registration');
+const user_profile = require('./api/routes/user_profile');
+const portfolio = require('./api/routes/portfolio');
 const port = process.env.PORT || 8100;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +44,7 @@ router.get('/test', function (req, res) {
 });
 
 app.use('/api/profile', profile);
-
+app.use('../models/user_profile:_id');
 // Prefix routes with /api
 app.use('/api', router);
 

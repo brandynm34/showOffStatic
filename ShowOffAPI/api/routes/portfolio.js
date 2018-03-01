@@ -11,15 +11,49 @@ mongoose.connect("mongodb://admin:W18cohort@ds041678.mlab.com:41678/showoff", (e
     }
 });
 
-const Portfolio = mongoose.model('PORTFOLIO', portfolioModel.portfolioSchema);
+const Portfolio = mongoose.model('USER_PORTFOLIO', portfolioModel.portfolioSchema);
 
 //you can test in postman with this, but get rid of later and don't put info here.
-router.get('/', function(req, res, next){
+router.get('/', (req, res, next) => {
     console.log('Base portfolio activated');
     
 })
 
-// this.router.route("id/:id")
-//   .get(this.controller.findbyID)
-//   .put(this.controller.update)
-//   .delete(this.controller.remove);
+router.post('/', (req, res, next) =>{
+    console.log('Let this work for once. That is all I ask.');
+
+    //Checks if all required fields are filled out
+    if(!req.body.Email || !req.body._id || !req.body.Theme){
+        console.log('ERROR: A required field is missing');
+        res.send('ERROR: Required field missing');
+    }
+
+    let newPortfolio = new Portfolio({
+        Email: req.body.name,
+        _id: req.body._id,
+        AboutBlurb: req.body.AboutBlurb,
+        Facebook: req.body.Facebook,
+        Twitter: req.body.Twitter,
+        Icon: req.body.Icon,
+        PhoneNumber: req.body.PhoneNumber,
+        Projects: req.body.Projects,
+        Theme: req.body.Theme
+    });
+
+    //Lets check to see if the profile exists
+    Profile.findOne({_id: req.body._id}, (err) =>{
+        if (err){
+            res.json({success: false, msg: 'Portfolio already exists'});
+        } else {
+            res.json({success: true, msg: 'Portfolio created'})        
+        }
+    })
+
+
+});
+
+router.delete();
+
+router.update();
+
+module.exports = router;
