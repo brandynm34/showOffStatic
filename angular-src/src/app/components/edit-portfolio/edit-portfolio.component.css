@@ -1,15 +1,70 @@
-.top-page{
-    padding-top: 2em;
-}
 .personalIcon, .selectSkills{
     margin-top: 1em;
 }
 .allProjects{
     margin-top: 2em;
 }
-button {
+.form-label-group {
+    margin-top: 1em;
+}
+.save {
     width: 300px;
     margin-bottom: 2em;
     margin-left: auto;
     margin-right: auto;
 }
+.backdrop{ 
+    background-color:rgba(95, 88, 88, 0.178);
+    position:fixed;
+    top:0;
+    left:0;  
+    width:100%;
+    height:100vh; 
+}
+.modal-dialog {
+    width:100%;
+}
+.modal{
+    display:none;
+    position: fixed;
+    z-index:1;
+    left: 0;
+    top:0;
+    height: 100%;
+    width:100%;
+    overflow: auto;
+    background-color: rgba(95, 88, 88, 0.178);
+}
+  
+.modal-content{
+    background-color:#f4f4f4;
+    margin: 10px auto auto -80px;
+    width:750px;
+    animation-name:modalopen;
+    animation-duration:1s;
+}
+  
+.modal-header h2, .modal-footer h3{
+    margin:0;
+}
+  
+.modal-header{
+    background:coral;
+    padding: .3em;
+    color:#fff;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-between;
+    align-items: center;
+    
+}
+  
+.modal-body{
+    padding:10px 20px;
+}
+.close {
+    margin: 0;
+    
+} 
+
+   

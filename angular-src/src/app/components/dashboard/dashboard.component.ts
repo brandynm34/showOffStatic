@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,18 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   display='none';
+  // display= 'none';
+
 
   constructor() {}
 
+
   ngOnInit() {
   }
-  openModal(){
+  openEditProfileModal(){
     this.display="block"
-    console.log("hello");
+    console.log("dash", this.display, this.display1);
   }
-  onCloseHandled(){
-    this.display="none"
+  openEditPortfolioModal(){
+    this.display="block"
+    console.log("dash", this.display);
   }
+  
  
 }
 
