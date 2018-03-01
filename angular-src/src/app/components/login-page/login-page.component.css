@@ -19,5 +19,9 @@ img {
 }
 .backButton {
     position: absolute;
-    /* color: #1B4B5A; */
+    color: #1B4B5A;
+}
+
+.backButton2 {
+    color: #1B4B5A;
 }
