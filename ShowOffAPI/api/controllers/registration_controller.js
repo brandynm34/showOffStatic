@@ -69,6 +69,7 @@ class AccountController {
     }
 
     async getAll(req, res, next) {
+        // NOTE: THIS SHOULD NOT GO LIVE AS IT WILL RETURN ALL USERS. THIS IS FOR TESTING PURPOSES ONLY
         try {
             console.log('Get all GET request activated. NOTE: THIS FUNCTION SHOULD NOT GO LIVE');
             const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
