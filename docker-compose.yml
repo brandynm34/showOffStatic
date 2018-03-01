@@ -11,6 +11,8 @@ services:
     ports:
     - "4200:4200"
     - "49153:49153"
+    networks:
+    - backend
     volumes:
     - ./angular-src:/usr/src/app
     networks:
@@ -21,6 +23,10 @@ services:
     build: './ShowOffAPI'
     ports:
     - "3000:8100"
+    networks:
+    - backend
+    depends_on:
+    - mongo-database
     volumes:
     - ./ShowOffAPI:/home/node/server
     depends_on:
@@ -38,3 +44,4 @@ services:
 
 networks:
   backend:
+
