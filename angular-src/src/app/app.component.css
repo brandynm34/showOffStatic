@@ -1,4 +1,29 @@
 /* styles applied on :host are applied on the current component, "app" in this case */
+:host {
+  display: block;
+  font-family: "Muli", sans-serif;
+  background-color: #8E7970;
+  text-decoration-color: #A5C05B;
+  -webkit-text-fill-color: #1B4B5A;
+  text-decoration-style: #7BA4A8;
+  border-top-color: #7BA4A8;
+  border-block-start-color: #7BA4A8; 
+  border-right-color: #7BA4A8;
+  font-family: "Menlo, Monaco, Consolas, Courier New, monospace";
+}
+
+:host-context(.theme-light) {
+  background-color: #232122;
+  -webkit-text-fill-color: #1B4B5A;
+}
+
+/* a {
+  color: #1B4B5A;
+} */
+
+/* a:hover {
+  background-color: #1B4B5A;
+} */
 
   header {
     padding: 16px;
@@ -14,6 +39,7 @@
     text-align: center;
     margin-top: 50px;
     display: block;
+    background-color: #0F1F38;
   }
   
   footer {
@@ -22,15 +48,19 @@
   }
 
   button {
-    padding: 0;
+    padding: 5px;
     font-size: inherit;
     margin: 0;
     height: 38px;
+    background-color: #0F1F38;
+    border-color: #1B4B5A;
+    color: #1B4B5A;
   }
 
   nav {
     display: flex;
     justify-content: space-between;
+    background-color: #1B4B5A;
   }
 
   .nav-right-div {

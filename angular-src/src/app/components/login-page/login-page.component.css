@@ -15,7 +15,9 @@ img {
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
+    background-color: #1B4B5A;
 }
 .backButton {
     position: absolute;
+    /* color: #1B4B5A; */
 }
