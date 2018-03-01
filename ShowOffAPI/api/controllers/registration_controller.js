@@ -1,7 +1,9 @@
 const registrationModel = require('../models/registration');
 const Common = require('./common');
 const mongoose = require('mongoose');
-// const router = express.Router();
+const bcrypt = require('bcryptjs');
+
+const SALT_ROUNDS = 10;
 
 class AccountController {
     constructor(router) {
@@ -44,8 +46,11 @@ class AccountController {
                 return;
             }
 
+            // use bcrpyt.compare to check the two password
+            const result = await bcrypt.compare(req.body.Password, usernameCheck.Password);
+
             // compare passwords
-            if (req.body.password === usernameCheck.Password) {
+            if (result) {
                 // if passwords match, return status 1 and the username...
                 console.log('Login successful');
                 res.json({status: 1, Username: req.body.Username});
@@ -87,13 +92,16 @@ class AccountController {
                 res.send('ERROR: Required field missing');
             }
 
+            // hash password with bcrypt
+            const hash = await bcrypt.hash(req.body.Password, SALT_ROUNDS);
+
             // if we got this far, we have everything necessary
             console.log('Registering user with the following information:', req.body)
             const newProfile = new Account({
                 Username: req.body.Username,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
-                Password: req.body.Password,
+                Password: hash,
                 Email: req.body.Email
             })
             
