@@ -8,18 +8,18 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 })
 export class EditPortfolioComponent implements OnInit {
   display="block";
+  
   constructor(private dash: DashboardComponent) { }
 
   ngOnInit() {
   }
   closeModal(){
-    this.dash.display = "none";
-    console.log('edit',this.display);
-    
+    this.dash.displayPortfolio = "none";
+       
   }
   save(){
-    this.dash.display = "none";
-    console.log(this.display);
+    this.dash.displayPortfolio = "none";
+
   }
 
 

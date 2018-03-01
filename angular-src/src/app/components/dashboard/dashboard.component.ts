@@ -7,24 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  display='none';
-  // display= 'none';
-
-
+  displayProfile = 'none';
+  displayPortfolio = 'none';
+  
   constructor() {}
 
 
   ngOnInit() {
   }
   openEditProfileModal(){
-    this.display="block"
-    console.log("dash", this.display, this.display1);
+    this.displayProfile = "block"
+  
   }
   openEditPortfolioModal(){
-    this.display="block"
-    console.log("dash", this.display);
-  }
+    this.displayPortfolio="block"
   
+  }
  
 }
 

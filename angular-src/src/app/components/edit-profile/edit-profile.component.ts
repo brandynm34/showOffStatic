@@ -9,23 +9,19 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 })
 export class EditProfileComponent implements OnInit {
   display="block";
+
   constructor(private dash: DashboardComponent) { }
 
   ngOnInit() {
   }
 
-
-
-// Function to open modal
- 
   closeModal(){
-    this.dash.display = "none";
-    console.log('edit',this.display);
+    this.dash.displayProfile = "none";
     
   }
   save(){
-    this.dash.display = "none";
-    console.log(this.display);
+    this.dash.displayProfile = "none";
+    
   }
 
 }
