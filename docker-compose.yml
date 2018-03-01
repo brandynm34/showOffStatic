@@ -11,6 +11,8 @@ services:
     ports:
     - "4200:4200"
     - "49153:49153"
+    networks:
+    - backend
     volumes:
     - ./angular-src:/usr/src/app
     # entrypoint: "/home/node/webapp/scripts/entrypoint.sh"
@@ -19,6 +21,20 @@ services:
     build: './ShowOffAPI'
     ports:
     - "3000:8100"
+    networks:
+    - backend
+    depends_on:
+    - mongo-database
     volumes:
     - ./ShowOffAPI:/home/node/server
     # entrypoint: "/home/node/server/entrypoint.sh"
+
+  mongo-database:
+    image: mongo:latest
+    ports:
+    - "27017:27017"
+    networks:
+    - backend
+
+networks:
+  backend:
