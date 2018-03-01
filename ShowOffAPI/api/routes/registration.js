@@ -1,3 +1,6 @@
+// THIS IS NOW OBSOLETE, LEAVING IT UP FOR REFERENCE
+// THESE FUNCTIONS ARE NOW INSIDE THE REGISTRATIONS CONTROLLER. YOU SHOULD CHECK IT OUT, MAN.
+
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
