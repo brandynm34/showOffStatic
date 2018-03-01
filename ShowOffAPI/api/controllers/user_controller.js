@@ -108,6 +108,7 @@ AccountController.prototype.logon = function(email, password, callback) {
 };
 
 AccountController.prototype.logoff = function () {
+    console.log('IMMA LOGGGIN OF MAH ACCOUNT DAG');
 		if (this.session.userProfileModel) delete this.session.userProfileModel;
 			return;
 };
