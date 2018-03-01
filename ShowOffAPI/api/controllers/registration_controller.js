@@ -36,13 +36,19 @@ class AccountController {
             const inputtedUsername = req.body.Username;
             console.log('Attempting to Log in User:', inputtedUsername);
 
+            if(!inputtedUsername) {
+                console.log('Error: Request did not contain a user name.');
+                res.json({status: 2});
+                return;
+            }
+
             // find a user matching the username inputted. utilize await to make sure the checks are in progress
             let usernameCheck = await Account.findOne({Username: inputtedUsername});
 
             // if theres no result, return status 2 - no such username
             if (!usernameCheck) {
                 console.log('No such user name found. Returning status 2');
-                res.json({status: 2})
+                res.json({status: 2});
                 return;
             }
 
