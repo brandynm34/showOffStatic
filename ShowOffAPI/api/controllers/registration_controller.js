@@ -1,6 +1,9 @@
 const registrationModel = require('../models/registration');
+const Common = require('./common');
 const mongoose = require('mongoose');
-// const router = express.Router();
+const bcrypt = require('bcryptjs');
+
+const SALT_ROUNDS = 10;
 
 class AccountController {
     constructor(router) {
@@ -8,7 +11,8 @@ class AccountController {
             .get(this.getAll);
         router.route('/registration/add')
             .post(this.add);
-        
+        router.route('/registration/login')
+            .post(this.login);
     }
 
     
@@ -23,7 +27,55 @@ class AccountController {
         }
     }
 
+    async login(req, res, next) {
+        try {
+            // register the proper collection
+            const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
+
+            // get the username from request body
+            const inputtedUsername = req.body.Username;
+            console.log('Attempting to Log in User:', inputtedUsername);
+
+            if(!inputtedUsername) {
+                console.log('Error: Request did not contain a user name.');
+                res.json({status: 2});
+                return;
+            }
+
+            // find a user matching the username inputted. utilize await to make sure the checks are in progress
+            let usernameCheck = await Account.findOne({Username: inputtedUsername});
+
+            // if theres no result, return status 2 - no such username
+            if (!usernameCheck) {
+                console.log('No such user name found. Returning status 2');
+                res.json({status: 2});
+                return;
+            }
+
+            // use bcrpyt.compare to check the two password
+            const result = await bcrypt.compare(req.body.Password, usernameCheck.Password);
+
+            // compare passwords
+            if (result) {
+                // if passwords match, return status 1 and the username...
+                console.log('Login successful');
+                res.json({status: 1, Username: req.body.Username, id: usernameCheck._id});
+            } else {
+                // ..otherwise, return status 3
+                console.log(`Password doesn't match`);
+                res.json({status: 3});
+                return;
+            }
+            
+            
+
+        } catch (e) {
+            return Common.resultErr(res, e.message);
+        }
+    }
+
     async getAll(req, res, next) {
+        // NOTE: THIS SHOULD NOT GO LIVE AS IT WILL RETURN ALL USERS. THIS IS FOR TESTING PURPOSES ONLY
         try {
             console.log('Get all GET request activated. NOTE: THIS FUNCTION SHOULD NOT GO LIVE');
             const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
@@ -47,13 +99,16 @@ class AccountController {
                 res.send('ERROR: Required field missing');
             }
 
+            // hash password with bcrypt
+            const hash = await bcrypt.hash(req.body.Password, SALT_ROUNDS);
+
             // if we got this far, we have everything necessary
             console.log('Registering user with the following information:', req.body)
             const newProfile = new Account({
                 Username: req.body.Username,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
-                Password: req.body.Password,
+                Password: hash,
                 Email: req.body.Email
             })
             
