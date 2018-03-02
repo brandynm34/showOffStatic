@@ -15,6 +15,7 @@ img {
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
+    background-color: #DDDEDE;
 }
 
 .form-label-group > label {
