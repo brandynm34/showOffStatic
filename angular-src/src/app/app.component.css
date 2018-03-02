@@ -1,11 +1,33 @@
 /* styles applied on :host are applied on the current component, "app" in this case */
-  :host {
-    display: block;
-    font-family: "Muli", sans-serif;
-  }
+:host {
+  display: block;
+  /* font-family: "Muli", sans-serif; */
+  background-color: #7BA4A8;
+  /* text-decoration-color: #A5C05B; */
+  color: #232122;
+  /* text-decoration-style: #7BA4A8;
+  border-top-color: #7BA4A8;
+  border-block-start-color: #7BA4A8; 
+  border-right-color: #7BA4A8; */
+  text-decoration-color: #A5C05B;
+  font-family: "Roboto";
+}
+
+.outletContainer {
+  min-height: 90vh;
+  -webkit-text-stroke-color: #232122;
+}
+
+/* :host-context(.theme-light) {
+  background-color: #232122;
+  -webkit-text-fill-color: #1B4B5A;
+} */
+
+/* a {
+  color: #1B4B5A;
+} */
 
   header {
-    background-color: #fff;
     padding: 16px;
     position: fixed;
     top: 0;
@@ -19,6 +41,7 @@
     text-align: center;
     margin-top: 50px;
     display: block;
+    background-color: #0F1F38;
   }
   
   footer {
@@ -27,10 +50,13 @@
   }
 
   button {
-    padding: 0;
+    padding: 5px;
     font-size: inherit;
     margin: 0;
     height: 38px;
+    background-color: #DDDEDE;
+    border-color: #232122;
+    color: #232323;
   }
 
   nav {
@@ -43,6 +69,32 @@
     justify-content: flex-end;
   }
 
+  @media only screen and (max-width: 768px) {
+    .nav-bar-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-bar-search-button {
+      margin-top: 10px;
+    }
+
+    button {
+      margin: 0;
+    }
+
+    .logoff-button {
+      margin-left: 0;
+    }
+  }
+
   form {
     display: flex;
     justify-content: right;
@@ -53,6 +105,10 @@
     margin-left: 5%;
   }
 
-.no_margin {
-  margin: 0;
-}
+  .no_margin {
+    margin: 0;
+  }
+
+  .Long {
+    color: #1B4B5A;
+  }

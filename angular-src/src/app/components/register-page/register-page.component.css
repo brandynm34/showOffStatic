@@ -15,6 +15,7 @@ img {
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
+    background-color: #DDDEDE;
 }
 
 .form-label-group > label {
@@ -26,4 +27,18 @@ img {
 
 .backButton {
     position: absolute;
+}
+
+.coverImage {
+    min-width: 100%;
+    background-size : cover;
+    background-image: url("https://storage.googleapis.com/show_off/text.png");
+    /* background-attachment: fixed; */
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+}
+
+.backButton4 {
+    color: #DDDEDE;
 }
