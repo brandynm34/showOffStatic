@@ -56,15 +56,14 @@ a:hover {
     font-size: inherit;
     margin: 0;
     height: 38px;
-    background-color: #0F1F38;
-    border-color: #1B4B5A;
-    color: #1B4B5A;
+    background-color: #DDDEDE;
+    border-color: #232122;
+    color: #232323;
   }
 
   nav {
     display: flex;
     justify-content: space-between;
-    background-color: #1B4B5A;
   }
 
   .nav-right-div {

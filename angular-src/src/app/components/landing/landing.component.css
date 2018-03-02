@@ -3,10 +3,11 @@ h1{
 }
 
 img {
-    width: 20%;
+    height: 60vh;
     margin-right: auto;
     margin-left: auto;
     display: block;
+    border-radius: 4px;
 }
 
 button{
@@ -16,3 +17,5 @@ button{
     display: block;
     width: 420px;
 }
+
+
