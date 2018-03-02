@@ -15,10 +15,17 @@ img {
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
-    /* background-color: #1B4B5A; */
 }
 
 .backButton2 {
-    background-color: #1B4B5A;
+    padding-top: 10px;
+    color: #DDDEDE;
+}
 
+.container {
+    background-size: 100vh;
+    background-attachment: fixed;
+    background-color: transparent;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: luminosity;
 }
