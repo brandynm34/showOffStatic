@@ -1,13 +1,13 @@
 /* BASE COLOR SCHEME: LIGHT GREY: #DDDEDE, BLACKISH: #232122, HOUSEPLANT: #A5C05B, BLUE GREY #7BA4A8 */
 
 
-.public-arimo {
+/* .public-arimo {
     font-family: 'Muli', 'sans-serif'
-}
+} */
 
-.public-component {
+/* .public-component {
     font-family: 'Yeseva One', 'cursive'    
-}
+} */
 
 .public-banner {
     height: 200px;
@@ -27,6 +27,7 @@
     border-radius: 50%;
     border: 2px solid #7ba4ab;
     margin-left: 50px;
+    background-color: #a5c05b;
 }
 
 .public-hamburger {
