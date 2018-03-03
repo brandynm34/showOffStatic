@@ -1,33 +1,35 @@
-<div class="container">
-  <div class="container-fluid">
-    <div class="backButton">
-        <a href="http://localhost:4200/login-page"><i class="backButton4 fas fa-arrow-circle-left fa-3x"></i></a>
-    </div>
-    <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
-  
-      <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus>
+<div class="coverImage">
+  <div class="container">
+    <div class="container-fluid">
+      <div class="backButton">
+          <a href="http://localhost:4200/login-page"><i class="backButton4 fas fa-arrow-circle-left fa-3x"></i></a>
       </div>
-      <div class="form-label-group">
-        <input type="text" id="inputUsern" class="form-control" placeholder="Username" formControlName="username"required>
-      </div>
-      <div class="form-label-group">
-        <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" formControlName="firstName" required>
-      </div>
-      <div class="form-label-group">
-        <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" formControlName="lastName" required>
-      </div>
-      <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"  required>
-      </div>
-      <div class="form-label-group">
-        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required>
-      </div>
-      <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+      <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
     
+        <div class="form-label-group">
+          <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus>
+        </div>
+        <div class="form-label-group">
+          <input type="text" id="inputUsern" class="form-control" placeholder="Username" formControlName="username"required>
+        </div>
+        <div class="form-label-group">
+          <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" formControlName="firstName" required>
+        </div>
+        <div class="form-label-group">
+          <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" formControlName="lastName" required>
+        </div>
+        <div class="form-label-group">
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"  required>
+        </div>
+        <div class="form-label-group">
+          <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+      
 
-      <button class="btn btn-lg btn-block btn-primary" type="submit" (click)='forLoop()'>Register </button>
-      <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
-    </form>
+        <button class="btn btn-lg btn-block btn-primary" type="submit" (click)='forLoop()'>Register </button>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
+      </form>
+    </div>
   </div>
 </div>
