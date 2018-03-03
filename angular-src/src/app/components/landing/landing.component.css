@@ -2,12 +2,17 @@ h1{
     padding-top: 1em;
 }
 
-img {
+/* img {
     height: 60vh;
     margin-right: auto;
     margin-left: auto;
     display: block;
     border-radius: 4px;
+} */
+
+img {
+    max-width: 70%;
+    height: auto;
 }
 
 button{
@@ -19,3 +24,9 @@ button{
 }
 
 
+@media only screen and (max-width: 768px) {
+    img {
+        max-width: 70%;
+        height: auto;
+    }
+  }
