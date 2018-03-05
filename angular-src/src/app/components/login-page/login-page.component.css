@@ -8,17 +8,30 @@
     padding-top: 9%;
 }
 
-img {
-    width: 50%;
+header {
+    padding: 0%;
+    min-height: 20%;
+    background-position: center;
+    background-image: url("https://storage.googleapis.com/show_off/rawpixel-com-567026-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size : cover;
+    position: relative;
 }
 
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;
-    /* background-color: #1B4B5A; */
 }
 
-.backButton2 {
-    background-color: #1B4B5A;
-
+.backButton3 {
+    padding-top: 10px;
+    color: #DDDEDE;
 }
+
+body {
+    background-color: #7BA4A8;
+}
+
+/* a:hover {
+    background-color: #A5C05B;
+  } */

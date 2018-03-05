@@ -9,6 +9,7 @@
   border-top-color: #7BA4A8;
   border-block-start-color: #7BA4A8; 
   border-right-color: #7BA4A8; */
+  text-decoration-color: #A5C05B;
   font-family: "Roboto";
 }
 
@@ -26,9 +27,6 @@
   color: #1B4B5A;
 } */
 
-a:hover {
-  background-color: #A5C05B;
-}
   header {
     padding: 16px;
     position: fixed;
@@ -67,18 +65,15 @@ a:hover {
   }
 
   .nav-right-div {
-    width: 350px;
+    width: 398px;
     justify-content: flex-end;
   }
 
-  form {
-    display: flex;
-    justify-content: right;
-    text-align: right;
-  }
+  
+    
 
   .logoff-button {
-    margin-left: 5%;
+    margin-left: 5px;
   }
 
   .no_margin {
@@ -87,4 +82,46 @@ a:hover {
 
   .Long {
     color: #1B4B5A;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .nav-bar-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-bar-search-button {
+      margin-top: 10px;
+    }
+
+    .logoff-button {
+      margin-top: 10px; 
+    }
+
+    button {
+      margin: 0;
+    }
+
+    .logoff-button {
+      margin-left: 1%;
+    }
+
+    .doubleButtons {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: right;
+    text-align: right;
   }

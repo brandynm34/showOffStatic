@@ -25,6 +25,28 @@ img {
     display: block;
 }
 
-.backButton {
-    position: absolute;
+.coverImage {
+    background-size : cover;
+    background-image: url("https://storage.googleapis.com/show_off/branko-stancevic-417172-unsplash.jpg");
+    background-repeat: repeat;
+    background-position: stretch;
+    margin-top: -60px;
+    margin-bottom: -100px;
+    height: 97.5vh;
+}
+
+.backButton4 {
+    color: #DDDEDE;
+    margin-top: 75px;
+}
+
+form div {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+form {
+    background-color: rgba(12, 12, 12, 0.75);
 }
