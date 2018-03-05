@@ -10,6 +10,7 @@
 } */
 h2{
     color: rgba(0, 0, 0, 0.644);
+/*   Do we want to over-ride the green color? could we use the light grey instead? #dddede; */
 }
 .public-banner {
     height: 200px;
