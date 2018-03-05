@@ -65,8 +65,23 @@
   }
 
   .nav-right-div {
-    width: 350px;
+    width: 398px;
     justify-content: flex-end;
+  }
+
+  
+    
+
+  .logoff-button {
+    margin-left: 5px;
+  }
+
+  .no_margin {
+    margin: 0;
+  }
+
+  .Long {
+    color: #1B4B5A;
   }
 
   @media only screen and (max-width: 768px) {
@@ -86,12 +101,22 @@
       margin-top: 10px;
     }
 
+    .logoff-button {
+      margin-top: 10px; 
+    }
+
     button {
       margin: 0;
     }
 
     .logoff-button {
-      margin-left: 0;
+      margin-left: 1%;
+    }
+
+    .doubleButtons {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
     }
   }
 
@@ -99,16 +124,4 @@
     display: flex;
     justify-content: right;
     text-align: right;
-  }
-
-  .logoff-button {
-    margin-left: 5%;
-  }
-
-  .no_margin {
-    margin: 0;
-  }
-
-  .Long {
-    color: #1B4B5A;
   }
