@@ -9,6 +9,8 @@ class PortfolioController {
             .post(this.add);
         router.route('/portfolio/get')
             .get(this.getAll);
+        router.route('/portfolio/get/:id')
+            .get(this.getById);
         router.route('/portfolio/delete')
             .delete(this.delete);
         router.route('/')
@@ -23,6 +25,31 @@ class PortfolioController {
         } catch (e) {
             console.log('Error:', e);
             res.json({error: e});
+        }
+    }
+
+    async getById(req, res, next) {
+        try {
+            // make sure a username was supplied
+            if(!req.params.id) {
+                return Common.resultErr(res, 'No User ID Supplied');
+            }
+
+            // get user id
+            const userId = req.params.id;
+
+            // declare collection
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
+
+            // make the database call
+            const data = await Portfolio.findOne({User_ID: userId});
+            if (!data) {
+                return Common.resultNotFound(res)
+            } else {
+                res.json({data});
+            }
+        } catch(err) {
+            return Common.resultErr(res, err.message);
         }
     }
 
