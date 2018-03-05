@@ -16,22 +16,6 @@ class PortfolioController {
     
     }
 
-    // const portfolioSchema = new Schema({
-    //     Email: { type:String, required: true, unique: true},
-    //     _id: { type:String, required: true, unique: true},
-    //     AboutBlurb: { type:String, required: false},
-    //     Facebook: { type:String, required: false},
-    //     Twitter: { type:String, required: false},
-    //     Icon: { data: Buffer, contentType: String},
-    //     PhoneNumber: { type:String, required: false},
-    //     Projects: { type:[String], required: true},
-    //     Theme: { type: String, required: false}
-    // }); 
-    
-    // module.exports = mongoose.model('USER_PORTFOLIO', portfolioSchema);
-    
-    
-
     async test(req, res, next) {
         try { 
             console.log('THIS IS A TEST');
