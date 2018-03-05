@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RoutingComponents, RoutingModule } from './app.routing.module';
 
 import { AppComponent } from './app.component';
+import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
     RoutingComponents,
   ],
   imports: [
-    BrowserModule, RoutingModule
+    BrowserModule, RoutingModule, 
+    FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
