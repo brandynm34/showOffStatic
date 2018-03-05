@@ -3,11 +3,15 @@
     <div class="backButton">
         <a href="http://localhost:4200/login-page"><i class="backButton4 fas fa-arrow-circle-left fa-3x"></i></a>
     </div>
-    <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate >
   
       <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus >
       </div>
+      <!-- <div *ngIf="name.errors.required">
+          Name is required.
+       </div> -->
+      <!-- <show-errors [control]="myForm.controls.name"></show-errors> -->
       <div class="form-label-group">
         <input type="text" id="inputUsern" class="form-control" placeholder="Username" formControlName="username"required>
       </div>
@@ -23,10 +27,20 @@
       <div class="form-label-group">
         <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required>
       </div>
-      <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
-    
+  
+      <!-- <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password not match</div> -->
+      <!-- <div class="alert alert-danger" *ngIf="form.firstName.required">
+          Name is required.
+      </div> -->
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+     class="alert alert-danger">
 
-      <button class="btn btn-lg btn-block btn-primary" type="submit" (click)='forLoop()'>Register </button>
+        <div *ngIf="firstName.errors?.required">
+          Name is required.
+        </div>
+      </div>
+      <pre>{{form.value | json}}</pre>
+      <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="form.pristine">Register </button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
     </form>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NgForm, FormsModule } from '@angular/forms';
 import {AbstractControl} from '@angular/forms';
+import { NG_VALIDATORS } from '@angular/forms' 
 // import { PasswordValidationComponent } from '../password-validation/password-validation.component';
 
 
@@ -18,16 +19,16 @@ export class RegisterPageComponent implements OnInit {
   //     confirmPassword: ['']
   //   })
   // }
-  constructor( fb: FormBuilder){
+  constructor( fb: FormBuilder, ){
     this.form = fb.group({
-      email: ['',Validators.required ],
+      email: ['',Validators.required, Validators.email ],
       username: ['',Validators.required ],
       firstName: ['',Validators.required ],
       lastName: ['',Validators.required ],
       password: ['',Validators.required ],
       confirmPassword: ['', Validators.required]
     },
-    {validator: RegisterPageComponent.MatchPassword}
+    // {validator: RegisterPageComponent.MatchPassword}
   
     )
     
@@ -43,66 +44,64 @@ export class RegisterPageComponent implements OnInit {
 //   passwordMatchValidator(g: FormGroup) {
 //     return g.get('password').value === g.get('passwordConfirm').value
 //        ? null : {'mismatch': true};
- }
+  }
 
-  ngOnInit(){}
+  ngOnInit(){
+   }
 
-  con(){
-    if (this.form.get('password').value === this.form.get('confirmPassword').value){
-      console.log('same')
-      return true 
-    }
-    else{
-      console.log('not same')
-      return false 
-    }
+  // con(){
+  //   if (this.form.get('password').value === this.form.get('confirmPassword').value){
+  //     console.log('same')
+  //     return true 
+  //   }
+  //   else{
+  //     console.log('not same')
+  //     return false 
+  //   }
     // const hasExclamation = input.value.indexOf('!') >= 0;
 
     // return hasExclamation ? null : { needsExclamation: true }
-  }
-  forLoop(){
-    for (var i=0; i<10; i++){
-      console.log(i)
-    }
-  }
+  // }
+  // forLoop(){
+  //   for (var i=0; i<10; i++){
+  //     console.log(i)
+  //   }
+  // }
 
-  passw(){
-    if (this.form.get('password').value === this.form.get('confirmPassword').value){
-      console.log('same')
-    }
-    else{
-      console.log('not same')
-    }
+  // passw(){
+  //   if (this.form.get('password').value === this.form.get('confirmPassword').value){
+  //     console.log('same')
+  //   }
+  //   else{
+  //     console.log('not same')
+  //   }
     
-  }
-  static MatchPassword(AC: AbstractControl) {
-    let password = AC.get('password').value; // to get value in input tag
-    let confirmPassword = AC.get('confirmPassword').value; // to get value in input tag
-    let len = password.length
-    // console.log(len)
-  //   // let len = password.length
-  //   // console.log(len)
-  //   // console.log('touch', AC.get('password').statusChanges)
-  //   // console.log('untou', AC.get('password').valueChanges)
-    
-    // for (var i=0; i < 6; i++){
-      // console.log(password.length)
-      // console.log(password[password.length -1])
-
-
-      if ( password.substring(0,20) != confirmPassword.substring(0,20) && confirmPassword != ''){
+  // }
+  // static MatchPassword(AC: AbstractControl) {
+    // let password = AC.get('password').value; // to get value in input tag
+    // let confirmPassword = AC.get('confirmPassword').value; // to get value in input tag
+    // let len = password.length
+    // for (var i=0; i<20; i++){
+    //   if ( password.substring(0,1) != confirmPassword.substring(0,1) && confirmPassword != ''){
+    //     AC.get('confirmPassword').setErrors( {MatchPassword: true} )
+    //   }
+    //   else {
+    //     return null
+    //   }
+    // }
+      // if ( password.substring(0,20) != confirmPassword.substring(0,20) && confirmPassword != ''){
         // console.log('false', '');
         // console.log('passi',password[i], 'confi', confirmPassword[i]);
-        AC.get('confirmPassword').setErrors( {MatchPassword: true} )
+        // AC.get('confirmPassword').setErrors( {MatchPassword: true} )
         // console.log('ne',  password.substring(0,password.length -1))
         // console.log('i',i);
-      }
-      else {
+      // }
+      // else {
         // console.log('true');
         // console.log('ture', 'passi',i,password[i], 'confi', confirmPassword[i]);
         // 
-        return null
-      }
+        // return null
+      // }
       
   //   // }
   //    if(password != confirmPassword && confirmPassword != '' )  {
@@ -117,9 +116,9 @@ export class RegisterPageComponent implements OnInit {
 
   //    }
     // }
-  }
+  // }
 
-  onSubmit() {
-    console.log(this.form);
-  }
+//   onSubmit() {
+//     console.log(this.form);
+//   }
 }
