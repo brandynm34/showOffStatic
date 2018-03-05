@@ -30,18 +30,18 @@
     overflow: auto;
     background-color: rgba(27, 20, 20, 0.77);
 }
-  
+
 .modal-content{
     background-color:#DDDEDE;
     width:750px;
     animation-name:modalopen;
     animation-duration:1s;
 }
-  
+
 .modal-header h2, .modal-footer h3{
     margin:0;
 }
-  
+
 .modal-header{
     background: #343a40!important;
     padding: .3em;
@@ -50,10 +50,8 @@
     flex-direction: row;
     justify-content: flex-between;
     align-items: center;
-    
 }
 
 .close {
     margin: 0;
-    
-} 
+}

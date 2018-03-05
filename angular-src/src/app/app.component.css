@@ -1,127 +1,127 @@
-/* styles applied on :host are applied on the current component, "app" in this case */	+/* No CSS *//*# sourceMappingURL=app.component.css.map */ 
-:host {	
-  display: block;	
-  /* font-family: "Muli", sans-serif; */	
-  background-color: #7BA4A8;	
-  /* text-decoration-color: #A5C05B; */	
-  color: #232122;	
-  /* text-decoration-style: #7BA4A8;	
-  border-top-color: #7BA4A8;	
-  border-block-start-color: #7BA4A8; 	
-  border-right-color: #7BA4A8; */	
-  text-decoration-color: #A5C05B;	
-  font-family: "Roboto";	
-}	
-	
-.outletContainer {	
-  min-height: 90vh;	
-  -webkit-text-stroke-color: #232122;	
-}	
-	
-/* :host-context(.theme-light) {	
-  background-color: #232122;	
-  -webkit-text-fill-color: #1B4B5A;	
-} */	
-	
-/* a {	
-  color: #1B4B5A;	
-} */	
-	
-  header {	
-    padding: 16px;	
-    position: fixed;	
-    top: 0;	
-    left: 0;	
-    width: 100%;	
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);	
-  }	
-  	
-  main {	
-    padding: 1em;	
-    text-align: center;	
-    margin-top: 50px;	
-    display: block;	
-    background-color: #0F1F38;	
-  }	
-  	
-  footer {	
-    text-align: center;	
-    font-size: 0.8em;	
-  }	
-	
-  button {	
-    padding: 5px;	
-    font-size: inherit;	
-    margin: 0;	
-    height: 38px;	
-    background-color: #DDDEDE;	
-    border-color: #232122;	
-    color: #232323;	
-  }	
-	
-  nav {	
-    display: flex;	
-    justify-content: space-between;	
-  }	
-	
-  .nav-right-div {	
-    width: 398px;	
-    justify-content: flex-end;	
-  }	
-	
-  	
-    	
-	
-  .logoff-button {	
-    margin-left: 5px;	
-  }	
-	
-  .no_margin {	
-    margin: 0;	
-  }	
-	
-  .Long {	
-    color: #1B4B5A;	
-  }	
-	
-  @media only screen and (max-width: 768px) {	
-    .nav-bar-form {	
-      display: flex;	
-      flex-direction: column;	
-      align-items: center;	
-    }	
-	
-    ul {	
-      display: flex;	
-      flex-direction: column;	
-      align-items: center;	
-    }	
-	
-    .nav-bar-search-button {	
-      margin-top: 10px;	
-    }	
-	
-    .logoff-button {	
-      margin-top: 10px; 	
-    }	
-	
-    button {	
-      margin: 0;	
-    }	
-	
-    .logoff-button {	
-      margin-left: 1%;	
-    }	
-	
-    .doubleButtons {	
-      display: flex;	
-      flex-direction: row;	
-      align-items: flex-start;	
-    }	
-  }	
-	
-  form {	
-    display: flex;	
-    justify-content: right;	
-    text-align: right;	
-  } 
+/* No CSS *//*# sourceMappingURL=app.component.css.map */
+:host {
+  display: block;
+  /* font-family: "Muli", sans-serif; */
+  background-color: #7BA4A8;
+  /* text-decoration-color: #A5C05B; */
+  color: #232122;
+  /* text-decoration-style: #7BA4A8;
+  border-top-color: #7BA4A8;
+  border-block-start-color: #7BA4A8;
+  border-right-color: #7BA4A8; */
+  text-decoration-color: #A5C05B;
+  font-family: "Roboto";
+}
+
+.outletContainer {
+  min-height: 90vh;
+  -webkit-text-stroke-color: #232122;
+}
+
+/* :host-context(.theme-light) {
+  background-color: #232122;
+  -webkit-text-fill-color: #1B4B5A;
+} */
+
+/* a {
+  color: #1B4B5A;
+} */
+
+  header {
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  main {
+    padding: 1em;
+    text-align: center;
+    margin-top: 50px;
+    display: block;
+    background-color: #0F1F38;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  button {
+    padding: 5px;
+    font-size: inherit;
+    margin: 0;
+    height: 38px;
+    background-color: #DDDEDE;
+    border-color: #232122;
+    color: #232323;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-right-div {
+    width: 398px;
+    justify-content: flex-end;
+  }
+
+
+
+
+  .logoff-button {
+    margin-left: 5px;
+  }
+
+  .no_margin {
+    margin: 0;
+  }
+
+  .Long {
+    color: #1B4B5A;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .nav-bar-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-bar-search-button {
+      margin-top: 10px;
+    }
+
+    .logoff-button {
+      margin-top: 10px;
+    }
+
+    button {
+      margin: 0;
+    }
+
+    .logoff-button {
+      margin-left: 1%;
+    }
+
+    .doubleButtons {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+  }
