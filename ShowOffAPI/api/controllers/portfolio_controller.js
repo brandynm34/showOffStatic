@@ -11,6 +11,8 @@ class PortfolioController {
             .get(this.getAll);
         router.route('/portfolio/get/:id')
             .get(this.getById);
+        router.route('/portfolio/update')
+            .post(this.update);
         router.route('/portfolio/delete')
             .delete(this.delete);
         router.route('/')
@@ -48,6 +50,59 @@ class PortfolioController {
             } else {
                 res.json({data});
             }
+        } catch(err) {
+            return Common.resultErr(res, err.message);
+        }
+    }
+
+    async update(req, res, next) {
+        try {
+            // make sure no required fields are missing
+            if(!req.body.Email, !req.body.User_ID, !req.body.Icon, !req.body.SkillsArray) {
+                console.log('Missing field, aborting.');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
+
+            // declare collection
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);            
+
+            // go over non-required fields to avoid errors
+            const AboutBlurb = req.body.AboutBlurb ? req.body.AboutBlurb : null;
+            const Facebook = req.body.Facebook ? req.body.Facebook : null;
+            const Twitter = req.body.Twitter ? req.body.Twitter : null;
+            const PhoneNumber = req.body.PhoneNumber ? req.body.PhoneNumber : '5595551234';
+            const Projects = req.body.Projects ? req.body.Projects : [];
+            const Theme = req.body.Theme ? req.body.Theme : 'Basic';
+
+            console.log('Updating portfolio for user:', req.body.Email);
+
+            // make sure the portfolio exists
+            Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
+                if (!result) {
+                    // if there is a result, then a portfolio exists. cease and desist
+                    console.log('Portfolio does not exist');
+                    // res.json({result: `Portfolio does not exist. I cannot update what I cannot see...`});
+                    return Common.resultNotFound(res, 'Portfolio does not exist. I cannot update what I cannot see...')
+                }
+            });
+
+            // perform the update
+            await Portfolio.update({User_ID: req.body.User_ID}, {
+                Email: req.body.Email,
+                AboutBlurb: AboutBlurb,
+                Facebook: Facebook,
+                Twitter: Twitter,
+                Icon: req.body.Icon,
+                SkillsArray: req.body.SkillsArray,
+                PhoneNumber: PhoneNumber,
+                Projects: Projects,
+                Theme: Theme
+            })
+
+            // success!!!
+            console.log('Update successfull.');
+            res.json({result: 'Update Successful!!'});
+
         } catch(err) {
             return Common.resultErr(res, err.message);
         }
