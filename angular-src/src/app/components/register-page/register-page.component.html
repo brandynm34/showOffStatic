@@ -1,34 +1,62 @@
-<div class="container">
-  <div class="coverImage">
+<div class="coverImage">
+  <div class="container">
     <div class="container-fluid">
       <div class="backButton">
           <a href="http://localhost:4200/login-page"><i class="backButton4 fas fa-arrow-circle-left fa-3x"></i></a>
       </div>
-      <form class="form-signin">
-        <div class="text-center mb-4">
-          <h1 class=" coloredText mt-5 mb-3 font-weight-normal logotext">ShowOff</h1>
+      <div class="text-center mb-4">  
+          <h1 class=" coloredText mt-5 mb-3 font-weight-normal logotext">ShowOff</h1>	
+      </div>
+      <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate >
+    
+        <div class="form-label-group">
+          <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus >
+        </div>
+        <!-- email errors -->
+        <div *ngIf="form.controls.email.errors?.email && form.controls.email.dirty && form.controls.email.touched" class="alert alert-danger">
+            Invaild email
         </div>
         <div class="form-label-group">
-          <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" required autofocus>
+          <input type="text" id="inputUsern" class="form-control" placeholder="Username" formControlName="username"required>
+        </div>
+        <!-- username email -->
+        <div *ngIf=" form.controls.username.errors?.required && (form.controls.username.dirty || form.controls.username.touched)" class="alert alert-danger">
+            Name is required.
         </div>
         <div class="form-label-group">
-          <input type="text" id="inputUsern" class="form-control" placeholder="Username" required>
+          <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" formControlName="firstName" required>
+        </div>
+        <!-- first name error -->
+        <div *ngIf=" form.controls.firstName.errors?.required && (form.controls.firstName.dirty || form.controls.firstName.touched)" class="alert alert-danger">
+            First name is required.
         </div>
         <div class="form-label-group">
-          <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" required>
+          <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" formControlName="lastName" required>
+        </div>
+        <!-- last name error -->
+        <div *ngIf=" form.controls.lastName.errors?.required && (form.controls.lastName.dirty || form.controls.lastName.touched)" class="alert alert-danger">
+            Last Name is required.
         </div>
         <div class="form-label-group">
-          <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"  required>
         </div>
         <div class="form-label-group">
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required>
         </div>
-        <div class="form-label-group">
-          <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+         <!-- password match error -->
+        <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.passwordVal && (form.controls.confirmPassword.dirty && form.controls.confirmPassword.touched)">
+          Passwords do not match
         </div>
-        <button class="Long btn btn-lg btn-block btn-secondary" type="submit">Register </button>
+
+      
+       
+        
+        <!-- <pre>{{form.value | json}}</pre>
+        <pre>Form status: {{ form.status | json }}</pre> -->
+        <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="form.invalid">Register </button>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
       </form>
     </div>
   </div>
 </div>
+

@@ -6,18 +6,23 @@
 } */
 
 /* .public-component {
-    font-family: 'Yeseva One', 'cursive'    
+    font-family: 'Yeseva One', 'cursive'
 } */
-
+h2{
+    color: rgba(0, 0, 0, 0.644);
+}
 .public-banner {
     height: 200px;
     border-radius: 10px;
-    border: 2px solid #7ba4ab;
+    border: 2px solid #dddede;
+    background-color: #dddede;
     color: #232122;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 20px 20px 0px 20px;
+    /* position: fixed; */
+    /* top: 10; */
 }
 
 .public-user-icon {
@@ -63,16 +68,17 @@
 
 .public-about-me-box {
     border: 3px solid #a5c05b;
-    min-height: 175px;
+    background-color: #a5c05b;
+    min-height: 185px;
     height: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
     border-radius: 10px;
 }
 
 .public-about-me-box-left {
-    /* width: 20%;
-    float: left; */
+    width: 20%;
+    float: left;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +86,7 @@
 }
 
 .public-about-me-box-right {
-    /* width: 80%; */
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,10 +100,12 @@
     width: 175px;
     border-radius: 50%;
     background-color: #232122;
+    margin-bottom: 20px;
 }
 
 .public-skills-container {
     margin-top: 40px;
+    /* background-color: #a5c05b; */
 }
 
 .public-icon-box {
@@ -135,6 +143,8 @@
 
 .public-contact-container {
     margin-top: 40px;
+    background-color: #dddede;
+    border-radius: 10px;
 }
 
 .public-contact-icon-box {
@@ -158,19 +168,19 @@
 }
 
 .public-icon-email {
-    background-image: url(./../../../assets/img/public-icons/black-envelope-64.png);
+    background-image: url(./../../../assets/img/contact/black-envelope-64.png);
 }
 
 .public-icon-phone {
-    background-image: url(./../../../assets/img/public-icons/smartphone-call.png);
+    background-image: url(./../../../assets/img/contact/smartphone-call.png);
 }
 
 .public-icon-site {
-    background-image: url(./../../../assets/img/public-icons/internet.png);
+    background-image: url(./../../../assets/img/contact/internet.png);
 }
 
 .public-icon-github {
-    background-image: url(./../../../assets/img/public-icons/github-logo.png);
+    background-image: url(./../../../assets/img/skills/Git.png);
 }
 
 .public-contact-text {
