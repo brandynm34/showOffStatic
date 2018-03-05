@@ -1,4 +1,4 @@
-const registrationModel = require('../models/registration');
+const registrationModel = require('../models/user_profile');
 const Common = require('./common');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -30,7 +30,7 @@ class AccountController {
     async login(req, res, next) {
         try {
             // register the proper collection
-            const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
 
             // get the username from request body
             const inputtedUsername = req.body.Username;
@@ -78,7 +78,7 @@ class AccountController {
         // NOTE: THIS SHOULD NOT GO LIVE AS IT WILL RETURN ALL USERS. THIS IS FOR TESTING PURPOSES ONLY
         try {
             console.log('Get all GET request activated. NOTE: THIS FUNCTION SHOULD NOT GO LIVE');
-            const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
             Account.find(function(err, profiles) {
                 if (err) { return console.error(err); }
                 res.json({results: profiles});
@@ -90,7 +90,7 @@ class AccountController {
 
     async add(req, res, next) {
         try {
-            const Account = mongoose.model('REGISTRATION', registrationModel.registrationSchema);
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
             console.log('API Endpoint: Register has been activated...');
             // res.json({body: req.body});
             // make sure all required fields are there
@@ -105,6 +105,7 @@ class AccountController {
             // if we got this far, we have everything necessary
             console.log('Registering user with the following information:', req.body)
             const newProfile = new Account({
+                SelectedTheme: 'base',
                 Username: req.body.Username,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
