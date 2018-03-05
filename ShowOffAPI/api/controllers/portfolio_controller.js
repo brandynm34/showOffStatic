@@ -37,17 +37,18 @@ class PortfolioController {
 
     async add(req, res, next) {
         try {
-            // make sure an Email was sent
-            if(!req.body.Email) {
-                console.log('No Email specified, aborting.');
-                return Common.resultErr(res, {message: 'Email not supplied'});
+            console.log(`Profile API endpoint hit with the following body:`, req.body)
+            // make sure an Email was sent as well as a user id
+            if(!req.body.Email || !req.body.User_ID) {
+                console.log('Missing field, aborting. Check your User_ID and email');
+                return Common.resultErr(res, {message: 'Missing fields'});
             }
 
             // declare the collection
             const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
 
             // make sure the portfolio doesnt exist so that we're not overwiting info
-            Portfolio.findOne({Email: req.body.Email}, function(err, result) {
+            Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
                 if (result) {
                     // if there is a result, then a portfolio exists. cease and desist
                     console.log('Portfolio already exists, aborting add');
@@ -58,10 +59,37 @@ class PortfolioController {
             // create object that will pushed into the database
             const newPortfolio = new Portfolio({
                 Email: req.body.Email,
+                User_ID: req.body.User_ID,
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
                 Icon: `Keyboard`,
+                SkillsArray: {
+                    angular: false,
+                    bootstrap: false,
+                    c: false,
+                    cSharp: false,
+                    cPlusPlus: false,
+                    css: false,
+                    docker: false,
+                    git: false,
+                    html: false,
+                    java: false,
+                    javascript: false,
+                    mongodb: false,
+                    mySQL: false,
+                    nodeJS: false,
+                    php: false,
+                    postgres: false,
+                    python: false,
+                    r: false,
+                    ruby: false,
+                    sas: false,
+                    sass: false,
+                    selenium: false,
+                    sql: false,
+                    wordpress: false
+                },
                 PhoneNumber: '5595551234',
                 Projects: [],
                 Theme: 'Basic'
