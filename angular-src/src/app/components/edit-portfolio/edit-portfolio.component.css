@@ -32,7 +32,7 @@
 }
 
 .modal-content{
-    background-color:#f4f4f4;
+    background-color:#DDDEDE;
     width:750px;
     animation-name:modalopen;
     animation-duration:1s;
@@ -43,17 +43,15 @@
 }
 
 .modal-header{
-    background:coral;
+    background: #343a40!important;
     padding: .3em;
-    color:#fff;
+    /* color:#fff; */
     display:flex;
     flex-direction: row;
     justify-content: flex-between;
     align-items: center;
-
 }
 
 .close {
     margin: 0;
-
 }
