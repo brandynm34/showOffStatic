@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const portfolioSchema = new Schema({
     Email: { type:String, required: true, unique: true},
-//     I think we need the id_ to order the arrays
+//     I think we need the id_ to order the arrays. JR will add the id from the USER_PROFILE table to this
     AboutBlurb: { type:String, required: false},
     Facebook: { type:String, required: false},
     Twitter: { type:String, required: false},
