@@ -12,18 +12,30 @@
         <div class="form-label-group">
           <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus >
         </div>
-        <!-- <div *ngIf="name.errors.required">
-            Name is required.
-        </div> -->
-        <!-- <show-errors [control]="myForm.controls.name"></show-errors> -->
+        <!-- email errors -->
+        <div *ngIf="form.controls.email.errors?.email && form.controls.email.dirty && form.controls.email.touched" class="alert alert-danger">
+            Invaild email
+        </div>
         <div class="form-label-group">
           <input type="text" id="inputUsern" class="form-control" placeholder="Username" formControlName="username"required>
+        </div>
+        <!-- username email -->
+        <div *ngIf=" form.controls.username.errors?.required && (form.controls.username.dirty || form.controls.username.touched)" class="alert alert-danger">
+            Name is required.
         </div>
         <div class="form-label-group">
           <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" formControlName="firstName" required>
         </div>
+        <!-- first name error -->
+        <div *ngIf=" form.controls.firstName.errors?.required && (form.controls.firstName.dirty || form.controls.firstName.touched)" class="alert alert-danger">
+            First name is required.
+        </div>
         <div class="form-label-group">
           <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" formControlName="lastName" required>
+        </div>
+        <!-- last name error -->
+        <div *ngIf=" form.controls.lastName.errors?.required && (form.controls.lastName.dirty || form.controls.lastName.touched)" class="alert alert-danger">
+            Last Name is required.
         </div>
         <div class="form-label-group">
           <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"  required>
@@ -31,20 +43,17 @@
         <div class="form-label-group">
           <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required>
         </div>
-    
-        <!-- <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Password not match</div> -->
-        <!-- <div class="alert alert-danger" *ngIf="form.firstName.required">
-            Name is required.
-        </div> -->
-        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-      class="alert alert-danger">
-
-          <div *ngIf="firstName.errors?.required">
-            Name is required.
-          </div>
+         <!-- password match error -->
+        <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.passwordVal && (form.controls.confirmPassword.dirty && form.controls.confirmPassword.touched)">
+          Passwords do not match
         </div>
+
+      
+       
+        
         <pre>{{form.value | json}}</pre>
-        <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="form.pristine">Register </button>
+        <p>Form status: {{ form.status | json }}</p>
+        <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="form.invalid">Register </button>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
       </form>
     </div>

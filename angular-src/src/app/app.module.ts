@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RoutingComponents, RoutingModule } from './app.routing.module';
 
 import { AppComponent } from './app.component';
-import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
+import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
