@@ -6,7 +6,7 @@
 } */
 
 /* .public-component {
-    font-family: 'Yeseva One', 'cursive'    
+    font-family: 'Yeseva One', 'cursive'
 } */
 h2{
     color: rgba(0, 0, 0, 0.644);
@@ -168,19 +168,19 @@ h2{
 }
 
 .public-icon-email {
-    background-image: url(./../../../assets/img/public-icons/black-envelope-64.png);
+    background-image: url(./../../../assets/img/contact/black-envelope-64.png);
 }
 
 .public-icon-phone {
-    background-image: url(./../../../assets/img/public-icons/smartphone-call.png);
+    background-image: url(./../../../assets/img/contact/smartphone-call.png);
 }
 
 .public-icon-site {
-    background-image: url(./../../../assets/img/public-icons/internet.png);
+    background-image: url(./../../../assets/img/contact/internet.png);
 }
 
 .public-icon-github {
-    background-image: url(./../../../assets/img/public-icons/github-logo.png);
+    background-image: url(./../../../assets/img/skills/Git.png);
 }
 
 .public-contact-text {
