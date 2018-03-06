@@ -165,6 +165,7 @@ h2{
     height: 50px;
     width: 50px;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .public-icon-email {
@@ -180,9 +181,25 @@ h2{
 }
 
 .public-icon-github {
-    background-image: url(./../../../assets/img/skills/Git.png);
+    background-image: url(./../../../assets/img/contact/github-logo.png);
+    /* background-repeat: no-repeat; */
+    height: 50px;
+    width: 50px;
 }
 
 .public-contact-text {
     color: #a5c05b;
 }
+
+@media only screen and (max-width: 325px) {
+    .public-contact-icon{
+        background-repeat: no-repeat;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .public-icon-github{
+        font-size: 40px;
+    }
+}
+
+

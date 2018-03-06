@@ -28,7 +28,10 @@ export class RegisterPageComponent implements OnInit {
   }
 
   ngOnInit(){
-    
+      this.reg.getAPIMessage('api/reg').subscribe(message => {
+        console.log('result', message.json());
+      })
+      // console.log(this.reg.someMethod()
    }
 
 
