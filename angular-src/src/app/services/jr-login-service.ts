@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 export class JRLoginService {
 
-    private _URL = 'http://192.168.99.100:3000/';
+    private _URL = 'http://localhost:3000/';
     public apiResult;
 
     constructor(private _http: Http) {
