@@ -11,6 +11,8 @@ class AccountController {
             .get(this.getAll);
         router.route('/registration/add')
             .post(this.add);
+        router.route('/registration/update')
+            .post(this.update);
         router.route('/registration/login')
             .post(this.login);
     }
@@ -24,6 +26,52 @@ class AccountController {
         } catch (e) {
             console.log('Error:', e);
             res.json({error: e});
+        }
+    }
+
+    async update(req, res, next) {
+        try {
+            // make sure no required fields are missing
+            if(!req.body.Email, !req.body.Username, !req.body.FirstName, !req.body.LastName, !req.body.SelectedTheme) {
+                console.log('Missing field, aborting.');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
+
+            // declare collection
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+
+            // go over non-required fields to avoid errors
+            const GitHubURL = req.body.GitHubURL ? req.body.GitHubURL : null;
+            const LinkedIn = req.body.LinkedIn ? req.body.LinkedIn : null;
+            const ResumeURL = req.body.ResumeURL ? req.body.ResumeURL : null;
+
+            console.log('Updating profile for user:', req.body.Email);
+
+            // make sure the profile exists
+            await Account.findOne({Username: req.body.Username}, function(err, result) {
+                if (!result) {
+                    // if there is a result, then a portfolio exists. cease and desist
+                    console.log('Profile does not exist');
+                    return Common.resultNotFound(res, 'Profile does not exist. I cannot update what I cannot see...')
+                }
+            });
+
+            // perform the update
+            await Account.update({Email: req.body.Email}, {
+                Email: req.body.Email,
+                SelectedTheme: req.body.SelectedTheme,
+                GitHubURL: GitHubURL,
+                LinkedIn: LinkedIn,
+                ResumeURL: ResumeURL,
+                FirstName: req.body.FirstName,
+                LastName: req.body.LastName,
+            })
+
+            // success!!!
+            console.log('Update successfull.');
+            res.json({result: 'Update Successful!!'});
+        } catch(err) {
+            return Common.resultErr(res, e.message);
         }
     }
 
