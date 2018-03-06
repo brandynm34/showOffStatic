@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { JRLoginService } from './services/jr-login-service';
+import { regService } from './services/reg.service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { JRLoginService } from './services/jr-login-service';
     FormsModule, HttpModule,
     ReactiveFormsModule
   ],
-  providers: [ JRLoginService ],
+  providers: [ JRLoginService, regService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
