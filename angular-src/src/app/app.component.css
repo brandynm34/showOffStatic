@@ -70,7 +70,9 @@
     justify-content: flex-end;
   }
 
-
+  .logoResize {
+    max-width: 20%;
+  }
 
 
   .logoff-button {
