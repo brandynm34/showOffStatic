@@ -9,6 +9,10 @@ class PortfolioController {
             .post(this.add);
         router.route('/portfolio/get')
             .get(this.getAll);
+        router.route('/portfolio/get/:id')
+            .get(this.getById);
+        router.route('/portfolio/update')
+            .post(this.update);
         router.route('/portfolio/delete')
             .delete(this.delete);
         router.route('/')
@@ -26,6 +30,84 @@ class PortfolioController {
         }
     }
 
+    async getById(req, res, next) {
+        try {
+            // make sure a username was supplied
+            if(!req.params.id) {
+                return Common.resultErr(res, 'No User ID Supplied');
+            }
+
+            // get user id
+            const userId = req.params.id;
+
+            // declare collection
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
+
+            // make the database call
+            const data = await Portfolio.findOne({User_ID: userId});
+            if (!data) {
+                return Common.resultNotFound(res)
+            } else {
+                res.json({data});
+            }
+        } catch(err) {
+            return Common.resultErr(res, err.message);
+        }
+    }
+
+    async update(req, res, next) {
+        try {
+            // make sure no required fields are missing
+            if(!req.body.Email, !req.body.User_ID, !req.body.Icon, !req.body.SkillsArray) {
+                console.log('Missing field, aborting.');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
+
+            // declare collection
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);            
+
+            // go over non-required fields to avoid errors
+            const AboutBlurb = req.body.AboutBlurb ? req.body.AboutBlurb : null;
+            const Facebook = req.body.Facebook ? req.body.Facebook : null;
+            const Twitter = req.body.Twitter ? req.body.Twitter : null;
+            const PhoneNumber = req.body.PhoneNumber ? req.body.PhoneNumber : '5595551234';
+            const Projects = req.body.Projects ? req.body.Projects : [];
+            const Theme = req.body.Theme ? req.body.Theme : 'Basic';
+
+            console.log('Updating portfolio for user:', req.body.Email);
+
+            // make sure the portfolio exists
+            Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
+                if (!result) {
+                    // if there is a result, then a portfolio exists. cease and desist
+                    console.log('Portfolio does not exist');
+                    // res.json({result: `Portfolio does not exist. I cannot update what I cannot see...`});
+                    return Common.resultNotFound(res, 'Portfolio does not exist. I cannot update what I cannot see...')
+                }
+            });
+
+            // perform the update
+            await Portfolio.update({User_ID: req.body.User_ID}, {
+                Email: req.body.Email,
+                AboutBlurb: AboutBlurb,
+                Facebook: Facebook,
+                Twitter: Twitter,
+                Icon: req.body.Icon,
+                SkillsArray: req.body.SkillsArray,
+                PhoneNumber: PhoneNumber,
+                Projects: Projects,
+                Theme: Theme
+            })
+
+            // success!!!
+            console.log('Update successfull.');
+            res.json({result: 'Update Successful!!'});
+
+        } catch(err) {
+            return Common.resultErr(res, err.message);
+        }
+    }
+
     async getAll(req, res, next) {
         try {
             console.log('GET-ALL ENDPOINT HIT');
@@ -37,17 +119,18 @@ class PortfolioController {
 
     async add(req, res, next) {
         try {
-            // make sure an Email was sent
-            if(!req.body.Email) {
-                console.log('No Email specified, aborting.');
-                return Common.resultErr(res, {message: 'Email not supplied'});
+            console.log(`Profile API endpoint hit with the following body:`, req.body)
+            // make sure an Email was sent as well as a user id
+            if(!req.body.Email || !req.body.User_ID) {
+                console.log('Missing field, aborting. Check your User_ID and email');
+                return Common.resultErr(res, {message: 'Missing fields'});
             }
 
             // declare the collection
             const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
 
             // make sure the portfolio doesnt exist so that we're not overwiting info
-            Portfolio.findOne({Email: req.body.Email}, function(err, result) {
+            Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
                 if (result) {
                     // if there is a result, then a portfolio exists. cease and desist
                     console.log('Portfolio already exists, aborting add');
@@ -58,10 +141,37 @@ class PortfolioController {
             // create object that will pushed into the database
             const newPortfolio = new Portfolio({
                 Email: req.body.Email,
+                User_ID: req.body.User_ID,
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
                 Icon: `Keyboard`,
+                SkillsArray: {
+                    angular: false,
+                    bootstrap: false,
+                    c: false,
+                    cSharp: false,
+                    cPlusPlus: false,
+                    css: false,
+                    docker: false,
+                    git: false,
+                    html: false,
+                    java: false,
+                    javascript: false,
+                    mongodb: false,
+                    mySQL: false,
+                    nodeJS: false,
+                    php: false,
+                    postgres: false,
+                    python: false,
+                    r: false,
+                    ruby: false,
+                    sas: false,
+                    sass: false,
+                    selenium: false,
+                    sql: false,
+                    wordpress: false
+                },
                 PhoneNumber: '5595551234',
                 Projects: [],
                 Theme: 'Basic'
