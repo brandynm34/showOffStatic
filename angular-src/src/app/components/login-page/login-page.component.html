@@ -11,12 +11,13 @@
             </div>
         </header>
         <body>
-            <form class="form-signin">       
+            <form (ngSubmit)="onSubmit()" class="form-signin" [formGroup]="form">       
                 <div class="form-label-group">
-                    <input type="email" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                    <input type="email" id="inputUsername" class="form-control" placeholder="Username" formControlName="username" required autofocus>
                 </div>
+                <div *ngIf="form.controls"></div>
                 <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" required>
                 </div>
                 <div class="checkbox mb-3">
                     <label for="">
