@@ -25,6 +25,15 @@ mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
 });
 
+// CORS
+// This allows client applications from other domains use the API Server
+app.use( function( req, res, next ) {
+  res.header( "Access-Control-Allow-Origin", "http://192.168.99.100:4200" );
+  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN" );
+  res.header( "Access-Control-Allow-Methods", "GET,POST,PUT,DELETE" )
+  next();
+} );
+
 // mongoose.Promise = global.Promise;
 // mongoose.connect(config.database, (err) => {
 //   useMongoClient: true;

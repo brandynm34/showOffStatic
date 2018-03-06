@@ -1,21 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RoutingComponents, RoutingModule } from './app.routing.module';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { JRLoginService } from './services/jr-login-service';
+
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     RoutingComponents,
   ],
   imports: [
-    BrowserModule, RoutingModule, 
-    FormsModule, 
+    BrowserModule, RoutingModule,
+    FormsModule, HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ JRLoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
