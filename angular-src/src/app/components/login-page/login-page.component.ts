@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 
+import { JRLoginService } from './../../services/jr-login-service';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -9,22 +11,26 @@ import { AbstractControl } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
+  message: String;
 
-  constructor(fb: FormBuilder, ) { 
+  constructor(public fb: FormBuilder, private _jr: JRLoginService ) {
     this.form = fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   ngOnInit() {
+    this._jr.getAPIMessage('api/test').subscribe(message => {
+      console.log('result:', message.json());
+    });
   }
 
-  static loginVal(AC: AbstractControl){
-    let username = AC.get('username').value;
-    let password = AC.get('confirmPassword').value;
+  public loginVal(AC: AbstractControl) {
+    const username = AC.get('username').value;
+    const password = AC.get('confirmPassword').value;
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.form);
   }
 }
