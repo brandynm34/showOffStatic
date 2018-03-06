@@ -14,7 +14,8 @@
 }
 
 .outletContainer {
-  min-height: 90vh;
+  min-height: 91vh;
+  /* overflow: hidden; */
   -webkit-text-stroke-color: #232122;
 }
 
