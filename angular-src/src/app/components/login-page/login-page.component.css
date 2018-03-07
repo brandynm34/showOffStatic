@@ -28,6 +28,14 @@ header {
     color: #DDDEDE;
 }
 
+.imageLogo {
+    max-width: 20%;
+    padding: 15% 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 body {
     background-color: #7BA4A8;
 }
