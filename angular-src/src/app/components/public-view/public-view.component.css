@@ -148,12 +148,12 @@ h2{
 }
 
 .public-contact-icon-box {
-    height: 85px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin-top: 20px;
+    text-align: center;
+
 }
 
 .public-contact-icon-box p {
@@ -162,8 +162,8 @@ h2{
 }
 
 .public-contact-icon {
-    height: 50px;
-    width: 50px;
+    height: 50px !important;
+    width: 50px !important;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -183,23 +183,14 @@ h2{
 .public-icon-github {
     background-image: url(./../../../assets/img/contact/github-logo.png);
     /* background-repeat: no-repeat; */
-    height: 50px;
-    width: 50px;
+    /* height: 50px !important;
+    width: 50px !important; */
 }
 
 .public-contact-text {
     color: #a5c05b;
 }
 
-@media only screen and (max-width: 325px) {
-    .public-contact-icon{
-        background-repeat: no-repeat;
-    }
-}
-@media only screen and (max-width: 300px) {
-    .public-icon-github{
-        font-size: 40px;
-    }
-}
+
 
 
