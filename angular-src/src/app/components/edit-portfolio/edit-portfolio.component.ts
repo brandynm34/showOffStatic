@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+// import { DashboardComponent } from './../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-edit-portfolio',
@@ -7,18 +7,17 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   styleUrls: ['./edit-portfolio.component.css']
 })
 export class EditPortfolioComponent implements OnInit {
-  display="block";
-  
-  constructor(private dash: DashboardComponent) { }
+  public display = 'block';
+
+  // constructor(private dash: DashboardComponent) { }
 
   ngOnInit() {
   }
-  closeModal(){
-    this.dash.displayPortfolio = "none";
-       
+  closeModal() {
+    // this.dash.displayPortfolio = 'none';
   }
-  save(){
-    this.dash.displayPortfolio = "none";
+  save() {
+    // this.dash.displayPortfolio = 'none';
 
   }
 
