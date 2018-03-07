@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular/forms';
 import {AbstractControl } from '@angular/forms';
-import { regService } from '../../services/reg.service';
+// import { regService } from '../../services/reg.service';
 
 @Injectable()
 @Component({
@@ -12,7 +12,7 @@ import { regService } from '../../services/reg.service';
 export class RegisterPageComponent implements OnInit {
   form: FormGroup;
 
-  constructor( fb: FormBuilder, private reg: regService){
+  constructor( fb: FormBuilder, ){
     this.form = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email]) ],
       username: ['',Validators.required ],
@@ -28,9 +28,9 @@ export class RegisterPageComponent implements OnInit {
   }
 
   ngOnInit(){
-      this.reg.getAPIMessage('api/reg').subscribe(message => {
-        console.log('result', message.json());
-      })
+      // this.reg.getAPIMessage('api/reg').subscribe(message => {
+      //   console.log('result', message.json());
+      // })
       // console.log(this.reg.someMethod()
    }
 

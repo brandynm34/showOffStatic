@@ -14,117 +14,105 @@
 }
 
 .outletContainer {
-  min-height: 91vh;
-  /* overflow: hidden; */
+  min-height: 93vh;
   -webkit-text-stroke-color: #232122;
+  /* overflow: hidden; */
 }
 
-/* :host-context(.theme-light) {
-  background-color: #232122;
-  -webkit-text-fill-color: #1B4B5A;
-} */
+header {
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
 
-/* a {
-  color: #1B4B5A;
-} */
+main {
+  padding: 1em;
+  text-align: center;
+  margin-top: 50px;
+  display: block;
+  background-color: #0F1F38;
+}
 
-  header {
-    padding: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+footer {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+button {
+  padding: 5px;
+  font-size: inherit;
+  margin: 0;
+  height: 38px;
+  background-color: #DDDEDE;
+  border-color: #232122;
+  color: #232323;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-right-div {
+  width: 398px;
+  justify-content: flex-end;
+}
+
+.logoResize {
+  max-width: 189px;
+}
+
+.logoff-button {
+  margin-left: 5px;
+}
+
+form {
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-bar-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  main {
-    padding: 1em;
-    text-align: center;
-    margin-top: 50px;
-    display: block;
-    background-color: #0F1F38;
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  footer {
-    text-align: center;
-    font-size: 0.8em;
+  .nav-bar-search-button {
+    margin-top: 10px;
+  }
+
+  .logoff-button {
+    margin-top: 10px;
   }
 
   button {
-    padding: 5px;
-    font-size: inherit;
     margin: 0;
-    height: 38px;
-    background-color: #DDDEDE;
-    border-color: #232122;
-    color: #232323;
   }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .nav-right-div {
-    width: 398px;
-    justify-content: flex-end;
-  }
-
-  .logoResize {
-    max-width: 20%;
-  }
-
 
   .logoff-button {
-    margin-left: 5px;
+    margin-left: 1%;
   }
 
-  .no_margin {
-    margin: 0;
-  }
-
-  .Long {
-    color: #1B4B5A;
-  }
-
-  @media only screen and (max-width: 768px) {
-    .nav-bar-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .nav-bar-search-button {
-      margin-top: 10px;
-    }
-
-    .logoff-button {
-      margin-top: 10px;
-    }
-
-    button {
-      margin: 0;
-    }
-
-    .logoff-button {
-      margin-left: 1%;
-    }
-
-    .doubleButtons {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-    }
-  }
-
-  form {
+  .doubleButtons {
     display: flex;
-    justify-content: right;
-    text-align: right;
+    flex-direction: row;
+    align-items: flex-start;
   }
+}
+
+@media only screen and (max-width: 633px) {
+.resizeCenter {
+    margin: 0 auto;
+  }
+}
