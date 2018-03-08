@@ -11,7 +11,7 @@ h1{
 } */
 
 img {
-    max-width: 70%;
+    max-width: 50%;
     height: auto;
 }
 
@@ -21,6 +21,11 @@ button{
     margin-left: auto;
     display: block;
     width: 420px;
+}
+
+.imageLogo {
+    max-width: 30%;
+    padding: 10px 0;
 }
 
 

@@ -15,6 +15,8 @@ class AccountController {
             .post(this.update);
         router.route('/registration/login')
             .post(this.login);
+        router.route('/registration/search')
+            .post(this.search);
     }
 
     
@@ -179,6 +181,24 @@ class AccountController {
             })
         } catch (e) {
             console.log('moar errors:', e)
+        }
+    }
+
+    async search(req, res, next) {
+        try {
+            // FUNCTION GOES HERE
+
+            // .. make sure they included a search field in the body
+
+            // declare the database
+
+            // .. execute the search, remember not to return the entire profile object from the database... we dont want people getting the password, even if we screen that out on the front end
+
+
+
+
+        } catch(err) {
+            return Common.resultErr(res, err.message);           
         }
     }
 }
