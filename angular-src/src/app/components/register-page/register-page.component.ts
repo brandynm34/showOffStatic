@@ -2,6 +2,8 @@ import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular/forms';
 import {AbstractControl } from '@angular/forms';
 
+import { JRLoginService } from "./../../services/jr-login-service";
+
 @Injectable()
 @Component({
   selector: 'app-register-page',
@@ -45,6 +47,12 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
+    console.log(this.form.value);
+    const savedUsernname = this.form.value.username;
+    const savedFirstName = this.form.value.firstName;
+    const savedLastName = this.form.value.lastname;
+    const savedEmail = this.form.value.email;
+    const savedPassword = this.form.value.password;
+
   }
 }
