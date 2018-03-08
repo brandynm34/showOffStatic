@@ -5,12 +5,12 @@
                 <div class="backButton">
                     <a href="" routerLink="/"><i class=" backButton3 fas fa-arrow-circle-left fa-3x"></i></a>
                 </div>
-                <div class="text-center mb-4">
-                        <h1 class="coloredText mt-5 mb-3 font-weight-normal logotext">ShowOff</h1>
+                <div class="text-center mb-4">                        
+                    <img src="../assets/img/website/showoff-logo.png" class="imageLogo logotext" alt="showOff Logo">
                 </div>
             </div>
         </header>
-        <body>
+        
             <form (ngSubmit)="onSubmit()" class="form-signin" [formGroup]="form">       
                 <div class="form-label-group">
                     <input type="email" id="inputUsername" class="form-control" placeholder="Username" formControlName="username" required autofocus>
@@ -29,6 +29,6 @@
                     <button class="btn btn-lg btn-block btn-secondary" type="button" routerLink="/register">Register A New Account</button>
                 <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
             </form>
-        </body>
+        
     </div> 
 </div>

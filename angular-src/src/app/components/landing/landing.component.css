@@ -23,6 +23,11 @@ button{
     width: 420px;
 }
 
+.imageLogo {
+    max-width: 30%;
+    padding: 10px 0;
+}
+
 
 @media only screen and (max-width: 768px) {
     img {
