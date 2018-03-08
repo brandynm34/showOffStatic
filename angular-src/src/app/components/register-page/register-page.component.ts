@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular/forms';
 import {AbstractControl } from '@angular/forms';
 
-
+@Injectable()
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',

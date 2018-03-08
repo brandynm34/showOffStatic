@@ -35,6 +35,11 @@ img {
     height: 97.9vh;
 }
 
+.imageLogo {
+    max-width: 30%;
+    padding: 10px 0;
+}
+
 .backButton4 {
     color: #DDDEDE;
     margin-top: 75px;
