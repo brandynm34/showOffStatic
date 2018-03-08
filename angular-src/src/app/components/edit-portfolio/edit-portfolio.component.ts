@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditPortfolioComponent implements OnInit {
   public display = 'block';
+  private _listOfSkills = [];
 
   // input fields used with ngModel
   public fieldEmail: string;
@@ -26,6 +27,8 @@ export class EditPortfolioComponent implements OnInit {
   public fieldProj5SS: string;
   public fieldProj6Link: string;
   public fieldProj6SS: string;
+  // icon radio
+  public fieldIconRadio: string;
 
   // constructor(private dash: DashboardComponent) { }
   constructor ( private _portService: JRPortfolioService) {}
@@ -41,25 +44,46 @@ export class EditPortfolioComponent implements OnInit {
       for (let index = 0; index < data.Projects.length; index++) {
         this['fieldProj' + (index + 1) + 'Link'] = data.Projects[index].link;
         this['fieldProj' + (index + 1) + 'SS'] = data.Projects[index].ss;
-        // console.log(data.Projects);
-        // (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'Link')).value = data.Projects[index].link;
-        // (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'SS')).value = data.Projects[index].ss;
       }
-      console.log('teeeest', this['fieldEm' + 'ail']);
       // loop through the skills array and check the apporpriate boxes
       for (const key in data.SkillsArray) {
-        // console.log(key);
+        this._listOfSkills.unshift(key);
         if (data.SkillsArray[key] === true) {
           (<HTMLInputElement>document.getElementById('defaultCheck' + key)).checked = true;
         }
       }
-
-      // I'll save the icon for you :)
-
+      // coder, front-end, cloud, mobile, networker
+      this.fieldIconRadio = data.Icon;
     });
 
     // Because some pertinent info is also in the user's registration table, do ther same service call to the login service
     // NOTE: That doesnt exist yet becuase the login service isn't done
+  } // end oninit
+
+  update() {
+
+    const updatedPort = {
+      Email: this.fieldEmail,
+      Icon: this.fieldIconRadio,
+      SkillsArray: {},
+      Projects: []
+    };
+
+    this._listOfSkills.forEach(skill => {
+      updatedPort.SkillsArray[skill] = (<HTMLInputElement>document.getElementById('defaultCheck' + skill)).checked;
+    });
+
+    for (let i = 0; i < 6; i++) {
+      if (this['fieldProj' + (i + 1) + 'Link'] && this['fieldProj' + (i + 1) + 'SS']) {
+        const project = {
+          link: this['fieldProj' + (i + 1) + 'Link'],
+          ss: this['fieldProj' + (i + 1) + 'SS']
+          };
+        updatedPort.Projects.push(project);
+        } // end if
+      } // end for
+
+    console.log('object to send to db:', updatedPort);
 
   }
   closeModal() {
