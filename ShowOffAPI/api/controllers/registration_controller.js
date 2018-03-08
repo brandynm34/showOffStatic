@@ -187,12 +187,22 @@ class AccountController {
     async search(req, res, next) {
         try {
             // FUNCTION GOES HERE
-
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+            const NameArray = reg.body.search.split(" ")
             // .. make sure they included a search field in the body
-
+            if (!req.body.search) {
+                console.log('Missing search input');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
             // declare the database
+            
 
             // .. execute the search, remember not to return the entire profile object from the database... we dont want people getting the password, even if we screen that out on the front end
+            // split search into an array and the do a quire on the array and sarch for fist anf ast name
+
+            Account.find()
+
+            
 
 
 
