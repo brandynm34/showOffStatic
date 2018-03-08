@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { DashboardComponent } from './../dashboard/dashboard.component';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-portfolio',
@@ -9,6 +10,22 @@ import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-serv
 })
 export class EditPortfolioComponent implements OnInit {
   public display = 'block';
+
+  // input fields used with ngModel
+  public fieldEmail: string;
+  // project fields;
+  public fieldProj1Link: string;
+  public fieldProj1SS: string;
+  public fieldProj2Link: string;
+  public fieldProj2SS: string;
+  public fieldProj3Link: string;
+  public fieldProj3SS: string;
+  public fieldProj4Link: string;
+  public fieldProj4SS: string;
+  public fieldProj5Link: string;
+  public fieldProj5SS: string;
+  public fieldProj6Link: string;
+  public fieldProj6SS: string;
 
   // constructor(private dash: DashboardComponent) { }
   constructor ( private _portService: JRPortfolioService) {}
@@ -19,14 +36,16 @@ export class EditPortfolioComponent implements OnInit {
     this._portService.getPortfolioInfo().subscribe(result => {
       console.log(result.json());
       const data = result.json().data;
-      (<HTMLInputElement>document.getElementById('inputEmail')).value = data.Email;
-
+      this.fieldEmail = data.Email;
       // loop through projects array and fill out the input forms
       for (let index = 0; index < data.Projects.length; index++) {
-        (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'Link')).value = data.Projects[index].link;
-        (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'SS')).value = data.Projects[index].ss;
+        this['fieldProj' + (index + 1) + 'Link'] = data.Projects[index].link;
+        this['fieldProj' + (index + 1) + 'SS'] = data.Projects[index].ss;
+        // console.log(data.Projects);
+        // (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'Link')).value = data.Projects[index].link;
+        // (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'SS')).value = data.Projects[index].ss;
       }
-
+      console.log('teeeest', this['fieldEm' + 'ail']);
       // loop through the skills array and check the apporpriate boxes
       for (const key in data.SkillsArray) {
         // console.log(key);
