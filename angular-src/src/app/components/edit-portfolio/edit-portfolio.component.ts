@@ -19,19 +19,19 @@ export class EditPortfolioComponent implements OnInit {
     this._portService.getPortfolioInfo().subscribe(result => {
       console.log(result.json());
       const data = result.json().data;
-      document.getElementById('inputEmail').value = data.Email;
+      (<HTMLInputElement>document.getElementById('inputEmail')).value = data.Email;
 
       // loop through projects array and fill out the input forms
       for (let index = 0; index < data.Projects.length; index++) {
-        document.getElementById('inputProj' + (index + 1) + 'Link').value = data.Projects[index].link;
-        document.getElementById('inputProj' + (index + 1) + 'SS').value = data.Projects[index].ss;
+        (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'Link')).value = data.Projects[index].link;
+        (<HTMLInputElement>document.getElementById('inputProj' + (index + 1) + 'SS')).value = data.Projects[index].ss;
       }
 
       // loop through the skills array and check the apporpriate boxes
       for (const key in data.SkillsArray) {
         // console.log(key);
         if (data.SkillsArray[key] === true) {
-          document.getElementById('defaultCheck' + key).checked = true;
+          (<HTMLInputElement>document.getElementById('defaultCheck' + key)).checked = true;
         }
       }
 
