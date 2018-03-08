@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 // import {OverlayContainer} from "~@angular/material/theming";
-import { OnInit } from '@angular/core';
 // import { PortfolioComponent } from './services/portfolio_component.service';
+
+import { JRLoginService } from './services/jr-login-service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,15 @@ export class AppComponent implements OnInit {
 
   constructor(
     // private overlayContainer: OverlayContainer
-  ) {}
+  private _jr: JRLoginService) {}
 
   ngOnInit(): void {
     // subscribe to some source of theme change events, then...
     // this.themeClass = newThemeClass;
     // this.overlayContainer.themeClass = newThemeClass;
+  }
+
+  onClick(){
+    this._jr.logoutUser();
   }
 }
