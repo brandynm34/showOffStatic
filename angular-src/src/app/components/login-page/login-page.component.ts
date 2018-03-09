@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from "@angula
 import { AbstractControl } from "@angular/forms";
 
 import { JRLoginService } from "./../../services/jr-login-service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login-page",
@@ -13,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
   message: String;
 
-  constructor(public fb: FormBuilder, private _jr: JRLoginService) {
+  constructor(public fb: FormBuilder, private _jr: JRLoginService, private router: Router) {
     this.form = fb.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -39,6 +40,7 @@ export class LoginPageComponent implements OnInit {
       console.log(result.json());
       if (result.json().status === 1) {
         console.log("Success");
+        this.router.navigate(["/dashboard"]);
         this._jr.storeAuth(savedUsername, result.json().id);
       } else {
         console.log("nope");
