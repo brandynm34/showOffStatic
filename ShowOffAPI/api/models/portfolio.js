@@ -13,7 +13,7 @@ const portfolioSchema = new Schema({
     Icon: { type:String, required: true},
     SkillsArray: {type:Object, required: true},
     PhoneNumber: { type:String, required: false},
-    Projects: { type:[String], required: false},
+    Projects: { type:[{link:String, ss:String}], required: false},
     Theme: { type: String, required: false}
 }); 
 
