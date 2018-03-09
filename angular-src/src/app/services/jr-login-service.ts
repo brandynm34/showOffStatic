@@ -57,15 +57,16 @@ export class JRLoginService {
     //method to register user
     registerPost(Username: String, FirstName: String, LastName: String, Password: String, Email: String){
         const registUser = {
-            Username: this.Username,
-            FirstName: this.FirstName,
-            LastName: this.LastName,
-            Password: this.Password,
-            Email: this.Email
+            Username: Username,
+            FirstName: FirstName,
+            LastName: LastName,
+            Password: Password,
+            Email: Email
         };
 
-        const headers = new Headers({'Content-Type': 'application/json'});
+        console.log('object to be sent', registUser);
+        const headers = new Headers({"Content-Type": "application/json"});
         const options = new RequestOptions({headers: headers});
-        return this._http.post(this._URL + 'api-new/registration', registUser, options);
+        return this._http.post(this._URL + "api-new/registration/add", registUser, options);
     }
 }
