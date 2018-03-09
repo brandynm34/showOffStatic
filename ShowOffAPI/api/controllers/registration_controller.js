@@ -189,7 +189,6 @@ class AccountController {
             // FUNCTION GOES HERE
             const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
             const NameArray = reg.body.search.split(" ");
-            const Name = req.body.search;
 
             if (!req.body.search) {
                 console.log('Missing search input');
