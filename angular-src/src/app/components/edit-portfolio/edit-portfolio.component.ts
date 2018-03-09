@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class EditPortfolioComponent implements OnInit {
   public display = 'block';
   private _listOfSkills = [];
+  private _iconList = ['coder', 'front-end', 'cloud', 'mobile', 'networker'];
 
   // input fields used with ngModel
   public fieldEmail: string;
@@ -54,6 +55,9 @@ export class EditPortfolioComponent implements OnInit {
       }
       // coder, front-end, cloud, mobile, networker
       this.fieldIconRadio = data.Icon;
+      if (this._iconList.indexOf(this.fieldIconRadio) < 0) {
+        this.fieldIconRadio = 'coder';
+      }
     });
 
     // Because some pertinent info is also in the user's registration table, do ther same service call to the login service
@@ -62,6 +66,9 @@ export class EditPortfolioComponent implements OnInit {
 
   update() {
 
+    if (this._iconList.indexOf(this.fieldIconRadio) < 0) {
+      this.fieldIconRadio = 'coder';
+    }
     const updatedPort = {
       Email: this.fieldEmail,
       Icon: this.fieldIconRadio,
