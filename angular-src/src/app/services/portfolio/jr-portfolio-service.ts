@@ -29,14 +29,20 @@ export class JRPortfolioService implements OnInit {
         return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser);
     }
 
-    updatePortfolio() {
+    updatePortfolio(data) {
         // function to update the portfolio
-
-        // grab the values from the form
+        console.log('recieved data in service to upate with the following object:', data);
 
         // validate the values
+        if (!data.User_ID || !data.Icon || !data.Email || !data.SkillsArray) {
+            console.log('Error: Required field missing, aborting');
+            return;
+        }
 
         // make an api call to update the database with current values
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions({headers: headers});
+        return this._http.post(this._URL + 'api-new/portfolio/update', data , options);
     }
 
 }
