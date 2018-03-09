@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 
@@ -18,7 +19,7 @@ export class JRLoginService {
         id: null,
     };
 
-    constructor(private _http: Http) {
+    constructor(private _http: Http, private router: Router) {
 
     }
 
@@ -52,6 +53,7 @@ export class JRLoginService {
              id: null
          };
          console.log('logged out');
+         this.router.navigate(['login-page']);
     }
 
     //method to register user
