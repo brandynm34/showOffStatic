@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { DashboardComponent } from './../dashboard/dashboard.component';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
+import { JRLoginService} from './../../services/jr-login-service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,6 +13,7 @@ export class EditPortfolioComponent implements OnInit {
   public display = 'block';
   private _listOfSkills = [];
   private _iconList = ['coder', 'front-end', 'cloud', 'mobile', 'networker'];
+  private _loggedInUser;
 
   // input fields used with ngModel
   public fieldEmail: string;
@@ -30,11 +32,23 @@ export class EditPortfolioComponent implements OnInit {
   public fieldProj6SS: string;
   // icon radio
   public fieldIconRadio: string;
+  // update flag
+  public updateSuccess = false;
 
   // constructor(private dash: DashboardComponent) { }
-  constructor ( private _portService: JRPortfolioService) {}
+  constructor ( private _portService: JRPortfolioService, private _login: JRLoginService) {}
 
   ngOnInit() {
+
+    // grab the logged in user
+    this._loggedInUser = this._login.getAuth();
+    // for now, manually assign until login service is finished
+    this._loggedInUser = {
+      Username: 'fleury14',
+      id: '5a9dc86c39578a0041844f58'
+    };
+    console.log('current logged in user', this._loggedInUser);
+
     // when page loads, grab the necessary values from the database via the service and subscribe to them
     // NOTE: this will automatically grab the user on the service side, whether that is better or doing it here I'm not sure.
     this._portService.getPortfolioInfo().subscribe(result => {
@@ -90,7 +104,15 @@ export class EditPortfolioComponent implements OnInit {
         } // end if
       } // end for
 
-    console.log('object to send to db:', updatedPort);
+      updatedPort['User_ID'] = this._loggedInUser.id;
+
+    // console.log('object to send to db:', updatedPort);
+    this._portService.updatePortfolio(updatedPort).subscribe(result => {
+      console.log(result);
+      if (result.status === 200) {
+        this.updateSuccess = true;
+      }
+    });
 
   }
   closeModal() {
