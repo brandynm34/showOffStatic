@@ -187,17 +187,37 @@ class AccountController {
     async search(req, res, next) {
         try {
             // FUNCTION GOES HERE
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+            const NameArray = reg.body.search.split(" ");
 
-            // .. make sure they included a search field in the body
+            if (!req.body.search) {
+                console.log('Missing search input');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
 
-            // declare the database
-
-            // .. execute the search, remember not to return the entire profile object from the database... we dont want people getting the password, even if we screen that out on the front end
-
-
-
-
-        } catch(err) {
+            for(name in NameArray){
+                if (NameArray.length === 2){
+                    const name_1 = NameArray[0].join();
+                    const name_2 = NameArray[1].join();
+                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2});
+                    if(CheckWholeName){
+                        res.json({id: CheckWholeName._id})
+                    } 
+                    else {
+                        Account.find({$or: [{FirstName: name_1}, {FirstName: name_2}, {LastName: name_1}, {LastName: name_2}]}, function(err, profiles){
+                            res.json({result: profiles._id})})
+                    }
+                }
+                else{
+                    Account.find({$or: [{FirstName: name}, {LastName: name}]}, function(err, profiles){
+                        res.json({result: profiles._id})})
+                }
+            }
+        
+           
+            
+        } 
+        catch(err) {
             return Common.resultErr(res, err.message);           
         }
     }
