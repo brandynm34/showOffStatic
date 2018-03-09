@@ -13,7 +13,7 @@ import { JRLoginService } from "./../../services/jr-login-service";
 export class RegisterPageComponent implements OnInit {
   form: FormGroup;
 
-  constructor( fb: FormBuilder, ){
+  constructor( fb: FormBuilder, private _jr: JRLoginService){
     this.form = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email]) ],
       username: ['',Validators.required ],
@@ -48,11 +48,17 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
-    const savedUsernname = this.form.value.username;
+    const savedUsername = this.form.value.username;
     const savedFirstName = this.form.value.firstName;
-    const savedLastName = this.form.value.lastname;
+    const savedLastName = this.form.value.lastName;
     const savedEmail = this.form.value.email;
     const savedPassword = this.form.value.password;
 
+    console.log('user name test', savedUsername);
+
+    this._jr.registerPost(savedUsername,savedFirstName,savedLastName,savedPassword,savedEmail)
+      .subscribe(result => {
+        console.log(result.json());
+      });
   }
 }
