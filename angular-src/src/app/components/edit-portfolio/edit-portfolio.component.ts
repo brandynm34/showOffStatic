@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { DashboardComponent } from './../dashboard/dashboard.component';
+import { DashboardComponent } from './../dashboard/dashboard.component';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 import { JRLoginService} from './../../services/jr-login-service';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ export class EditPortfolioComponent implements OnInit {
   public updateSuccess = false;
 
   // constructor(private dash: DashboardComponent) { }
-  constructor ( private _portService: JRPortfolioService, private _login: JRLoginService) {}
+  constructor ( private dash: DashboardComponent, private _portService: JRPortfolioService, private _login: JRLoginService) {}
 
   ngOnInit() {
 
@@ -116,10 +116,10 @@ export class EditPortfolioComponent implements OnInit {
 
   }
   closeModal() {
-    // this.dash.displayPortfolio = 'none';
+    this.dash.displayPortfolio = 'none';
   }
   save() {
-    // this.dash.displayPortfolio = 'none';
+    this.dash.displayPortfolio = 'none';
 
   }
 

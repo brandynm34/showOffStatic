@@ -59,6 +59,9 @@ export class JRLoginService {
              Username: null,
              id: null
          };
+         // remove from localstorage
+         localStorage.removeItem('loggedInUser');
+
          console.log('logged out');
          this.router.navigate(['login-page']);
     }
