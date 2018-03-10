@@ -43,10 +43,10 @@ export class EditPortfolioComponent implements OnInit {
     // grab the logged in user
     this._loggedInUser = this._login.getAuth();
     // for now, manually assign until login service is finished
-    this._loggedInUser = {
-      Username: 'fleury14',
-      id: '5a9dc86c39578a0041844f58'
-    };
+    // this._loggedInUser = {
+    //   Username: 'fleury14',
+    //   id: '5a9dc86c39578a0041844f58'
+    // };
     console.log('current logged in user', this._loggedInUser);
 
     // when page loads, grab the necessary values from the database via the service and subscribe to them
