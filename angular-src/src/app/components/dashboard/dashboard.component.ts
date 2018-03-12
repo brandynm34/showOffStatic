@@ -9,20 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   displayProfile = 'none';
   displayPortfolio = 'none';
-  
   constructor() {}
-
 
   ngOnInit() {
   }
-  openEditProfileModal(){
-    this.displayProfile = "block"
-  
+  openEditProfileModal() {
+    this.displayProfile = 'block';
   }
-  openEditPortfolioModal(){
-    this.displayPortfolio="block"
-  
+
+  openEditPortfolioModal() {
+    this.displayPortfolio = 'block';
   }
- 
 }
 
