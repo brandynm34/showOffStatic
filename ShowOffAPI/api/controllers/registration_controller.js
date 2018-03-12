@@ -17,6 +17,10 @@ class AccountController {
             .post(this.login);
         router.route('/registration/search')
             .post(this.search);
+        router.route('/registration/getById/:id')
+            .get(this.getById);
+        router.route('/registration/partialUpdate')
+            .post(this.partialUpdate);
     }
 
     
@@ -28,6 +32,40 @@ class AccountController {
         } catch (e) {
             console.log('Error:', e);
             res.json({error: e});
+        }
+    }
+
+    async partialUpdate(req, res, next) {
+        try {
+        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'ResumeURL'];
+        // as of right now, this is a blatant partial update allowing any updates to the database,
+        // if (req.body.Password || req.body.Username) {
+        //     // we're not allowing a change of username of password, so if its in the body, break immediately
+        //     return Common.resultErr(res, {message: 'Invalid data'})
+        // } 
+
+        // declare collection
+        const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+
+        // make sure the profile exists
+        await Account.findOne({Username: req.body.Username}, function(err, result) {
+            if (!result) {
+                // if there is a result, then a portfolio exists. cease and desist
+                console.log('Profile does not exist');
+                return Common.resultNotFound(res, 'Profile does not exist. I cannot update what I cannot see...')
+            }
+        });
+        const bodyToSend = {}
+        listOfField.forEach((attr) => {
+            if(req.body[attr]) {bodyToSend[attr] = req.body[attr];}
+        }); 
+        
+        console.log('Initiating partial update on the following user', req.body.Username, ' endpoint with the following body', bodyToSend);
+        // perform the update
+        await Account.update({Username: req.body.Username}, bodyToSend)
+        res.json({message: "Update successful"})
+        } catch(err) {
+            return Common.resultErr(res, e.message);
         }
     }
 
@@ -234,6 +272,37 @@ class AccountController {
         } 
         catch(err) {
             return Common.resultErr(res, err.message);           
+        }
+    }
+
+    async getById(req, res, next) {
+        try {
+            // make sure theres an id param supplied
+            if (!req.params.id) {
+                return Common.resultErr(res, 'No User ID supplied')
+            }
+
+            // get user id
+            const userId = req.params.id;
+
+            // declare collection
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+
+            // make the database call
+            const data = await Account.findOne({_id: userId})
+
+            // make sure there's data
+            if (!data) {
+                return Common.resultNotFound(res);
+            } else {
+                // removes username and password
+                data.Password = null;
+                data.Username = null;
+                res.json({data});
+            }
+
+        } catch(err) {
+            return Common.resultErr(res, err.message);    
         }
     }
 }
