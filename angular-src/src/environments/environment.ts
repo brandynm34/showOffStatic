@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   // for Mac
-  apiURL: 'http://localhost:3000/api-new/',
+  apiURL: 'http://localhost:3000/',
   // for Windows
    // apiURL:'http://192.168.99.100:3000/api-new/';
 };
