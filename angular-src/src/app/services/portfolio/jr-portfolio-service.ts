@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { environment } from './../../../environments/environment';
 
 @Injectable()
 
@@ -10,7 +11,7 @@ export class JRPortfolioService implements OnInit {
     private _loggedInUser = '5a9dc86c39578a0041844f58';
 
     // Adjust for mac/linux/non jr users as necessary. one day i will fix this lol
-    private _URL = 'http://192.168.99.100:3000/';
+    private _URL = environment.apiURL;
 
 
     // initialize http angular stuffs
