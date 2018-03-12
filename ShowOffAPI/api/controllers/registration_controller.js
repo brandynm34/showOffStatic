@@ -186,32 +186,47 @@ class AccountController {
 
     async search(req, res, next) {
         try {
-            // FUNCTION GOES HERE
             const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
-            const NameArray = reg.body.search.split(" ");
+            const NameArray = req.body.Search.split(" ");
+            // var AllNames = new Array;
 
-            if (!req.body.search) {
+            if (!req.body.Search) {
                 console.log('Missing search input');
                 return Common.resultErr(res, {message: 'Missing fields'});
             }
 
-            for(name in NameArray){
+            
+            for(let name in NameArray){
                 if (NameArray.length === 2){
-                    const name_1 = NameArray[0].join();
-                    const name_2 = NameArray[1].join();
-                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2});
-                    if(CheckWholeName){
-                        res.json({id: CheckWholeName._id})
-                    } 
-                    else {
-                        Account.find({$or: [{FirstName: name_1}, {FirstName: name_2}, {LastName: name_1}, {LastName: name_2}]}, function(err, profiles){
-                            res.json({result: profiles._id})})
+                    const name_1 = NameArray[0]
+                    const name_2 = NameArray[1]
+                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2}, {_id: 1}).collation( { locale: 'en', strength: 1 } );
+                    if(CheckWholeName.hasOwnProperty(0) === true){
+                        res.json(CheckWholeName);
+                        break;
+                    }
+                    else{
+                        Account.find({$or: [{FirstName: name_1}, {FirstName: name_2}, {LastName: name_1}, {LastName: name_2}]}, {_id: 1}, function(err, profiles){
+                            res.json(profiles)}).collation( { locale: 'en', strength: 1 } )
+                        break;
                     }
                 }
                 else{
-                    Account.find({$or: [{FirstName: name}, {LastName: name}]}, function(err, profiles){
-                        res.json({result: profiles._id})})
+                    const nam = NameArray[name]
+                    Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
+                        res.json(profiles).collation( { locale: 'en', strength: 1 } )
+                        
+                    })
+                    // var OneName = Account.find({$or: [{FirstName: nam}, {LastName: nam}]})
+                    // AllNames[name] = OneName.toArray();
+                    // console.log(AllNames)
+                    // res.json(AllNames);
+                   
+                    break;
                 }
+        
+
+
             }
         
            
