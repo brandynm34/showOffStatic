@@ -46,4 +46,24 @@ export class JRPortfolioService implements OnInit {
         return this._http.post(this._URL + 'api-new/portfolio/update', data , options);
     }
 
+    // base portfolio to be added when a user registers
+    // NOTE: you must pass in the user ID from the profile table and their email
+    addPortfolio(id: string, email: string) {
+        // make sure id and string are included
+        if (!id || !email) {
+            console.log('Error: Did not supply either id or email');
+            return;
+        }
+
+        // prepare body
+        const bodyToBeSent = {
+            User_ID: id,
+            Email: email
+        };
+
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions({headers: headers});
+        return this._http.post(this._URL + 'api-new/portfolio/add', bodyToBeSent, options);
+    }
+
 }
