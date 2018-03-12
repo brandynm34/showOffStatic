@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { stringify } from '@angular/compiler/src/util';
 import { environment } from './../../environments/environment';
 

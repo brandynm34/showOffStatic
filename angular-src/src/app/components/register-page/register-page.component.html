@@ -8,7 +8,11 @@
         <img src="../assets/img/website/showoff-logo-no-border.png" class="imageLogo" alt="showOff Logo">
       </div>
       <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate >
-    
+        <!-- If username and email already exists -->
+        <div class="alert alert-danger" *ngIf="registerDupe === true">
+          Please enter another username or Email.
+        </div>
+
         <div class="form-label-group">
           <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail" formControlName="email" required email autofocus >
         </div>
@@ -47,6 +51,8 @@
         <div class="alert alert-danger" *ngIf="form.controls.confirmPassword.errors?.passwordVal && (form.controls.confirmPassword.dirty && form.controls.confirmPassword.touched)">
           Passwords do not match
         </div>
+
+        
 
       
        
