@@ -90,12 +90,28 @@ export class JRLoginService {
 
     updateProfileFromProfile(firstName: String, lastName: String, email: String, username: String) {
         const loggedInUserName = this.authState.Username;
-        console.log('authstate', this.authState);
+        // console.log('authstate', this.authState);
 
         const dataToBeSent = {
             FirstName: firstName,
             LastName: lastName,
             Email: email,
+            Username: username
+        };
+
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions({headers: headers});
+        return this._http.post(this._URL + 'api-new/registration/partialUpdate', dataToBeSent, options);
+    }
+
+    updateProfileFromPortfolio(GitHubURL: String, ResumeURL: String, LinkedIn: String, username: String) {
+        const loggedInUserName = this.authState.Username;
+        // console.log('authstate', this.authState);
+
+        const dataToBeSent = {
+            GitHubURL: GitHubURL,
+            ResumeURL: ResumeURL,
+            LinkedIn: LinkedIn,
             Username: username
         };
 
