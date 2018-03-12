@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { environment } from './../../../environments/environment';
+import { JRLoginService } from './../../services/jr-login-service';
 
 @Injectable()
 
@@ -8,26 +9,28 @@ export class JRPortfolioService implements OnInit {
 
     // This will eventually grab the logged in user from the login service.
     // since the login service isn't done yet, we'll assign it manually for now
-    private _loggedInUser = '5a9dc86c39578a0041844f58';
+    private _loggedInUser;
+    public jr = '5a9dc86c39578a0041844f58';
 
     // Adjust for mac/linux/non jr users as necessary. one day i will fix this lol
     private _URL = environment.apiURL;
 
 
     // initialize http angular stuffs
-    constructor(private _http: Http) {}
+    constructor(private _http: Http, private _login: JRLoginService) {
+        this._loggedInUser = this._login.getAuth();
+        console.log('jr:', this._loggedInUser);
+    }
 
     ngOnInit() {
-        // get portfolio for current logged in user by calling the API and subscribe
-
-        // inside the subscription, set the form values to the existing values in the database
+        // get login info
     }
 
     getPortfolioInfo() {
         // function to get portfolio info
         // NOTE: As of right now, I have it ideally pulling the info from the login service. It's entirely possible to do that on the
         // front end as pass that in as a paramter. Which is better? *shrug*
-        return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser);
+        return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser.id);
     }
 
     updatePortfolio(data) {
