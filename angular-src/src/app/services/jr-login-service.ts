@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { stringify } from '@angular/compiler/src/util';
+import { environment } from './../../environments/environment';
 
 @Injectable()
 
@@ -13,7 +14,7 @@ export class JRLoginService {
     Email: String;
 
 
-    private _URL = 'http://192.168.99.100:3000/';
+    private _URL = environment.apiURL;
     public apiResult;
     public authState = {
         Username: null,
@@ -80,5 +81,26 @@ export class JRLoginService {
         const headers = new Headers({'Content-Type': 'application/json'});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/registration/add', registUser, options);
+    }
+
+    getById(id: String) {
+        // const currentUserId = this.authState.id;
+        return this._http.get(this._URL + 'api-new/registration/getById/' + id);
+    }
+
+    updateProfileFromProfile(firstName: String, lastName: String, email: String, username: String) {
+        const loggedInUserName = this.authState.Username;
+        console.log('authstate', this.authState);
+
+        const dataToBeSent = {
+            FirstName: firstName,
+            LastName: lastName,
+            Email: email,
+            Username: username
+        };
+
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions({headers: headers});
+        return this._http.post(this._URL + 'api-new/registration/partialUpdate', dataToBeSent, options);
     }
 }
