@@ -64,17 +64,17 @@
                             <!-- resume url -->
                             <div class= "form-label-group">
                                 <label for="inputResume">Resume Link:</label>
-                                <input type="text" id="inputResume" class="form-control" placeholder="">
+                                <input type="text" id="inputResume" name="fieldResume" [(ngModel)]="fieldResume" class="form-control" placeholder="">
                             </div>
                             <!-- Github -->
                             <div class= "form-label-group">
                                 <label for="inputGit">Github Account:</label>
-                                <input type="text" id="inputGit" class="form-control" placeholder="">
+                                <input type="text" id="inputGit" name="fieldGithub" [(ngModel)]="fieldGithub" class="form-control" placeholder="">
                             </div>
                             <!-- LinkedIn -->
                             <div class= "form-label-group">
                                 <label for="inputLink">LinkedIn Account:</label>
-                                <input type="text" id="inputLink" class="form-control" placeholder="">
+                                <input type="text" id="inputLink" name="fieldLinkedin" [(ngModel)]="fieldLinkedin" class="form-control" placeholder="">
                             </div>
 
                             <!-- Selected skills -->
@@ -309,7 +309,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary" (click)="save()">Save</button> 
+                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary">Save</button> 
             </div>
             <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
         </div>

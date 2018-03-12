@@ -32,7 +32,7 @@ export class JRPortfolioService implements OnInit {
 
     updatePortfolio(data) {
         // function to update the portfolio
-        console.log('recieved data in service to upate with the following object:', data);
+        // console.log('recieved data in service to upate with the following object:', data);
 
         // validate the values
         if (!data.User_ID || !data.Icon || !data.Email || !data.SkillsArray) {
@@ -44,6 +44,26 @@ export class JRPortfolioService implements OnInit {
         const headers = new Headers({'Content-Type': 'application/json'});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/portfolio/update', data , options);
+    }
+
+    // base portfolio to be added when a user registers
+    // NOTE: you must pass in the user ID from the profile table and their email
+    addPortfolio(id: string, email: string) {
+        // make sure id and string are included
+        if (!id || !email) {
+            console.log('Error: Did not supply either id or email');
+            return;
+        }
+
+        // prepare body
+        const bodyToBeSent = {
+            User_ID: id,
+            Email: email
+        };
+
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions({headers: headers});
+        return this._http.post(this._URL + 'api-new/portfolio/add', bodyToBeSent, options);
     }
 
 }
