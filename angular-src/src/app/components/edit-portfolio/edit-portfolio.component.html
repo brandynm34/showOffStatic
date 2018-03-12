@@ -14,7 +14,7 @@
                             <div class="row top-page">
                                 <div class= "col-md-6 form-label-group">
                                     <label for="inputEmail">Email:</label>
-                                    <input type="text" id="inputEmail" class="form-control" placeholder="">
+                                    <input type="text" id="inputEmail" name="fieldEmail" class="form-control" [(ngModel)]="fieldEmail" placeholder="">
                                 </div>
                                 <div class= "col-md-6 form-label-group">
                                     <label for="inputPicLink">Picture Link:</label>
@@ -29,31 +29,31 @@
                                     <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios1" value="option1" name="gridRadios">
+                                            <input class="form-check-input" type="radio" id="gridRadios1" value="coder" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
                                             <label class="form-check-label" for="gridRadios1"><img src="assets/img/personal-icons/monitor-2.png" alt=""></label>
                                         </div>
                                         </div>
                                         <div class="col-md-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios2" value="option2" name="gridRadios">
+                                            <input class="form-check-input" type="radio" id="gridRadios2" value="front-end" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
                                             <label class="form-check-label" for="gridRadios2"><img src="assets/img/personal-icons/monitor-3.png" alt=""></label>
                                         </div>
                                         </div>
                                         <div class="col-md-2">
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" id="gridRadios3" value="option3" name="gridRadios">
+                                            <input class="form-check-input" type="radio" id="gridRadios3" value="cloud" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
                                             <label class="form-check-label" for="gridRadios3"><img src="assets/img/personal-icons/network.png" alt=""></label>
                                         </div>
                                         </div>
                                         <div class="col-md-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios4" value="option4" name="gridRadios">
+                                            <input class="form-check-input" type="radio" id="gridRadios4" value="mobile" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
                                             <label class="form-check-label" for="gridRadios4"><img src="assets/img/personal-icons/responsive-design-symbol.png" alt=""></label>
                                         </div>
                                         </div>
                                         <div class="col-md-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios5" value="option5" name="gridRadios">
+                                            <input class="form-check-input" type="radio" id="gridRadios5" value="networker" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
                                             <label class="form-check-label" for="gridRadios5"><img src="assets/img/personal-icons/meeting.png" alt=""></label>
                                         </div>
                                         </div>
@@ -238,66 +238,66 @@
                                 <div class="form-group row">
                                     <label for="inputProj1Link" class="col-md-1.5 col-form-label">Project 1 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj1Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj1Link" name="fieldProj1Link" [(ngModel)]="fieldProj1Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj1SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj1SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj1SS" name="fieldProj1SS" [(ngModel)]="fieldProj1SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputProj2Link" class="col-md-1.5 col-form-label">Project 2 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj2Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj2Link" name="fieldProj2Link" [(ngModel)]="fieldProj2Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj2SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj2SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj2SS" name="fieldProj2SS" [(ngModel)]="fieldProj2SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputProj3Link" class="col-md-1.5 col-form-label">Project 3 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj3Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj3Link" name="fieldProj3Link" [(ngModel)]="fieldProj3Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj3SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj3SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj3SS" name="fieldProj3SS" [(ngModel)]="fieldProj3SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputProj4Link" class="col-md-1.5 col-form-label">Project 4 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj4Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj4Link" name="fieldProj4Link" [(ngModel)]="fieldProj4Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj4SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj4SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj4SS" name="fieldProj4SS" [(ngModel)]="fieldProj4SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputProj5Link" class="col-md-1.5 col-form-label">Project 5 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj5Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj5Link" name="fieldProj5Link" [(ngModel)]="fieldProj5Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj5SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj5SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj5SS" name="fieldProj5SS" [(ngModel)]="fieldProj5SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputProj6Link" class="col-md-1.5 col-form-label">Project 6 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj6Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj6Link" name="fieldProj6Link" [(ngModel)]="fieldProj6Link" class="form-control" placeholder="">
                                     </div>
                                     <label for="inputProj6SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj6SS" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj6SS" name="fieldProj6SS" [(ngModel)]="fieldProj6SS" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -309,8 +309,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="save()">Save</button> 
+                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary" (click)="save()">Save</button> 
             </div>
+            <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
         </div>
     </div>
 </div>

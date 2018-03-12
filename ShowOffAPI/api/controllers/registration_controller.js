@@ -186,18 +186,53 @@ class AccountController {
 
     async search(req, res, next) {
         try {
-            // FUNCTION GOES HERE
+            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+            const NameArray = req.body.Search.split(" ");
+            // var AllNames = new Array;
 
-            // .. make sure they included a search field in the body
+            if (!req.body.Search) {
+                console.log('Missing search input');
+                return Common.resultErr(res, {message: 'Missing fields'});
+            }
 
-            // declare the database
+            
+            for(let name in NameArray){
+                if (NameArray.length === 2){
+                    const name_1 = NameArray[0]
+                    const name_2 = NameArray[1]
+                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2}, {_id: 1}).collation( { locale: 'en', strength: 1 } );
+                    if(CheckWholeName.hasOwnProperty(0) === true){
+                        res.json(CheckWholeName);
+                        break;
+                    }
+                    else{
+                        Account.find({$or: [{FirstName: name_1}, {FirstName: name_2}, {LastName: name_1}, {LastName: name_2}]}, {_id: 1}, function(err, profiles){
+                            res.json(profiles)}).collation( { locale: 'en', strength: 1 } )
+                        break;
+                    }
+                }
+                else{
+                    const nam = NameArray[name]
+                    Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
+                        res.json(profiles).collation( { locale: 'en', strength: 1 } )
+                        
+                    })
+                    // var OneName = Account.find({$or: [{FirstName: nam}, {LastName: nam}]})
+                    // AllNames[name] = OneName.toArray();
+                    // console.log(AllNames)
+                    // res.json(AllNames);
+                   
+                    break;
+                }
+        
 
-            // .. execute the search, remember not to return the entire profile object from the database... we dont want people getting the password, even if we screen that out on the front end
 
-
-
-
-        } catch(err) {
+            }
+        
+           
+            
+        } 
+        catch(err) {
             return Common.resultErr(res, err.message);           
         }
     }
