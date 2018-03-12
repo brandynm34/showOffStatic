@@ -35,14 +35,14 @@ const routes = [{
     path: 'public',
     component: PublicViewComponent
 },
-{
-    path: 'edit-portfolio',
-    component: EditPortfolioComponent
-},
-{
-    path: 'edit-profile',
-    component: EditProfileComponent
-},
+// {
+//     path: 'edit-portfolio',
+//     component: EditPortfolioComponent
+// },
+// {
+//     path: 'edit-profile',
+//     component: EditProfileComponent
+// },
 {
     path: 'adv-search',
     component: AdvancedSearchComponent

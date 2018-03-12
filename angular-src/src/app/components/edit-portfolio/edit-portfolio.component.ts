@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { DashboardComponent } from './../dashboard/dashboard.component';
+import { DashboardComponent } from './../dashboard/dashboard.component';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 import { JRLoginService} from './../../services/jr-login-service';
 import { FormsModule } from '@angular/forms';
@@ -36,17 +36,17 @@ export class EditPortfolioComponent implements OnInit {
   public updateSuccess = false;
 
   // constructor(private dash: DashboardComponent) { }
-  constructor ( private _portService: JRPortfolioService, private _login: JRLoginService) {}
+  constructor ( private dash: DashboardComponent, private _portService: JRPortfolioService, private _login: JRLoginService) {}
 
   ngOnInit() {
 
     // grab the logged in user
     this._loggedInUser = this._login.getAuth();
     // for now, manually assign until login service is finished
-    this._loggedInUser = {
-      Username: 'fleury14',
-      id: '5a9dc86c39578a0041844f58'
-    };
+    // this._loggedInUser = {
+    //   Username: 'fleury14',
+    //   id: '5a9dc86c39578a0041844f58'
+    // };
     console.log('current logged in user', this._loggedInUser);
 
     // when page loads, grab the necessary values from the database via the service and subscribe to them
@@ -116,10 +116,10 @@ export class EditPortfolioComponent implements OnInit {
 
   }
   closeModal() {
-    // this.dash.displayPortfolio = 'none';
+    this.dash.displayPortfolio = 'none';
   }
   save() {
-    // this.dash.displayPortfolio = 'none';
+    this.dash.displayPortfolio = 'none';
 
   }
 
