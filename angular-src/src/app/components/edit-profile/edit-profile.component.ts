@@ -17,6 +17,8 @@ export class EditProfileComponent implements OnInit {
   fieldFacebook: String;
   fieldPhoneNo: String;
   fieldAbout: String;
+  fieldFirstName: String;
+  fieldLastName: String;
 
   // logged in user
   loggedInUser = this._login.getAuth();
@@ -46,6 +48,13 @@ export class EditProfileComponent implements OnInit {
       this.placeholder.Icon = data.Icon;
       this.placeholder.SkillsArray = data.SkillsArray;
     });
+
+    this._login.getById(this.loggedInUser.id).subscribe(result => {
+      const data = result.json().data;
+      console.log('request results:', data);
+      this.fieldFirstName = data.FirstName;
+      this.fieldLastName = data.LastName;
+    });
   }
 
   update() {
@@ -67,6 +76,12 @@ export class EditProfileComponent implements OnInit {
       if (result.status === 200) {
         this.updateSuccess = true;
       }
+    });
+
+    // send profile info to profile service
+    this._login.updateProfileFromProfile(this.fieldFirstName, this.fieldLastName, this.fieldEmail,
+      this.loggedInUser.Username).subscribe(result => {
+      console.log('profile result: ', result);
     });
   }
 
