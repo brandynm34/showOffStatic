@@ -17,6 +17,10 @@ export class EditPortfolioComponent implements OnInit {
 
   // input fields used with ngModel
   public fieldEmail: string;
+  public fieldResume: string;
+  public fieldGithub: string;
+  public fieldLinkedin: string;
+
   // project fields;
   public fieldProj1Link: string;
   public fieldProj1SS: string;
@@ -52,7 +56,7 @@ export class EditPortfolioComponent implements OnInit {
     // when page loads, grab the necessary values from the database via the service and subscribe to them
     // NOTE: this will automatically grab the user on the service side, whether that is better or doing it here I'm not sure.
     this._portService.getPortfolioInfo().subscribe(result => {
-      console.log(result.json());
+      // console.log(result.json());
       const data = result.json().data;
       this.fieldEmail = data.Email;
       // loop through projects array and fill out the input forms
@@ -74,8 +78,17 @@ export class EditPortfolioComponent implements OnInit {
       }
     });
 
-    // Because some pertinent info is also in the user's registration table, do ther same service call to the login service
-    // NOTE: That doesnt exist yet becuase the login service isn't done
+    // pull login info
+    this._login.getById(this._loggedInUser.id).subscribe(result => {
+      const data = (result.json().data);
+      // console.log('data from profile db to portfolio', data.GitHubURL);
+
+      // console.log(this.fieldGithub, data.GitHubURL);
+      this.fieldGithub = data.GitHubURL;
+      this.fieldResume = data.ResumeURL;
+      this.fieldLinkedin = data.LinkedIn;
+
+    });
   } // end oninit
 
   update() {
@@ -108,7 +121,16 @@ export class EditPortfolioComponent implements OnInit {
 
     // console.log('object to send to db:', updatedPort);
     this._portService.updatePortfolio(updatedPort).subscribe(result => {
-      console.log(result);
+      // console.log(result);
+      if (result.status === 200) {
+        this.updateSuccess = true;
+      }
+    });
+
+    // send to DB
+    this._login.updateProfileFromPortfolio(this.fieldGithub, this.fieldResume, this.fieldLinkedin, this._loggedInUser.Username)
+    .subscribe(result => {
+      // console.log(result);
       if (result.status === 200) {
         this.updateSuccess = true;
       }
