@@ -39,7 +39,7 @@ export class EditProfileComponent implements OnInit {
     // get portfolio info for parsing:
     this._portfolio.getPortfolioInfo().subscribe(result => {
       const data = result.json().data;
-      console.log(data);
+      // console.log(data);
       this.fieldEmail = data.Email;
       this.fieldPhoneNo = data.PhoneNumber;
       this.fieldAbout = data.AboutBlurb;
@@ -51,7 +51,7 @@ export class EditProfileComponent implements OnInit {
 
     this._login.getById(this.loggedInUser.id).subscribe(result => {
       const data = result.json().data;
-      console.log('request results:', data);
+      // console.log('request results:', data);
       this.fieldFirstName = data.FirstName;
       this.fieldLastName = data.LastName;
     });
@@ -72,7 +72,7 @@ export class EditProfileComponent implements OnInit {
 
     // send to DB
     this._portfolio.updatePortfolio(dataToBeSent).subscribe(result => {
-      console.log(result);
+      // console.log(result);
       if (result.status === 200) {
         this.updateSuccess = true;
       }
@@ -81,7 +81,7 @@ export class EditProfileComponent implements OnInit {
     // send profile info to profile service
     this._login.updateProfileFromProfile(this.fieldFirstName, this.fieldLastName, this.fieldEmail,
       this.loggedInUser.Username).subscribe(result => {
-      console.log('profile result: ', result);
+      // console.log('profile result: ', result);
     });
   }
 
