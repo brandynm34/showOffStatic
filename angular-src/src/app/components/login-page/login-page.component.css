@@ -12,7 +12,7 @@ header {
     padding: 0%;
     min-height: 20%;
     background-position: center;
-    background-image: url("https://storage.googleapis.com/show_off/rawpixel-com-567026-unsplash.jpg");
+    background-image: url("/assets/img/website/login_pic.jpg");
     background-repeat: no-repeat;
     background-size : cover;
     position: relative;
