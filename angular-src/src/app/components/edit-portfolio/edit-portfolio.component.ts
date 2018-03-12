@@ -3,6 +3,7 @@ import { DashboardComponent } from './../dashboard/dashboard.component';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 import { JRLoginService} from './../../services/jr-login-service';
 import { FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-portfolio',
@@ -14,6 +15,7 @@ export class EditPortfolioComponent implements OnInit {
   private _listOfSkills = [];
   private _iconList = ['coder', 'front-end', 'cloud', 'mobile', 'networker'];
   private _loggedInUser;
+  form: FormGroup;
 
   // input fields used with ngModel
   public fieldEmail: string;

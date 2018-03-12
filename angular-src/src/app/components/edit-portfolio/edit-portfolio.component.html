@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="container-fluid">
-                        <form>
+                        <form  >
                             <!-- email and picute link  -->
                             <div class="row top-page">
                                 <div class= "col-md-6 form-label-group">
@@ -235,10 +235,13 @@
                             </div>
                             <!-- number of projects -->
                             <div class= "allProjects">
+                                <div class="alert alert-warning" *ngIf="project1 === ''">
+                                    You need at least one project to show up on the advance search.
+                                </div>
                                 <div class="form-group row">
                                     <label for="inputProj1Link" class="col-md-1.5 col-form-label">Project 1 Link:</label>
                                     <div class="form-group col-md-4">
-                                        <input type="text" id="inputProj1Link" name="fieldProj1Link" [(ngModel)]="fieldProj1Link" class="form-control" placeholder="">
+                                        <input type="text" id="inputProj1Link" name="fieldProj1Link" [(ngModel)]="fieldProj1Link" class="form-control" placeholder="" formControlName="project1">
                                     </div>
                                     <label for="inputProj1SS" class="col-md-1.5 col-form-label">Screenshot Link:</label>
                                     <div class="form-group col-md-4">
