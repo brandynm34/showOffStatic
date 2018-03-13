@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 // import {OverlayContainer} from "~@angular/material/theming";
 // import { PortfolioComponent } from './services/portfolio_component.service';
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     // this.overlayContainer.themeClass = newThemeClass;
   }
 
-  onClick(){
+  onClick() {
     this._jr.logoutUser();
   }
 }
