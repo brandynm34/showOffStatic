@@ -60,7 +60,7 @@ router.post('/register', function(req, res, next) {
                         return console.error(err);
                     } else {
                         console.log('User profile add successful.')
-                        res.json({message: 'User profile add successful.'})  
+                        res.json({message: 'User profile add successful.', id: newProfile.id})  
                     }
                 })
             }
