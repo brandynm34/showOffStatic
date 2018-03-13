@@ -19,6 +19,7 @@ export class JRLoginService {
     public authState = {
         Username: null,
         id: null,
+        token: null
     };
 
     constructor(private _http: Http, private router: Router) {
@@ -29,9 +30,10 @@ export class JRLoginService {
         return this._http.get(this._URL + url);
     }
 
-    storeAuth(username: String, id: String) {
+    storeAuth(username: String, id: String, token: String) {
         this.authState.Username = username;
         this.authState.id = id;
+        this.authState.token = token;
 
         // store id in localstorage
         // NOTE: THIS IS SUPER INSECURE AND SHOULD NOT GO LIVE
@@ -58,7 +60,8 @@ export class JRLoginService {
     logoutUser() {
         this.authState = {
              Username: null,
-             id: null
+             id: null,
+             token: null
          };
          // remove from localstorage
          localStorage.removeItem('loggedInUser');
@@ -85,7 +88,14 @@ export class JRLoginService {
 
     getById(id: String) {
         // const currentUserId = this.authState.id;
-        return this._http.get(this._URL + 'api-new/registration/getById/' + id);
+        const token = this.getAuth().token;
+        const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token});
+        const options = new RequestOptions({headers: headers});
+        return this._http.get(this._URL + 'api-new/registration/getById/' + id, options);
+    }
+
+    getToken() {
+        return this.authState.token;
     }
 
     updateProfileFromProfile(firstName: String, lastName: String, email: String, username: String) {
