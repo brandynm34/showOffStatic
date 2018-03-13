@@ -134,16 +134,36 @@ export class EditPortfolioComponent implements OnInit {
       if (result.status === 200) {
         this.updateSuccess = true;
       }
+
+
+    // // send profile info to portfolio service
+    // this._login.updatePortfolioFromPortfolio(this.fieldEmail).subscribe(result => {
+    //   // console.log('profile result: ', result);
+
+    // });
+
+    // // send to DB
+    // this._portfolio.updatePortfolio(dataToBeSent).subscribe(result => {
+    //   // console.log(result);
+    //   if (result.status === 200) {
+    //     this.updateSuccess = true;
+    //   }
+    // });
+
+    // // send profile info to profile service
+    // this._login.updateProfileFromProfile(this.fieldFirstName, this.fieldLastName, this.fieldEmail,
+    //   this.loggedInUser.Username).subscribe(result => {
+    //   // console.log('profile result: ', result);
     });
 
   }
+
   closeModal() {
     this.dash.displayPortfolio = 'none';
   }
   save() {
     this.dash.displayPortfolio = 'none';
 
-  }
-
+  };
 
 }
