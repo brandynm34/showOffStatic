@@ -59,3 +59,11 @@
 .alert{
     text-align: center;
 }
+.warning-close{
+    color: black;
+}
+.close2{
+    color: black;
+    margin: 0;
+    border-color: transparent;
+}
