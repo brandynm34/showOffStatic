@@ -65,11 +65,12 @@ h1 {
 }
 
 .search-result-button-2 {
-    background-color: #7ba4a8;
+    background-color: #a5c05b;
 }
 
 .search-result-button-3 {
-    background-color: #a5c05b;
+    background-color: #343a40;
+    color: #dddede;
 }
 
 .search-result-button-4 {
@@ -95,4 +96,7 @@ h5 {
 .search-result-button-row {
     display: flex;
     justify-content: center;
+}
+.result-name{
+    color: #343a40;
 }
