@@ -165,6 +165,6 @@ export class EditPortfolioComponent implements OnInit {
   save() {
     this.dash.displayPortfolio = 'none';
 
-  };
+  }
 
 }
