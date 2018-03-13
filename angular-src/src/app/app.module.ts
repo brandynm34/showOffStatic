@@ -8,6 +8,7 @@ import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { JRLoginService } from './services/jr-login-service';
 import { JRPortfolioService } from './services/portfolio/jr-portfolio-service';
+import { CanActivateRouteGuard } from './services/can-activate-route.guard';
 // import { PortfolioComponent } from './services/portfolio/portfolio_component.service';
 
 
@@ -23,7 +24,7 @@ import { JRPortfolioService } from './services/portfolio/jr-portfolio-service';
     ReactiveFormsModule
   ],
 
-  providers: [ JRLoginService, JRPortfolioService ],
+  providers: [ JRLoginService, JRPortfolioService, CanActivateRouteGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
