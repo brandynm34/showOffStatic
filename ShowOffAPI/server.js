@@ -4,6 +4,10 @@ const app = express();
 const mongoose = require('mongoose');
 const config = require('./config');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
+// test env
+console.log('env test', process.env.TEST);
 
 //registering routes
 const user_profile = require('./api/routes/user_profile');

@@ -2,8 +2,10 @@ const registrationModel = require('../models/user_profile');
 const Common = require('./common');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 10;
+const _JWTSECRET = process.env.JWTSECRET;
 
 class AccountController {
     constructor(router) {
@@ -123,6 +125,7 @@ class AccountController {
             // get the username from request body
             const inputtedUsername = req.body.Username;
             console.log('Attempting to Log in User:', inputtedUsername);
+            // console.log('secret:', _JWTSECRET);
 
             if(!inputtedUsername) {
                 console.log('Error: Request did not contain a user name.');
@@ -147,7 +150,8 @@ class AccountController {
             if (result) {
                 // if passwords match, return status 1 and the username...
                 console.log('Login successful');
-                res.json({status: 1, Username: req.body.Username, id: usernameCheck._id});
+                const token = jwt.sign({Username: req.body.Username, id: usernameCheck._id}, _JWTSECRET);
+                res.json({status: 1, token: token, Username: req.body.Username, id: usernameCheck._id});
             } else {
                 // ..otherwise, return status 3
                 console.log(`Password doesn't match`);

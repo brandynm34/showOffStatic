@@ -19,6 +19,7 @@ export class JRLoginService {
     public authState = {
         Username: null,
         id: null,
+        token: null
     };
 
     constructor(private _http: Http, private router: Router) {
@@ -29,9 +30,10 @@ export class JRLoginService {
         return this._http.get(this._URL + url);
     }
 
-    storeAuth(username: String, id: String) {
+    storeAuth(username: String, id: String, token: String) {
         this.authState.Username = username;
         this.authState.id = id;
+        this.authState.token = token;
 
         // store id in localstorage
         // NOTE: THIS IS SUPER INSECURE AND SHOULD NOT GO LIVE
