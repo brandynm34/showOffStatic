@@ -13,6 +13,7 @@ import { AdvancedSearchComponent } from './components/advanced-search/advanced-s
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { FourOhFourComponent } from './components/404-page/404-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { CanActivateRouteGuard } from './services/can-activate-route.guard';
 
 
 const routes = [{
@@ -21,7 +22,8 @@ const routes = [{
 },
 {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [CanActivateRouteGuard] 
 },
 {
     path: 'login-page',
