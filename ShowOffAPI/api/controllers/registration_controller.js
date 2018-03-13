@@ -10,11 +10,11 @@ const _JWTSECRET = process.env.JWTSECRET;
 class AccountController {
     constructor(router) {
         router.route('/registration/get')
-            .get(this.getAll);
+            .get(AccountController.tokenCheck, this.getAll);
         router.route('/registration/add')
             .post(this.add);
         router.route('/registration/update')
-            .post(this.update);
+            .post(AccountController.tokenCheck, this.update);
         router.route('/registration/login')
             .post(this.login);
         router.route('/registration/search')
@@ -22,10 +22,27 @@ class AccountController {
         router.route('/registration/getById/:id')
             .get(this.getById);
         router.route('/registration/partialUpdate')
-            .post(this.partialUpdate);
+            .post(AccountController.tokenCheck, this.partialUpdate);
     }
 
-    
+    static tokenCheck( req, res, next ) {
+         // check headers and get token
+         console.log('Checking for token?!:', req.headers['authorization']);
+         const token = req.headers['authorization'].substr(7);
+
+         // verify token
+         jwt.verify(token, _JWTSECRET, (err, decoded) => {
+             if(err) { 
+                 console.log('TOKEN FAIL!', err);
+                 return Common.resultForbidden(res);
+             }
+
+             if(decoded) { 
+                console.log('Token pass:', decoded); 
+                next();
+            } else { console.log('token fail'); }
+         })
+    }
 
     async test(req, res, next) {
         try { 
@@ -285,6 +302,28 @@ class AccountController {
             if (!req.params.id) {
                 return Common.resultErr(res, 'No User ID supplied')
             }
+
+            // check headers and get token
+            console.log('Checking for token?!:', req.headers['authorization']);
+            const token = req.headers['authorization'].substr(7);
+
+            // verify token
+            jwt.verify(token, _JWTSECRET, (err, decoded) => {
+                if(err) { 
+                    console.log('TOKEN FAIL!', err);
+                    return Common.resultForbidden(res);
+                }
+
+                if(decoded) {
+                    console.log('Token pass:', decoded);
+                    if ( req.params.id === decoded.id ) {
+                        console.log('Id from token and parameter match, get approved');
+                    } else {
+                        console.log('Token and param ID do not match, failing...');
+                        return Common.resultForbidden(res);
+                    }
+                } else { console.log('token fail'); }
+            })
 
             // get user id
             const userId = req.params.id;

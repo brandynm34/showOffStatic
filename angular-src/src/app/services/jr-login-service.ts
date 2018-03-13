@@ -88,7 +88,14 @@ export class JRLoginService {
 
     getById(id: String) {
         // const currentUserId = this.authState.id;
-        return this._http.get(this._URL + 'api-new/registration/getById/' + id);
+        const token = this.getAuth().token;
+        const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token});
+        const options = new RequestOptions({headers: headers});
+        return this._http.get(this._URL + 'api-new/registration/getById/' + id, options);
+    }
+
+    getToken() {
+        return this.authState.token;
     }
 
     updateProfileFromProfile(firstName: String, lastName: String, email: String, username: String) {
