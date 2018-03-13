@@ -42,13 +42,10 @@ export class AppComponent implements OnInit {
   onClickLogo() {
     this.currentUrl = this.router.url;
       if (this.currentUrl === '/') {
-        console.log('current URL is landing');
         return;
       } else if (this._jr.getAuth()) {
-        console.log('switching to dashboard');
         this.newRoute = '/dashboard';
       } else {
-        console.log('going no where');
         this.newRoute = '/';
       }
     }
