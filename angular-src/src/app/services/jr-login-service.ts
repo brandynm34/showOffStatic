@@ -60,7 +60,8 @@ export class JRLoginService {
     logoutUser() {
         this.authState = {
              Username: null,
-             id: null
+             id: null,
+             token: null
          };
          // remove from localstorage
          localStorage.removeItem('loggedInUser');
