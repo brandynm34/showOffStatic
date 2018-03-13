@@ -40,8 +40,9 @@ export class LoginPageComponent implements OnInit {
       console.log(result.json());
       if (result.json().status === 1) {
         console.log("Success");
+        console.log("Token:", result.json().token);
         this.router.navigate(["/dashboard"]);
-        this._jr.storeAuth(savedUsername, result.json().id);
+        this._jr.storeAuth(savedUsername, result.json().id, result.json().token);
       } else {
         console.log("nope");
       }
