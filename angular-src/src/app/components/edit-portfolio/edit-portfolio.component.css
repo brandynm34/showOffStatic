@@ -56,3 +56,13 @@
     margin: 0;
     color: white;
 }
+.close2{
+    color: black;
+    background: transparent;
+    border: none;
+}
+.projectAlert{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
