@@ -1,6 +1,9 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-dark">
     <div class="resizeCenter"> <!-- left div -->
-      <a href="/"><img class="logoResize" src="../assets/img/website/showoff-logo-no-border.png"></a>
+      <!-- <a routerLink="newRoute><img class="logoResize" src="../assets/img/website/showoff-logo-no-border.png"></a> -->
+      <a href="{{newRoute}}"*ngIf="authCheck()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"(click)="onClickLogo()">
+        <img class="logoResize" src="../assets/img/website/showoff-logo-no-border.png">
+      </a>
     </div>
     <div class="nav-right-div resizeCenter"> <!-- Right Div -->
         <form class="nav-bar-form form-inline ">
@@ -8,7 +11,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <div class="doubleButtons">
                     <button class="btn nav-bar-search-button" type="submit">Search</button>
-                    <button (click)="onClick()" class="logoff-button btn " type="submit">Log Off</button>
+                    <button (click)="onClickLogOut()" class="logoff-button btn " type="submit">Log Off</button>
                 </div>
             </ul>
         </form>

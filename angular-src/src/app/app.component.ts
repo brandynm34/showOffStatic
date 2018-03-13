@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 // import { PortfolioComponent } from './services/portfolio_component.service';
 
 import { JRLoginService } from './services/jr-login-service';
+// import { isDefined } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,19 +17,39 @@ export class AppComponent implements OnInit {
 
   title = 'app';
   themeClass: string;
+  newRoute: String;
+  currentUrl: String;
   // overlayContainer;
 
   constructor(
     // private overlayContainer: OverlayContainer
-  private _jr: JRLoginService) {}
+  private _jr: JRLoginService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     // subscribe to some source of theme change events, then...
     // this.themeClass = newThemeClass;
     // this.overlayContainer.themeClass = newThemeClass;
   }
 
-  onClick() {
+  onClickLogOut() {
     this._jr.logoutUser();
   }
+
+  authCheck() {
+    return this._jr.getAuth();
+  }
+
+  onClickLogo() {
+    this.currentUrl = this.router.url;
+      if (this.currentUrl === '/') {
+        console.log('current URL is landing');
+        return;
+      } else if (this._jr.getAuth()) {
+        console.log('switching to dashboard');
+        this.newRoute = '/dashboard';
+      } else {
+        console.log('going no where');
+        this.newRoute = '/';
+      }
+    }
 }
