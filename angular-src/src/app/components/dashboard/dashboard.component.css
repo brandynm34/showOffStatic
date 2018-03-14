@@ -28,12 +28,9 @@
     margin-right: 0;
 }
 
-@media only screen and (min-width: 1120px){
-    .col-lg-10 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 83.333333%;
-        flex: 0 0 83.333333%;
-        max-width: 83.333333%;
+@media only screen and (max-width: 1125px){
+    h2{
+        font-size: 27px;
     }
 }
 @media only screen and (max-width: 767px){
