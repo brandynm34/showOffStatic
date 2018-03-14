@@ -1,33 +1,7 @@
-/* .navbar .form-control {
-    padding: .75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
-    top: 100px;
-} */
 .nav-link{
     background: transparent;
     border-color: transparent;
 }
-
-/* .navbar-brand {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: 1rem;
-    background-color: rgba(0, 0, 0, .25);
-} */
-
-/* .form-control {
-    display: block;
-    font-size: 1rem;
-    line-height: 1.5;
-    border: 1px solid #ced4da;
-}
-
-.form-control-dark {
-    color: #fff;
-    background-color: rgba(255,255,255, .1);
-    border-color: rgba(255, 255, 255, .1);
-} */
 
 .sidebar {
     bottom: 0;
@@ -43,62 +17,17 @@
     padding-right: 0px;
 }
 
-/* 
-.sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-}
-
-.sidebar .nav-link.active {
-    color: #007bff;
-} */
-
-/* .sidebar-sticky {
-    position: fixed;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-
-} */
 .profilePic {
     border-radius: 50%;
     height: 150px;
     width: 150px;
     background-color: #007bff;
-    /* margin-left: 25px; */
-
 }
 
 .row{
     margin-right: 0;
 }
 
-
-
-/* @media only screen and (max-width: 1025px) {
-    .profilePic {
-        margin: 0px;
-    }
-} */
-/* @media only screen and (max-width: 1230px){
-    button{
-        padding-left: 12px;
-        margin-left: 12px;
-    }
-    h2{
-        font-size: 30px;
-    }
-
-} */
-/* @media only screen and (max-width: 1075px){
-    h2{
-        font-size: 25px;
-    }
-    .profilePic{
-        height: 125px;
-        width: 125px;
-    } 
-} */
 @media only screen and (min-width: 1120px){
     .col-lg-10 {
         -webkit-box-flex: 0;
@@ -114,16 +43,11 @@
         align-items: center;
         flex-direction: row;
         min-height: 5vh !important;
-        /* padding-right: 0px; */
-
     }
     .profilePic{
         height: 120px;
         width: 120px;
         margin-bottom: 10px;
-    }
-    .flex-column{
-        /* flex-direction: row !important; */
     }
     h2 {
         margin-bottom: 0;
@@ -131,10 +55,6 @@
     .nav-link .active {
         padding-top: 0;
     }
-    /* .one{ */
-        /* justify-content: row !important; */
-        /* align-self: flex-start; */
-    /* } */
 
 }
 
