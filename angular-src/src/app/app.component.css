@@ -1,20 +1,7 @@
 /* No CSS *//*# sourceMappingURL=app.component.css.map */
-:host {
-  display: block;
-  /* font-family: "Muli", sans-serif; */
-  background-color: #7BA4A8;
-  /* text-decoration-color: #A5C05B; */
-  color: #232122;
-  /* text-decoration-style: #7BA4A8;
-  border-top-color: #7BA4A8;
-  border-block-start-color: #7BA4A8;
-  border-right-color: #7BA4A8; */
-  text-decoration-color: #A5C05B;
-  font-family: "Roboto";
-}
 
 .outletContainer {
-  min-height: 93vh;
+  min-height: 92vh;
   -webkit-text-stroke-color: #232122; 
   /* overflow: hidden; */
 }

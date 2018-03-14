@@ -1,6 +1,9 @@
 const PortfolioModel = require('../models/portfolio');
 const Common = require('./common');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
+const _JWTSECRET = process.env.JWTSECRET;
 // const router = express.Router();
 
 class PortfolioController {
@@ -12,13 +15,41 @@ class PortfolioController {
         router.route('/portfolio/get/:id')
             .get(this.getById);
         router.route('/portfolio/update')
-            .post(this.update);
+            .post(PortfolioController.tokenCheck, this.update);
         router.route('/portfolio/delete')
             .delete(this.delete);
         router.route('/')
             .get(this.test);
     
     }
+
+    static tokenCheck( req, res, next ) {
+        // check headers and get token
+        console.log('Checking for token?!:', req.headers);
+        // maker sure theres an authorization header in the first place to avoid a substr error
+        if (!req.headers['authorization']) {
+            console.log('No authorization header detected, therefore there cannot be a token. Returning forbidden.');
+            return Common.resultForbidden(res);
+        }
+        const token = req.headers['authorization'].substr(7);
+
+        // verify token
+        jwt.verify(token, _JWTSECRET, (err, decoded) => {
+            if(err) { 
+                console.log('TOKEN FAIL!', err);
+                return Common.resultForbidden(res);
+            }
+            // make sure the token payload matches the user currently logged in
+            if(decoded) { 
+               console.log('Token decoding pass... checking against id:', decoded);
+               console.log(`Comparing ${decoded.id} vs ${req.body.User_ID}`);
+               if ( decoded.id !== req.body.User_ID ) {
+                   return Common.resultForbidden(res);
+               }
+               next();
+           } else { console.log('token fail'); }
+        })
+   }
 
     async test(req, res, next) {
         try { 
