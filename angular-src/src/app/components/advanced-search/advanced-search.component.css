@@ -1,5 +1,8 @@
+.outletContainer {
+    min-height: 89vh;
+}
+
 h1 {
-    margin-top: 50px;
     text-align: center;
 }
 
@@ -26,6 +29,7 @@ label {
 }
 
 .backButton2 {
+    padding-top: 10px;
     position: absolute;
     color: #DDDEDE;
 }

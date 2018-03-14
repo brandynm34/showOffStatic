@@ -28,9 +28,9 @@ img {
 .coverImage {
     background-size : cover;
     background-image: linear-gradient(rgba(0, 0, 0, 0.59)), url("/assets/img/website/reg_pic.jpg");
-    background-repeat: repeat;
-    background-position: stretch;
-    margin-top: -60px;
+    /* background-repeat: repeat; */
+    /* background-position: stretch; */
+    margin-top: -34px;
     margin-bottom: -100px;
     height: 97.9vh;
 }
@@ -42,7 +42,8 @@ img {
 
 .backButton4 {
     color: #DDDEDE;
-    margin-top: 75px;
+    margin-top: 34px;
+    padding-top: 10px;
 }
 
 form div {
