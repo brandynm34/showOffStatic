@@ -16,6 +16,8 @@ https://docs.google.com/presentation/d/1f5TEHBQ_OlqIcypt_0-Ulru63GfkFVNNx2lJa4_E
 ## Testing:
 https://docs.google.com/spreadsheets/d/1t-QXWnVOouUmPGcezcljBCcPsVxDxiKQk3XFspBYGhU/edit#gid=0
 
+## Technology Stack
+
 ### Front End
 - HTML
 - CSS
