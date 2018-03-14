@@ -8,18 +8,15 @@ import { JRLoginService } from './../../services/jr-login-service';
 export class JRPortfolioService implements OnInit {
 
     // This will eventually grab the logged in user from the login service.
-    // since the login service isn't done yet, we'll assign it manually for now
     private _loggedInUser;
-    public jr = '5a9dc86c39578a0041844f58';
 
-    // Adjust for mac/linux/non jr users as necessary. one day i will fix this lol
+    // Pull API URL from environment
     private _URL = environment.apiURL;
 
 
     // initialize http angular stuffs
     constructor(private _http: Http, private _login: JRLoginService) {
         this._loggedInUser = this._login.getAuth();
-        console.log('jr:', this._loggedInUser);
     }
 
     ngOnInit() {
@@ -42,9 +39,11 @@ export class JRPortfolioService implements OnInit {
             console.log('Error: Required field missing, aborting');
             return;
         }
+        // retrieve jwt
+        const token = this._login.getAuth().token;
 
         // make an api call to update the database with current values
-        const headers = new Headers({'Content-Type': 'application/json'});
+        const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/portfolio/update', data , options);
     }
