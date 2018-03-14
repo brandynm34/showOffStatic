@@ -9,7 +9,7 @@ export class CanActivateRouteGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // console.log('from canAuth', this.auth.getAuth())
-    if(this.auth.getAuth()) {
+    if (this.auth.getAuth()) {
         return true;
     } else {
     this.router.navigate(['landing']);
