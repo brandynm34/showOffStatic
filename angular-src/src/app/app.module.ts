@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RoutingComponents, RoutingModule } from './app.routing.module';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -21,7 +22,7 @@ import { CanActivateRouteGuard } from './services/can-activate-route.guard';
   imports: [
     BrowserModule, RoutingModule,
     FormsModule, HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, HttpClientModule
   ],
 
   providers: [ JRLoginService, JRPortfolioService, CanActivateRouteGuard ],
