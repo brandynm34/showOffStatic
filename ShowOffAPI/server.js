@@ -40,9 +40,10 @@ app.use( function( req, res, next ) {
        res.setHeader('Access-Control-Allow-Origin', origin);
   }
   // res.header( "Access-Control-Allow-Origin", "http://192.168.99.100:4200, http://localhost:4200" );
-  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, JR-Token, Content-Security-Policy" );
+  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, JR-Token, Content-Security-Policy, X-Frame-Options" );
   res.header( "Access-Control-Allow-Methods", "GET,POST,PUT,DELETE" );
-  res.header( "Content-Security-Policy", "")
+  res.header( "Content-Security-Policy", "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';" );
+  res.header( "X-Frame-Options", "DENY");
   next();
 } );
 
