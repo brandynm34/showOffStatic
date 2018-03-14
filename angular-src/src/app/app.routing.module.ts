@@ -23,7 +23,7 @@ const routes = [{
 {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [CanActivateRouteGuard] 
+    canActivate: [CanActivateRouteGuard]
 },
 {
     path: 'login-page',
