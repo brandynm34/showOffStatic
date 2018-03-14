@@ -101,6 +101,7 @@ export class JRLoginService {
     updateProfileFromProfile(firstName: String, lastName: String, email: String, username: String) {
         const loggedInUserName = this.authState.Username;
         // console.log('authstate', this.authState);
+        const token = this.getAuth().token;
 
         const dataToBeSent = {
             FirstName: firstName,
@@ -109,7 +110,7 @@ export class JRLoginService {
             Username: username
         };
 
-        const headers = new Headers({'Content-Type': 'application/json'});
+        const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/registration/partialUpdate', dataToBeSent, options);
     }
@@ -118,6 +119,8 @@ export class JRLoginService {
         const loggedInUserName = this.authState.Username;
         // console.log('authstate', this.authState);
 
+        const token = this.getAuth().token;
+
         const dataToBeSent = {
             GitHubURL: GitHubURL,
             ResumeURL: ResumeURL,
@@ -125,7 +128,7 @@ export class JRLoginService {
             Username: username
         };
 
-        const headers = new Headers({'Content-Type': 'application/json'});
+        const headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/registration/partialUpdate', dataToBeSent, options);
     }
