@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
       const result = res.json();
       console.log('result:', result);
       if (result.status === 1 ) {
-        this._jr.storeAuth(result.status, result.id);
+        this._jr.storeAuth(result.status, result.id, result.token);
         console.log('LOGIN SUCCESSFUL!!!!1');
       }
     });

@@ -4,6 +4,10 @@ const app = express();
 const mongoose = require('mongoose');
 const config = require('./config');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
+// test env
+console.log('env test', process.env.TEST);
 
 //registering routes
 const user_profile = require('./api/routes/user_profile');
@@ -34,7 +38,7 @@ app.use( function( req, res, next ) {
        res.setHeader('Access-Control-Allow-Origin', origin);
   }
   // res.header( "Access-Control-Allow-Origin", "http://192.168.99.100:4200, http://localhost:4200" );
-  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN" );
+  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, JR-Token" );
   res.header( "Access-Control-Allow-Methods", "GET,POST,PUT,DELETE" )
   next();
 } );
