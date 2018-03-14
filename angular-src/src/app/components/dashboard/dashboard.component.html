@@ -1,44 +1,43 @@
-<div class="container">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <div class="profilePic"></div>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" ><h2>
-              <span data-feather="home"></span>
-              Dashboard
-              <span class="sr-only">(current)</span>
-            </h2></a>
-          </li>
-          <li class="nav-item">
-            <button type="button"  class="nav-link" (click)="openEditProfileModal()">
-              <span><i class="fas fa-user"></i></span>
-              Edit Profile
-            </button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="nav-link" (click)="openEditPortfolioModal()">
-              <span><i class="far fa-edit"></i></span>
-              Edit Portfolio
-            </button>
-          </li>
-          <!-- <li class="nav-item">
-              <button type="button" class="nav-link" routerLink="/adv-search">
-                <span><i class="far fa-edit"></i></span>
-                Advance Search
-              </button>
-          </li> -->
-        </ul>
-      </div>
-    </nav>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" >
-    </main>
-    <!-- modal child components -->
-    <app-edit-profile [ngStyle]="{'display':displayProfile}"></app-edit-profile>
-    <app-edit-portfolio [ngStyle]="{'display':displayPortfolio}"></app-edit-portfolio>
 
-  </div>
+<div class="row">
+  <nav class=" col-sm-12 col-md-3 col-lg-2 sidebar">
+
+    <div class="profilePic"></div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" ><h2>
+          <span data-feather="home"></span>
+          Dashboard
+          <span class="sr-only">(current)</span>
+        </h2></a>
+      </li>
+      <li class="nav-item">
+        <button type="button"  class="nav-link" (click)="openEditProfileModal()">
+          <span><i class="fas fa-user"></i></span>
+          Edit Profile
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="nav-link" (click)="openEditPortfolioModal()">
+          <span><i class="far fa-edit"></i></span>
+          Edit Portfolio
+        </button>
+      </li>
+      <!-- <li class="nav-item">
+          <button type="button" class="nav-link" routerLink="/adv-search">
+            <span><i class="far fa-edit"></i></span>
+            Advance Search
+          </button>
+      </li> -->
+    </ul>
+
+    </nav>
+  <main class="col-sm-12 col-md-9 col-lg-10 ">
+  </main>
+  <!-- modal child components -->
+  <app-edit-profile [ngStyle]="{'display':displayProfile}"></app-edit-profile>
+  <app-edit-portfolio [ngStyle]="{'display':displayPortfolio}"></app-edit-portfolio>
+
 </div>
 
 

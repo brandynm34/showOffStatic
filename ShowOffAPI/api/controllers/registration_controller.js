@@ -27,7 +27,12 @@ class AccountController {
 
     static tokenCheck( req, res, next ) {
          // check headers and get token
-         console.log('Checking for token?!:', req.headers['authorization']);
+         console.log('Checking for token?!:', req.headers);
+         // maker sure theres an authorization header in the first place to avoid a substr error
+         if (!req.headers['authorization']) {
+             console.log('No authorization header detected, therefore there cannot be a token. Returning forbidden.');
+             return Common.resultForbidden(res);
+         }
          const token = req.headers['authorization'].substr(7);
 
          // verify token
