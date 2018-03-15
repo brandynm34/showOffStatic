@@ -16,6 +16,14 @@ h1 {
     transition: 0.5s all; 
 }
 
+.search-result-hover-space {
+    transition: 0.5s all;
+}
+
+.search-result-hover-space:hover {
+    background-color: #8cb5b9
+}
+
 .search-result:hover {
     background-color: #7ba4a8;
 }
@@ -37,6 +45,11 @@ h1 {
     width: 150px;
     margin-top: 10px;
     border: 3px solid #7ba4a8; 
+}
+
+#resultIcon img {
+    height: 100%;
+    width: 100%;
 }
 
 .search-result-flex {
