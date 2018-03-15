@@ -1,0 +1,72 @@
+.middle-page{
+    margin-top: .5em;
+}
+.form-label-group, .about-me {
+    margin-top: 1em;
+}
+
+.save {
+    margin-top: 1em;
+    width: 300px;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{
+    font-size:17px;
+    line-height:1.6;
+}
+
+.modal-dialog {
+    max-width: 750px;
+    display: flex;
+    align-items: center;
+    margin-top: 3em;
+}
+.modal{
+    display:none;
+    z-index:1;
+    left: 0;
+    top:0;
+    height: 100%;
+    width:100%;
+    overflow: auto;
+    background-color: rgba(27, 20, 20, 0.77);
+}
+  
+.modal-content{
+    background-color:#DDDEDE;
+    width:750px;
+    animation-name:modalopen;
+    animation-duration:1s;
+}
+  
+.modal-header h2, .modal-footer h3{
+    margin:0;
+}
+  
+.modal-header{
+    background:#343a40!important;
+    padding: .3em;
+    /* color:#fff; */
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-between;
+    align-items: center;
+    
+}
+
+.close {
+    margin: 0;
+    color: white;
+    
+} 
+
+.profilePic, img{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+} 
