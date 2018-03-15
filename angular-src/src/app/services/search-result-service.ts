@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
-import { Http, Headers, RequestOptions } from '@angular/http';
 
 
 
@@ -14,9 +13,9 @@ export class SearchResultsService {
     searchResults = [];
     private _URL = environment.apiURL;
 
-    constructor( private _http: HttpClient, private _oldhttp: Http ) {}
+    constructor( private _http: HttpClient ) {}
 
-    initiateBasicSearch(Search: string) {
+    public initiateBasicSearch(Search: string) {
         const body = {
             Search: Search
         };
@@ -28,10 +27,20 @@ export class SearchResultsService {
         return this._http.post(this._URL + 'api-new/registration/search', body, HttpOptions);
     }
 
-    initiateBasicSearchOld(Search: String) {
-        const headers = new Headers({'Content-type': 'application/json'});
-        const options = new RequestOptions({headers: headers});
+    public resultReset() {
+        this.searchResults = [];
+    }
 
-        return this._oldhttp.post(this._URL + 'api-new/registration/search', Search, options);
+    public addResult(result: string) {
+        this.searchResults.push(result);
+    }
+
+    public checkResults() {
+        console.log('Current search results:', this.searchResults);
+        return this.searchResults.length;
+    }
+
+    public getResults() {
+        return this.searchResults;
     }
 }
