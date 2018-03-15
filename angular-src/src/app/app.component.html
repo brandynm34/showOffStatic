@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-dark">
     <div class="resizeCenter"> <!-- left div -->
       <!-- <a routerLink="newRoute><img class="logoResize" src="../assets/img/website/showoff-logo-no-border.png"></a> -->
-      <a href="{{newRoute}}"*ngIf="authCheck()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"(click)="onClickLogo()">
+      <a href="{{newRoute}}" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"(click)="onClickLogo()">
         <img class="logoResize" src="../assets/img/website/showoff-logo-no-border.png">
       </a>
     </div>
