@@ -19,7 +19,7 @@ class PortfolioController {
         router.route('/portfolio/delete')
             .delete(this.delete);
         router.route('/portfolio/updatePhoto/:id')
-            .post(this.updatePhoto);
+            .post(PortfolioController.tokenCheck, this.updatePhoto);
         router.route('/')
             .get(this.test);
     
