@@ -1,8 +1,42 @@
-.nav-link{
+.nav-link, button{
     background: transparent;
     border-color: transparent;
 }
 
+/* .picButton, img{
+    position: relative;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+} */
+.picButton:focus{
+    outline: none;
+}
+.profilePic, img {
+    position: relative;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: #343a40;
+}
+.hoverWords{
+    display: none;
+    color: white;
+    position: absolute;
+    top: 45%;
+    right: 13%;
+    /* top: 66px;
+    right: 20px; */
+
+    
+
+
+    /* transform: translate(-50%, -50%); */
+}
+.picButton:hover .hoverWords{
+    display: block;
+    
+}
 .sidebar {
     bottom: 0;
     left: 0;
@@ -16,13 +50,14 @@
     flex-direction: column;
     padding-right: 0px;
 }
-
-.profilePic {
+/* 
+.profilePic, img {
+    position: relative;
     border-radius: 50%;
     height: 150px;
     width: 150px;
     background-color: #007bff;
-}
+} */
 
 .row{
     margin-right: 0;
@@ -41,7 +76,7 @@
         flex-direction: row;
         min-height: 5vh !important;
     }
-    .profilePic{
+    .profilePic, img{
         height: 120px;
         width: 120px;
         margin-bottom: 10px;
@@ -51,6 +86,10 @@
     }
     .nav-link .active {
         padding-top: 0;
+    }
+    .hoverWords{
+        top: 40%;
+        right: 3%;
     }
 
 }

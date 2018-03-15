@@ -1,13 +1,18 @@
 
 <div class="row">
   <nav class=" col-sm-12 col-md-3 col-lg-2 sidebar">
-
-    <div class="profilePic"></div>
+    <button type="button" class="picButton"  (click)="openEditPictureModal()">
+      <div class="profilePic">
+        <img src="../assets/img/website/employees.png" alt="">
+        <div class="hoverWords"> Change Picture </div>
+      </div>  
+    </button>
+    <!-- <div class="profilePic"></div> -->
     <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link active" ><h2>
           <span data-feather="home"></span>
-          Dashboard
+            Dashboard
           <span class="sr-only">(current)</span>
         </h2></a>
       </li>
@@ -35,6 +40,7 @@
   <main class="col-sm-12 col-md-9 col-lg-10 ">
   </main>
   <!-- modal child components -->
+  <app-pic-modal [ngStyle]="{'display':displayPicture}"></app-pic-modal>
   <app-edit-profile [ngStyle]="{'display':displayProfile}"></app-edit-profile>
   <app-edit-portfolio [ngStyle]="{'display':displayPortfolio}"></app-edit-portfolio>
 
