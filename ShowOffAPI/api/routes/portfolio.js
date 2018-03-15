@@ -36,6 +36,7 @@ router.post('/', (req, res, next) =>{
         Facebook: req.body.Facebook,
         Twitter: req.body.Twitter,
         Icon: req.body.Icon,
+        Website: req.body.Website,
         PhoneNumber: req.body.PhoneNumber,
         Projects: req.body.Projects,
         Theme: req.body.Theme

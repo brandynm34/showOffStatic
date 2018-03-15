@@ -103,6 +103,7 @@ class PortfolioController {
             const AboutBlurb = req.body.AboutBlurb ? req.body.AboutBlurb : null;
             const Facebook = req.body.Facebook ? req.body.Facebook : null;
             const Twitter = req.body.Twitter ? req.body.Twitter : null;
+            const Website = req.body.Website ? req.body.Website : null;
             const PhoneNumber = req.body.PhoneNumber ? req.body.PhoneNumber : '5595551234';
             const Projects = req.body.Projects ? req.body.Projects : [];
             const Theme = req.body.Theme ? req.body.Theme : 'Basic';
@@ -127,6 +128,7 @@ class PortfolioController {
                 Facebook: Facebook,
                 Twitter: Twitter,
                 Icon: req.body.Icon,
+                Website: req.body.Website,
                 SkillsArray: req.body.SkillsArray,
                 PhoneNumber: PhoneNumber,
                 Projects: Projects,
@@ -181,6 +183,7 @@ class PortfolioController {
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
                 Icon: `Keyboard`,
+                Website: 'yourWebsite.com',
                 SkillsArray: {
                     angular: false,
                     bootstrap: false,
