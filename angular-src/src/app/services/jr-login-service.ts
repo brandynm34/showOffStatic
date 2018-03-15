@@ -3,6 +3,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router, CanActivate } from '@angular/router';
 import { stringify } from '@angular/compiler/src/util';
 import { environment } from './../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Injectable()
 
@@ -22,7 +25,7 @@ export class JRLoginService {
         token: null
     };
 
-    constructor(private _http: Http, private router: Router) {
+    constructor(private _http: Http, private _httpClient: HttpClient, private router: Router) {
 
     }
 
@@ -47,14 +50,31 @@ export class JRLoginService {
         return JSON.parse(localStorage.getItem('loggedInUser'));
     }
 
+    // This is using the old angular http module
+    // TODO: Rewrite all other functions using old http module to newer one
+    // loginPostOld(username: String, password: String) {
+    //     const body = {
+    //         Username: username,
+    //         Password: password
+    //     };
+    //     const headers = new Headers({'Content-Type': 'application/json'});
+    //     const options = new RequestOptions({headers: headers});
+    //     return this._http.post(this._URL + 'api-new/registration/login', body , options);
+    // }
+
     loginPost(username: String, password: String) {
         const body = {
             Username: username,
             Password: password
         };
-        const headers = new Headers({'Content-Type': 'application/json'});
-        const options = new RequestOptions({headers: headers});
-        return this._http.post(this._URL + 'api-new/registration/login', body , options);
+
+        const HttpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+
+        return this._httpClient.post(this._URL + 'api-new/registration/login', body, HttpOptions);
     }
 
     logoutUser() {
