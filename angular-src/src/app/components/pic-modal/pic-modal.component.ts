@@ -43,6 +43,6 @@ export class PicModalComponent implements OnInit {
   
 
   onSubmit() {
-    this.dash.displayPicture = 'none'
+    // this.dash.displayPicture = 'none'
   }
 }

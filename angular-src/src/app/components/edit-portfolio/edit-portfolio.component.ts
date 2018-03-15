@@ -157,7 +157,7 @@ export class EditPortfolioComponent implements OnInit {
     //   this.loggedInUser.Username).subscribe(result => {
     //   // console.log('profile result: ', result);
     // });
-    this.dash.displayPortfolio = 'none'
+    // this.dash.displayPortfolio = 'none'
 
   }
 
