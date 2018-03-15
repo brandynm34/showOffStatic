@@ -250,6 +250,8 @@ class AccountController {
 
     async search(req, res, next) {
         try {
+            console.log('search endpoint hit');
+
             const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
             const NameArray = req.body.Search.split(" ");
             // var AllNames = new Array;
@@ -258,7 +260,6 @@ class AccountController {
                 console.log('Missing search input');
                 return Common.resultErr(res, {message: 'Missing fields'});
             }
-
             
             for(let name in NameArray){
                 if (NameArray.length === 2){
