@@ -104,7 +104,7 @@ class PortfolioController {
             const PhoneNumber = req.body.PhoneNumber ? req.body.PhoneNumber : '5595551234';
             const Projects = req.body.Projects ? req.body.Projects : [];
             const Theme = req.body.Theme ? req.body.Theme : 'Basic';
-            const UserPhoto =req.body.UserPhoto ? req.bod.UserPhoto: '../assets/img/website/employees.png'
+            const UserPhoto =req.body.UserPhoto ? req.body.UserPhoto: './../../../angular-src/src/assets/img/website/employees.png';
 
             console.log('Updating portfolio for user:', req.body.Email);
 
