@@ -99,7 +99,9 @@ h2{
     height: 175px;
     width: 175px;
     border-radius: 50%;
-    background-color: #232122;
+    background-color:transparartize(#232122, .75);
+    background-image:url( "./../../../assets/img/website/employees.png");
+    background-repeat: no-repeat;
     margin-bottom: 20px;
 }
 
