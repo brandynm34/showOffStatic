@@ -11,7 +11,7 @@ WORKDIR /home/node/server
 COPY package.json /home/node/server
 
 # install noDEMON so that server restarts upon file change
-RUN npm install -g nodemon@1.7.0
+RUN npm install -g nodemon
 
 # install dependencies, using no-bin-links avoid symlink errors
 # TODO: there may be a better way to avoid this

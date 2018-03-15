@@ -18,6 +18,8 @@ class PortfolioController {
             .post(PortfolioController.tokenCheck, this.update);
         router.route('/portfolio/delete')
             .delete(this.delete);
+        router.route('/portfolio/updatePhoto/:id')
+            .post(PortfolioController.tokenCheck, this.updatePhoto);
         router.route('/')
             .get(this.test);
     
@@ -264,7 +266,34 @@ class PortfolioController {
         } catch(err) {
             return Common.resultErr(res, err.message);
         }
-    } 
+    }
+    
+    async updatePhoto(req, res, next) {
+        try {
+            console.log('Update photo endpoint hit');
+
+            // make sure photo is included
+            if (!req.body.UserPhoto) {
+                console.log ('Error: update photo attempted without photo');
+                return Common.resultErr(res, 'No photo supplied');
+            }
+            
+            // get id
+            const id = req.params.id;
+
+            // declare collections
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
+
+            // update query
+            console.log('Initiating photo update.');
+            await Portfolio.update({User_ID: id}, {UserPhoto: req.body.UserPhoto});
+
+            res.json({result: 'Photo update success...'});
+
+        } catch (err) {
+            return Common.resultErr(res, err.message);
+        }
+    }
 }
 
 module.exports = PortfolioController;
