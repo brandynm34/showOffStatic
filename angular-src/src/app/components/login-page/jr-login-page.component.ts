@@ -25,14 +25,14 @@ export class LoginPageComponent implements OnInit {
     // this._jr.getAPIMessage('api/test').subscribe(message => {
     //   console.log('result:', message.json());
     // });
-    this._jr.loginPost('fleury14', 'password').subscribe(res => {
-      const result = res.json();
-      console.log('result:', result);
-      if (result.status === 1 ) {
-        this._jr.storeAuth(result.status, result.id, result.token);
-        console.log('LOGIN SUCCESSFUL!!!!1');
-      }
-    });
+    // this._jr.loginPost('fleury14', 'password').subscribe(res => {
+    //   const result = res.json();
+    //   console.log('result:', result);
+    //   if (result.status === 1 ) {
+    //     this._jr.storeAuth(result.status, result.id, result.token);
+    //     console.log('LOGIN SUCCESSFUL!!!!1');
+    //   }
+    // });
   }
 
   public loginVal(AC: AbstractControl) {
