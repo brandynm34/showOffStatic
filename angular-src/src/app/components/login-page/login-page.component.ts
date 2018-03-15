@@ -37,12 +37,12 @@ export class LoginPageComponent implements OnInit {
     const savedPassword = this.form.value.password;
 
     this._jr.loginPost(savedUsername, savedPassword).subscribe(result => {
-      console.log(result.json());
-      if (result.json().status === 1) {
+      console.log(result);
+      if (result['status'] === 1) {
         console.log("Success");
-        console.log("Token:", result.json().token);
+        console.log("Token:", result['token']);
         this.router.navigate(["/dashboard"]);
-        this._jr.storeAuth(savedUsername, result.json().id, result.json().token);
+        this._jr.storeAuth(savedUsername, result['id'], result['token']);
       } else {
         console.log("nope");
       }
