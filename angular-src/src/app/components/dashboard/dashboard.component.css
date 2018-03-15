@@ -12,6 +12,9 @@
 .picButton:focus{
     outline: none;
 }
+img{
+    object-fit: contain;
+}
 .profilePic, img {
     position: relative;
     border-radius: 50%;
