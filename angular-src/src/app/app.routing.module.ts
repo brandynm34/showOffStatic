@@ -39,7 +39,7 @@ const routes = [{
     component: PublicViewComponent
 },
 {
-    path: 'public:id',
+    path: 'public/:id',
     component: PublicViewComponent
 },
 // {

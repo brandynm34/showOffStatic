@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,OnDestroy } from '@angular/core';
 import { SearchResultsService } from './../../services/search-result-service';
 import { JRLoginService } from './../../services/jr-login-service';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
@@ -8,11 +8,22 @@ import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-serv
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
 
   public resultsArr = [];
   public resultsInfo = [];
+  public iconLinks = {
+    'coder': './../../../assets/img/personal-icons/monitor-2.png',
+    'front-end': './../../../assets/img/personal-icons/monitor-3.png',
+    'cloud': './../../../assets/img/personal-icons/network.png',
+    'mobile': './../../../assets/img/personal-icons/responsive-design-symbol.png',
+    'networker': './../../../assets/img/personal-icons/meeting.png'
+  };
   constructor(private _searchEngine: SearchResultsService, private _login: JRLoginService, private _portfolio: JRPortfolioService) { }
+
+  ngOnDestroy() {
+    this._searchEngine.resultReset();
+  }
 
   ngOnInit() {
     this.resultsArr = this._searchEngine.getResults();
