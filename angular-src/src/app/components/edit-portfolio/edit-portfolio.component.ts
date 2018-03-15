@@ -65,13 +65,14 @@ export class EditPortfolioComponent implements OnInit {
         this['fieldProj' + (index + 1) + 'SS'] = data.Projects[index].ss;
       }
       // loop through the skills array and check the apporpriate boxes
-      for (const key of data.SkillsArray) {
+      for (const key in data.SkillsArray) {
         this._listOfSkills.unshift(key);
         if (data.SkillsArray[key] === true) {
           (<HTMLInputElement>document.getElementById('defaultCheck' + key)).checked = true;
         }
-        return;
+
       }
+
       // coder, front-end, cloud, mobile, networker
       this.fieldIconRadio = data.Icon;
       if (this._iconList.indexOf(this.fieldIconRadio) < 0) {
@@ -119,7 +120,6 @@ export class EditPortfolioComponent implements OnInit {
       } // end for
 
       updatedPort['User_ID'] = this._loggedInUser.id;
-
     // console.log('object to send to db:', updatedPort);
     this._portService.updatePortfolio(updatedPort).subscribe(result => {
       // console.log(result);
@@ -135,6 +135,7 @@ export class EditPortfolioComponent implements OnInit {
       if (result.status === 200) {
         this.updateSuccess = true;
       }
+    });
 
 
     // // send profile info to portfolio service
@@ -155,7 +156,7 @@ export class EditPortfolioComponent implements OnInit {
     // this._login.updateProfileFromProfile(this.fieldFirstName, this.fieldLastName, this.fieldEmail,
     //   this.loggedInUser.Username).subscribe(result => {
     //   // console.log('profile result: ', result);
-    });
+    // });
 
   }
 

@@ -235,6 +235,7 @@ class AccountController {
                 } else {
                     newProfile.save(function(err, newProfile) {
                         if (err) {
+                            console.log('mongo error', err);
                             return console.error(err);
                         } else {
                             console.log('User profile add successful.')
@@ -309,27 +310,27 @@ class AccountController {
                 return Common.resultErr(res, 'No User ID supplied')
             }
 
-            // check headers and get token
-            console.log('Checking for token?!:', req.headers['authorization']);
-            const token = req.headers['authorization'].substr(7);
+            // // check headers and get token
+            // console.log('Checking for token?!:', req.headers['authorization']);
+            // const token = req.headers['authorization'].substr(7);
 
-            // verify token
-            jwt.verify(token, _JWTSECRET, (err, decoded) => {
-                if(err) { 
-                    console.log('TOKEN FAIL!', err);
-                    return Common.resultForbidden(res);
-                }
+            // // verify token
+            // jwt.verify(token, _JWTSECRET, (err, decoded) => {
+            //     if(err) { 
+            //         console.log('TOKEN FAIL!', err);
+            //         return Common.resultForbidden(res);
+            //     }
 
-                if(decoded) {
-                    console.log('Token pass:', decoded);
-                    if ( req.params.id === decoded.id ) {
-                        console.log('Id from token and parameter match, get approved');
-                    } else {
-                        console.log('Token and param ID do not match, failing...');
-                        return Common.resultForbidden(res);
-                    }
-                } else { console.log('token fail'); }
-            })
+            //     if(decoded) {
+            //         console.log('Token pass:', decoded);
+            //         if ( req.params.id === decoded.id ) {
+            //             console.log('Id from token and parameter match, get approved');
+            //         } else {
+            //             console.log('Token and param ID do not match, failing...');
+            //             return Common.resultForbidden(res);
+            //         }
+            //     } else { console.log('token fail'); }
+            // })
 
             // get user id
             const userId = req.params.id;

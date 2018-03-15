@@ -48,8 +48,15 @@ export class AppComponent implements OnInit {
     console.log('Search Value:', this.fieldSearch);
     this._searchEngine.initiateBasicSearch(this.fieldSearch).subscribe(result => {
       console.log('Search Result:', result);
-    });
-  }
+      for (const resultItem in result) {
+        console.log('Item iteration', result[resultItem]);
+        this._searchEngine.addResult(result[resultItem]._id);
+      }
+      if (this._searchEngine.checkResults() > 0) {
+        this.router.navigate(['/search-results']);
+      } // end if
+    }); // end subscribe
+  } // end basicsearch
 
   onClickLogo() {
     this.currentUrl = this.router.url;
