@@ -61,7 +61,7 @@ class AccountController {
 
     async partialUpdate(req, res, next) {
         try {
-        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'ResumeURL'];
+        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'Website'];
         // as of right now, this is a blatant partial update allowing any updates to the database,
         // if (req.body.Password || req.body.Username) {
         //     // we're not allowing a change of username of password, so if its in the body, break immediately
@@ -107,7 +107,7 @@ class AccountController {
             // go over non-required fields to avoid errors
             const GitHubURL = req.body.GitHubURL ? req.body.GitHubURL : null;
             const LinkedIn = req.body.LinkedIn ? req.body.LinkedIn : null;
-            const ResumeURL = req.body.ResumeURL ? req.body.ResumeURL : null;
+            const Website = req.body.Website ? req.body.Website : null;
 
             console.log('Updating profile for user:', req.body.Email);
 
@@ -126,7 +126,7 @@ class AccountController {
                 SelectedTheme: req.body.SelectedTheme,
                 GitHubURL: GitHubURL,
                 LinkedIn: LinkedIn,
-                ResumeURL: ResumeURL,
+                Website: Website,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
             })
@@ -250,6 +250,8 @@ class AccountController {
 
     async search(req, res, next) {
         try {
+            console.log('search endpoint hit');
+
             const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
             const NameArray = req.body.Search.split(" ");
             // var AllNames = new Array;
@@ -258,13 +260,12 @@ class AccountController {
                 console.log('Missing search input');
                 return Common.resultErr(res, {message: 'Missing fields'});
             }
-
             
             for(let name in NameArray){
                 if (NameArray.length === 2){
                     const name_1 = NameArray[0]
                     const name_2 = NameArray[1]
-                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2}, {_id: 1}).collation( { locale: 'en', strength: 1 } );
+                let CheckWholeName = await Account.find({FirstName: /.*name_1*/ , LastName: /.*name_2*/}, {_id: 1}).collation( { locale: "en", strength: 1 } );
                     if(CheckWholeName.hasOwnProperty(0) === true){
                         res.json(CheckWholeName);
                         break;
@@ -277,10 +278,10 @@ class AccountController {
                 }
                 else{
                     const nam = NameArray[name]
-                    Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
-                        res.json(profiles).collation( { locale: 'en', strength: 1 } )
+                Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
+                        res.json(profiles);
                         
-                    })
+                    }).collation( { locale: "en", strength: 1 } );
                     // var OneName = Account.find({$or: [{FirstName: nam}, {LastName: nam}]})
                     // AllNames[name] = OneName.toArray();
                     // console.log(AllNames)

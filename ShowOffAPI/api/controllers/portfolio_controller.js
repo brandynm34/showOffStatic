@@ -18,6 +18,8 @@ class PortfolioController {
             .post(PortfolioController.tokenCheck, this.update);
         router.route('/portfolio/delete')
             .delete(this.delete);
+        router.route('/portfolio/updatePhoto/:id')
+            .post(PortfolioController.tokenCheck, this.updatePhoto);
         router.route('/')
             .get(this.test);
     
@@ -101,6 +103,7 @@ class PortfolioController {
             const AboutBlurb = req.body.AboutBlurb ? req.body.AboutBlurb : null;
             const Facebook = req.body.Facebook ? req.body.Facebook : null;
             const Twitter = req.body.Twitter ? req.body.Twitter : null;
+            const Website = req.body.Website ? req.body.Website : null;
             const PhoneNumber = req.body.PhoneNumber ? req.body.PhoneNumber : '5595551234';
             const Projects = req.body.Projects ? req.body.Projects : [];
             const Theme = req.body.Theme ? req.body.Theme : 'Basic';
@@ -124,6 +127,7 @@ class PortfolioController {
                 Facebook: Facebook,
                 Twitter: Twitter,
                 Icon: req.body.Icon,
+                Website: req.body.Website,
                 SkillsArray: req.body.SkillsArray,
                 PhoneNumber: PhoneNumber,
                 Projects: Projects,
@@ -178,6 +182,7 @@ class PortfolioController {
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
                 Icon: `Keyboard`,
+                Website: 'yourWebsite.com',
                 SkillsArray: {
                     angular: false,
                     bootstrap: false,
@@ -264,7 +269,34 @@ class PortfolioController {
         } catch(err) {
             return Common.resultErr(res, err.message);
         }
-    } 
+    }
+    
+    async updatePhoto(req, res, next) {
+        try {
+            console.log('Update photo endpoint hit');
+
+            // make sure photo is included
+            if (!req.body.UserPhoto) {
+                console.log ('Error: update photo attempted without photo');
+                return Common.resultErr(res, 'No photo supplied');
+            }
+            
+            // get id
+            const id = req.params.id;
+
+            // declare collections
+            const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
+
+            // update query
+            console.log('Initiating photo update.');
+            await Portfolio.update({User_ID: id}, {UserPhoto: req.body.UserPhoto});
+
+            res.json({result: 'Photo update success...'});
+
+        } catch (err) {
+            return Common.resultErr(res, err.message);
+        }
+    }
 }
 
 module.exports = PortfolioController;

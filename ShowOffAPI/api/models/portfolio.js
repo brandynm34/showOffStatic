@@ -12,6 +12,7 @@ const portfolioSchema = new Schema({
     Twitter: { type:String, required: false},
     // Icon: { data: Buffer, contentType: String},
     Icon: { type:String, required: true},
+    Website: { type:String },
     SkillsArray: {type:Object, required: true},
     PhoneNumber: { type:String, required: false},
     Projects: { type:[{link:String, ss:String}], required: false},

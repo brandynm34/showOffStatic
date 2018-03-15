@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import {OverlayContainer} from "~@angular/material/theming";
 // import { PortfolioComponent } from './services/portfolio_component.service';
 
+import { SearchResultsService } from './services/search-result-service';
+import { FormsModule } from '@angular/forms';
 import { JRLoginService } from './services/jr-login-service';
 // import { isDefined } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
@@ -21,9 +23,12 @@ export class AppComponent implements OnInit {
   currentUrl: String;
   // overlayContainer;
 
+  // search field
+  public fieldSearch;
+
   constructor(
     // private overlayContainer: OverlayContainer
-  private _jr: JRLoginService, private router: Router) {}
+  private _jr: JRLoginService, private router: Router, private _searchEngine: SearchResultsService) {}
 
   ngOnInit() {
     // subscribe to some source of theme change events, then...
@@ -37,6 +42,13 @@ export class AppComponent implements OnInit {
 
   authCheck() {
     return this._jr.getAuth();
+  }
+
+  public basicSearch() {
+    console.log('Search Value:', this.fieldSearch);
+    this._searchEngine.initiateBasicSearch(this.fieldSearch).subscribe(result => {
+      console.log('Search Result:', result);
+    });
   }
 
   onClickLogo() {
