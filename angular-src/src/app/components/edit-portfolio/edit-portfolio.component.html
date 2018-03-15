@@ -10,61 +10,56 @@
                 <div class="container">
                     <div class="container-fluid">
                         <form>
-                            <!-- email and picute link  -->
-                            <div class="row top-page">
-                                <div class= "col-md-6 form-label-group">
-                                    <label for="inputEmail">Email:</label>
-                                    <input type="text" id="inputEmail" name="fieldEmail" class="form-control" [(ngModel)]="fieldEmail" placeholder="">
-                                </div>
-                                <div class= "col-md-6 form-label-group">
-                                    <label for="inputPicLink">Picture Link:</label>
-                                    <input type="text" id="inputPicLink" class="form-control" placeholder="">
-                                </div>
+                          <!-- email -->
+                          <!-- <div class="row top-page"> -->
+                          <div class= "form-label-group">
+                              <label for="inputEmail">Email:</label>
+                              <input type="text" id="inputEmail" name="fieldEmail" class="form-control" [(ngModel)]="fieldEmail" placeholder="">
+                          </div>
+
+                          <!-- personal icons -->
+                          <div class="personalIcon">
+                              <label for="inputIcon">Pick a personal icon:</label>
+                              <fieldset class="form-group">
+                                  <div class="row">
+                                  <div class="col-md-2">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" id="gridRadios1" value="coder" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
+                                          <label class="form-check-label" for="gridRadios1"><img src="assets/img/personal-icons/monitor-2.png" alt=""></label>
+                                      </div>
+                                      </div>
+                                      <div class="col-md-2">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" id="gridRadios2" value="front-end" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
+                                          <label class="form-check-label" for="gridRadios2"><img src="assets/img/personal-icons/monitor-3.png" alt=""></label>
+                                      </div>
+                                      </div>
+                                      <div class="col-md-2">
+                                      <div class="form-check ">
+                                          <input class="form-check-input" type="radio" id="gridRadios3" value="cloud" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
+                                          <label class="form-check-label" for="gridRadios3"><img src="assets/img/personal-icons/network.png" alt=""></label>
+                                      </div>
+                                      </div>
+                                      <div class="col-md-2">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" id="gridRadios4" value="mobile" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
+                                          <label class="form-check-label" for="gridRadios4"><img src="assets/img/personal-icons/responsive-design-symbol.png" alt=""></label>
+                                      </div>
+                                      </div>
+                                      <div class="col-md-2">
+                                      <div class="form-check">
+                                          <input class="form-check-input" type="radio" id="gridRadios5" value="networker" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
+                                          <label class="form-check-label" for="gridRadios5"><img src="assets/img/personal-icons/meeting.png" alt=""></label>
+                                      </div>
+                                      </div>
+                                  </div>
+                              </fieldset>
                             </div>
 
-                            <!-- personal icons -->
-                            <div class="personalIcon">
-                                <label for="inputIcon">Pick a personal icon:</label>
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios1" value="coder" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
-                                            <label class="form-check-label" for="gridRadios1"><img src="assets/img/personal-icons/monitor-2.png" alt=""></label>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios2" value="front-end" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
-                                            <label class="form-check-label" for="gridRadios2"><img src="assets/img/personal-icons/monitor-3.png" alt=""></label>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="radio" id="gridRadios3" value="cloud" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
-                                            <label class="form-check-label" for="gridRadios3"><img src="assets/img/personal-icons/network.png" alt=""></label>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios4" value="mobile" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
-                                            <label class="form-check-label" for="gridRadios4"><img src="assets/img/personal-icons/responsive-design-symbol.png" alt=""></label>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="gridRadios5" value="networker" name="fieldIconRadio" [(ngModel)]="fieldIconRadio">
-                                            <label class="form-check-label" for="gridRadios5"><img src="assets/img/personal-icons/meeting.png" alt=""></label>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-
-                            <!-- resume url -->
+                            <!-- website url -->
                             <div class= "form-label-group">
-                                <label for="inputResume">Resume Link:</label>
-                                <input type="text" id="inputResume" name="fieldResume" [(ngModel)]="fieldResume" class="form-control" placeholder="">
+                                <label for="inputWebsite">Website:</label>
+                                <input type="text" id="inputWebsite" name="fieldWebsite" [(ngModel)]="fieldWebsite" class="form-control" placeholder="yourWebsite.com">
                             </div>
                             <!-- Github -->
                             <div class= "form-label-group">
@@ -315,7 +310,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary">Save</button> 
+                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary">Save</button>
             </div>
             <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
         </div>
