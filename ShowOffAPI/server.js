@@ -47,7 +47,7 @@ app.use( function( req, res, next ) {
   var allowedOrigins = ['http://192.168.99.100:4200', 'http://localhost:4200'];
   var origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){
-       res.setHeader('Access-Control-Allow-Origin', origin);
+       res.header('Access-Control-Allow-Origin', origin);
   }
   // res.header( "Access-Control-Allow-Origin", "http://192.168.99.100:4200, http://localhost:4200" );
   res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, Content-Security-Policy, X-Frame-Options" );
@@ -73,6 +73,7 @@ app.use( function( req, res, next ) {
 app.use(function (req, res, next) {
   console.log('API hit');
   console.log('cookie test?: ', req.session);
+  console.log('body', req.body);
   next();
 });
 
