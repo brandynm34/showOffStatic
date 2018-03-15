@@ -3,8 +3,11 @@ const router = express.Router();
 const app = express();
 const mongoose = require('mongoose');
 const config = require('./config');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 require('dotenv').config();
+app.disable('x-powered-by');
 
 // test env
 console.log('env test', process.env.TEST);
@@ -17,6 +20,15 @@ const port = process.env.PORT || 8100;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// cookie-session middleware to enable cookies that will eventually hold login info
+app.use(cookieSession({
+  name: 'session',
+  keys: [ process.env.COOKIESECRET ],
+ 
+  // Cookie Options
+  maxAge: 2 * 60 * 60 * 1000 // 2 hours
+}))
 
 // CONNECT TO DATABASE
 mongoose.connect(config.database, { useMongoClient: true});
@@ -38,8 +50,10 @@ app.use( function( req, res, next ) {
        res.setHeader('Access-Control-Allow-Origin', origin);
   }
   // res.header( "Access-Control-Allow-Origin", "http://192.168.99.100:4200, http://localhost:4200" );
-  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, JR-Token" );
-  res.header( "Access-Control-Allow-Methods", "GET,POST,PUT,DELETE" )
+  res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, Content-Security-Policy, X-Frame-Options" );
+  res.header( "Access-Control-Allow-Methods", "GET,POST,PUT,DELETE" );
+  res.header( "Content-Security-Policy", "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';" );
+  res.header( "X-Frame-Options", "DENY");
   next();
 } );
 
@@ -57,7 +71,8 @@ app.use( function( req, res, next ) {
 // API ROUTING
 // middleware to use for all requests
 app.use(function (req, res, next) {
-  console.log('using router');
+  console.log('API hit');
+  console.log('cookie test?: ', req.session);
   next();
 });
 

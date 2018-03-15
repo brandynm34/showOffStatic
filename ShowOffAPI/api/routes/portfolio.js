@@ -29,7 +29,8 @@ router.post('/', (req, res, next) =>{
     }
 
     let newPortfolio = new Portfolio({
-        Email: req.body.name,
+        Email: req.body.Email,
+        UserPhoto: req.body.UserPhoto,
         _id: req.body._id,
         AboutBlurb: req.body.AboutBlurb,
         Facebook: req.body.Facebook,
