@@ -17,8 +17,8 @@
                                     <input type="text" id="inputEmail" name="fieldEmail" class="form-control" [(ngModel)]="fieldEmail" placeholder="">
                                 </div>
                                 <div class= "col-md-6 form-label-group">
-                                    <label for="inputPicLink">Picture Link:</label>
-                                    <input type="text" id="inputPicLink" class="form-control" placeholder="">
+                                    <label for="inputWebsite">Website:</label>
+                                    <input type="text" id="inputWebsite" name="fieldWebsite" class="form-control" [(ngModel)]="fieldWebsite" placeholder="">
                                 </div>
                             </div>
 
@@ -61,10 +61,10 @@
                                 </fieldset>
                             </div>
 
-                            <!-- resume url -->
+                            <!-- website url -->
                             <div class= "form-label-group">
-                                <label for="inputResume">Resume Link:</label>
-                                <input type="text" id="inputResume" name="fieldResume" [(ngModel)]="fieldResume" class="form-control" placeholder="">
+                                <label for="inputWebsite">Website:</label>
+                                <input type="text" id="inputWebsite" name="fieldWebsite" [(ngModel)]="fieldWebsite" class="form-control" placeholder="yourWebsite.com">
                             </div>
                             <!-- Github -->
                             <div class= "form-label-group">
@@ -315,7 +315,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary">Save</button> 
+                <button type="button" (click)="update()" class="save btn btn-md btn-block btn-secondary">Save</button>
             </div>
             <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
         </div>

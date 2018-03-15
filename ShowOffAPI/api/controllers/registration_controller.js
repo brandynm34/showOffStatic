@@ -61,7 +61,7 @@ class AccountController {
 
     async partialUpdate(req, res, next) {
         try {
-        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'ResumeURL'];
+        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'Website'];
         // as of right now, this is a blatant partial update allowing any updates to the database,
         // if (req.body.Password || req.body.Username) {
         //     // we're not allowing a change of username of password, so if its in the body, break immediately
@@ -107,7 +107,7 @@ class AccountController {
             // go over non-required fields to avoid errors
             const GitHubURL = req.body.GitHubURL ? req.body.GitHubURL : null;
             const LinkedIn = req.body.LinkedIn ? req.body.LinkedIn : null;
-            const ResumeURL = req.body.ResumeURL ? req.body.ResumeURL : null;
+            const Website = req.body.Website ? req.body.Website : null;
 
             console.log('Updating profile for user:', req.body.Email);
 
@@ -126,7 +126,7 @@ class AccountController {
                 SelectedTheme: req.body.SelectedTheme,
                 GitHubURL: GitHubURL,
                 LinkedIn: LinkedIn,
-                ResumeURL: ResumeURL,
+                Website: Website,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
             })
