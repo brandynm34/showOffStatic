@@ -17,7 +17,7 @@ export class EditPortfolioComponent implements OnInit {
 
   // input fields used with ngModel
   public fieldEmail: string;
-  public fieldResume: string;
+  public fieldWebsite: string;
   public fieldGithub: string;
   public fieldLinkedin: string;
 
@@ -86,7 +86,7 @@ export class EditPortfolioComponent implements OnInit {
 
       // console.log(this.fieldGithub, data.GitHubURL);
       this.fieldGithub = data.GitHubURL;
-      this.fieldResume = data.ResumeURL;
+      this.fieldWebsite = data.Website;
       this.fieldLinkedin = data.LinkedIn;
 
     });
@@ -129,7 +129,7 @@ export class EditPortfolioComponent implements OnInit {
     });
 
     // send to DB
-    this._login.updateProfileFromPortfolio(this.fieldGithub, this.fieldResume, this.fieldLinkedin, this._loggedInUser.Username)
+    this._login.updateProfileFromPortfolio(this.fieldGithub, this.fieldWebsite, this.fieldLinkedin, this._loggedInUser.Username)
     .subscribe(result => {
       // console.log(result);
       if (result.status === 200) {
