@@ -9,50 +9,23 @@
                 <div class="container">
                     <div class="container-fluid">  
                         <div class="profilePic">
-                            <img src="../assets/img/website/employees.png" alt="">
+                            <img [src]="url" alt=" ">
                         </div>  
                         <hr>
                         <div class="alert alert-info" role="alert">
                             Your picture needs to be imported as a square
                         </div>
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                        </div>
-                        <!-- <form>
-                            <div class="form-group">  -->
-                              <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-                              <!-- <input type="file" class="form-control-file" > -->
-                            <!-- </div> -->
-                            <!-- <div class="input-group mb-3"> -->
-                                <!-- <div class="input-group-prepend">
-                                  <span class="input-group-text">Upload</span>
-                                </div> -->
-                                <!-- <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div> -->
-                            <!-- </div> -->
-                            
-                           
-                        <!-- </form> -->
-                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                            <!-- <div class="form-group">
-                              <label for="name">Name</label>
-                              <input type="text" class="form-control" id="name" placeholder="Bob" formControlName="name">
-                            </div> -->
-                            <div class="form-group">
-                              <!-- <label for="avatar">Avatar</label> -->
-                              <input type="file" id="profile_pic" (change)="onFileChange($event)" #fileInput>
-                              <!-- <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button> -->
-                            </div>
-                            <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
-                            <!-- <button type="button" class="save btn btn-md btn-block btn-secondary" (ngSubmit)="onSubmit()">Save</button>  -->
+                        </div> -->
+                        <form>
+                            <input type='file' (change)="readUrl($event)" >
                         </form>
                     </div>
                 </div>
             </div>
             <div class="modal-footer"> 
-                <!-- <button type="button" class="save btn btn-md btn-block btn-secondary" (ngSubmit)="onSubmit()">Save</button>  -->
+                <button type="button" class="save btn btn-md btn-block btn-secondary" (ngSubmit)="onSubmit()">Save</button> 
             </div>
             <!-- <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div> -->
         </div>

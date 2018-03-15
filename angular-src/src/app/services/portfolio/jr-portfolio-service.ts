@@ -29,7 +29,7 @@ export class JRPortfolioService implements OnInit {
         // front end as pass that in as a paramter. Which is better? *shrug*
         return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser.id);
     }
-
+    
     getPortfolioById(id: string) {
         // this function pulls the portfolio by the id based on the input given as opposed to the current logged in user
         return this._http.get(this._URL + 'api-new/portfolio/get/' + id);

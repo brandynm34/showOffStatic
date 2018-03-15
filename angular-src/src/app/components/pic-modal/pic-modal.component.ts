@@ -10,47 +10,39 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular
 export class PicModalComponent implements OnInit {
   display = 'block';
   form: FormGroup;
-  loading: boolean = false;
+  UserPhoto: String;
+  PhotoName: String;
+  // loading: boolean = false;
+  url = '../assets/img/website/employees.png';
   @ViewChild('fileInput') fileInput: ElementRef;
-  constructor(private dash: DashboardComponent, fb: FormBuilder) {
-    // this.form = fb.group(
-    //   {
-    //     fileInput: ['', Validators.required, Validators ]
-    //   })
-    // this.createForm()
-    this.form = fb.group({
-      // name: ['', Validators.required],
-      profile_pic: null
-    })   
-   }
+  constructor(private dash: DashboardComponent, fb: FormBuilder) {}
  
   ngOnInit() {
   }
   closeModal() {
     this.dash.displayPicture = 'none' ;
   }
-  onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.form.get('profile_pic').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
+ 
+  readUrl(event:any) {
+    let file = event.target.files[0]
+
+    if (event.target.files && event.target.files[0]) {
+      console.log(file)
+      var reader = new FileReader();
+      
+  
+      reader.onload = (event:any) => {
+        this.url = event.target.result;
+
+        console.log('file uploaded', file)
+        console.log('file name', file.name)
+      }
+      reader.readAsDataURL(event.target.files[0]);
     }
   }
+  
+
   onSubmit() {
-    const formModel = this.form.value;
-    this.loading = true;
-    // this.http.post('apiUrl', formModel)
-    setTimeout(() => {
-      console.log(formModel);
-      alert('done!');
-      this.loading = false;
-    }, 1000);
+
   }
 }
