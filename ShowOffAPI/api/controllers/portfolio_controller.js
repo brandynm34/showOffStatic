@@ -77,6 +77,7 @@ class PortfolioController {
             const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
 
             // make the database call
+            console.log('Grabbing portfolio update with id ', req.params.id);
             const data = await Portfolio.findOne({User_ID: userId});
             if (!data) {
                 return Common.resultNotFound(res)
