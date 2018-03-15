@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,OnDestroy } from '@angular/core';
 import { SearchResultsService } from './../../services/search-result-service';
 import { JRLoginService } from './../../services/jr-login-service';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
@@ -8,7 +8,7 @@ import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-serv
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
 
   public resultsArr = [];
   public resultsInfo = [];
@@ -20,6 +20,10 @@ export class SearchResultsComponent implements OnInit {
     'networker': './../../../assets/img/personal-icons/meeting.png'
   };
   constructor(private _searchEngine: SearchResultsService, private _login: JRLoginService, private _portfolio: JRPortfolioService) { }
+
+  ngOnDestroy() {
+    this._searchEngine.resultReset();
+  }
 
   ngOnInit() {
     this.resultsArr = this._searchEngine.getResults();
@@ -44,8 +48,6 @@ export class SearchResultsComponent implements OnInit {
           entry.portfolio['skillCount'] = skillCount;
           this.resultsInfo.push(entry);
           console.log('SR info ARR =>', this.resultsInfo);
-          // console.log(document.getElementById('resultIcon'));
-          // document.getElementById('resultIcon').style.backgroundImage = this.iconLinks[entry.portfolio['Icon']];
         });
       });
     });
