@@ -6,11 +6,13 @@
           <button class="btn btn-secondary" routerLink="/adv-search">Back to Search</button>
       </div>
   </div>
-  <div class="search-result container" *ngFor="let result of resultsInfo" routerLink="/public">
-      <div class="container-fluid">
+  <div class="search-result container" *ngFor="let result of resultsInfo" [routerLink]="['/public', result.portfolio.User_ID]">
+      <div class="container-fluid search-result-hover-space">
           <div class="row">
               <div class="col-sm-3 search-result-flex">
-                  <div class="search-result-icon-circle"></div>
+                  <div id="resultIcon" class="search-result-icon-circle">
+                      <img src="{{ iconLinks[result.portfolio['Icon']] }}" alt="">
+                  </div>
               </div> <!-- end icon section -->
               <div class="col-sm-9 search-result-middle">
                   <div class="search-results-stats-row">

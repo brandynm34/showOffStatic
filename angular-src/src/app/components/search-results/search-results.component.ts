@@ -12,6 +12,13 @@ export class SearchResultsComponent implements OnInit {
 
   public resultsArr = [];
   public resultsInfo = [];
+  public iconLinks = {
+    'coder': './../../../assets/img/personal-icons/monitor-2.png',
+    'front-end': './../../../assets/img/personal-icons/monitor-3.png',
+    'cloud': './../../../assets/img/personal-icons/network.png',
+    'mobile': './../../../assets/img/personal-icons/responsive-design-symbol.png',
+    'networker': './../../../assets/img/personal-icons/meeting.png'
+  };
   constructor(private _searchEngine: SearchResultsService, private _login: JRLoginService, private _portfolio: JRPortfolioService) { }
 
   ngOnInit() {
@@ -37,6 +44,8 @@ export class SearchResultsComponent implements OnInit {
           entry.portfolio['skillCount'] = skillCount;
           this.resultsInfo.push(entry);
           console.log('SR info ARR =>', this.resultsInfo);
+          // console.log(document.getElementById('resultIcon'));
+          // document.getElementById('resultIcon').style.backgroundImage = this.iconLinks[entry.portfolio['Icon']];
         });
       });
     });
