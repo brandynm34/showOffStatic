@@ -38,6 +38,10 @@ const routes = [{
     path: 'public',
     component: PublicViewComponent
 },
+{
+    path: 'public:id',
+    component: PublicViewComponent
+},
 // {
 //     path: 'edit-portfolio',
 //     component: EditPortfolioComponent

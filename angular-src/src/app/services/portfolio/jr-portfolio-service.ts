@@ -30,6 +30,11 @@ export class JRPortfolioService implements OnInit {
         return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser.id);
     }
 
+    getPortfolioById(id: string) {
+        // this function pulls the portfolio by the id based on the input given as opposed to the current logged in user
+        return this._http.get(this._URL + 'api-new/portfolio/get/' + id);
+    }
+
     updatePortfolio(data) {
         // function to update the portfolio
         // console.log('recieved data in service to upate with the following object:', data);
