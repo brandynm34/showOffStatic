@@ -14,6 +14,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { FourOhFourComponent } from './components/404-page/404-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CanActivateRouteGuard } from './services/can-activate-route.guard';
+import { PicModalComponent } from './components/pic-modal/pic-modal.component';
 
 
 const routes = [{
@@ -37,6 +38,10 @@ const routes = [{
     path: 'public',
     component: PublicViewComponent
 },
+{
+    path: 'public:id',
+    component: PublicViewComponent
+},
 // {
 //     path: 'edit-portfolio',
 //     component: EditPortfolioComponent
@@ -44,6 +49,10 @@ const routes = [{
 // {
 //     path: 'edit-profile',
 //     component: EditProfileComponent
+// },
+// {
+//     path: 'pic-modal',
+//     component: PicModalComponent
 // },
 {
     path: 'adv-search',
@@ -77,4 +86,4 @@ export class RoutingModule {}
 
 export const RoutingComponents = [ LandingComponent, AppComponent, FourOhFourComponent, DashboardComponent,
      LoginPageComponent, RegisterPageComponent, PublicViewComponent, ForgotPasswordComponent,
-     EditPortfolioComponent, EditProfileComponent, AdvancedSearchComponent, SearchResultsComponent ];
+     EditPortfolioComponent, EditProfileComponent, AdvancedSearchComponent, SearchResultsComponent, PicModalComponent ];
