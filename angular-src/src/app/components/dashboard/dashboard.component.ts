@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   displayProfile = 'none';
   displayPortfolio = 'none';
+  displayPicture = 'none';
   constructor() {}
 
   ngOnInit() {
@@ -19,6 +20,10 @@ export class DashboardComponent implements OnInit {
 
   openEditPortfolioModal() {
     this.displayPortfolio = 'block';
+  }
+  openEditPictureModal(){
+    this.displayPicture = 'block';
+    console.log('diplayed', this.displayPicture)
   }
 }
 
