@@ -1,12 +1,12 @@
 <div>
   <h1>Search Results</h1>
-  <div class="search-result" *ngIf="resultsArr.length === 0">
+  <div class="search-result" *ngIf="resultsInfo.length === 0">
       <div class="search-result-none-found">
           <h2>Nothing found. Try to broaden your search.</h2>
           <button class="btn btn-secondary" routerLink="/adv-search">Back to Search</button>
       </div>
   </div>
-  <div class="search-result container" *ngFor="let result of resultsArr" routerLink="/public">
+  <div class="search-result container" *ngFor="let result of resultsInfo" routerLink="/public">
       <div class="container-fluid">
           <div class="row">
               <div class="col-sm-3 search-result-flex">
@@ -17,22 +17,22 @@
                       <div class="container">
                           <div class="row search-result-stat-button-row">
                               <div class="col-md-3 col-sm-6">
-                                  <button class="search-result-button-1">Skills: 20</button>
+                                  <button class="search-result-button-1">Skills: {{ result.portfolio.skillCount }}</button>
                               </div>
                               <div class="col-md-3 col-sm-6">
-                                  <button class="search-result-button-2">Projects: 6</button>
+                                  <button class="search-result-button-2">Projects: {{ result.portfolio.Projects.length }}</button>
                               </div>
                               <div class="col-md-3 col-sm-6">
-                                  <button class="search-result-button-3">LinkedIn: Yes</button>
+                                  <button class="search-result-button-3">LinkedIn: {{ result.profile.LinkedIn && 'Yes' || 'No' }}</button>
                               </div>
                               <div class="col-md-3 col-sm-6">
-                                  <button class="search-result-button-4">Github: Yes</button> 
+                                  <button class="search-result-button-4">Github: {{ result.profile.GitHubURL && 'Yes' || 'No' }}</button> 
                               </div>
                           </div> <!-- end row -->
                       </div> <!-- end container -->
                   </div> <!-- end stats row -->
                   <div class="search-result-name-container">
-                      <h2 class="result-name">J.R. Ruggiero</h2>
+                      <h2 class="result-name">{{ result.profile.FirstName }} {{ result.profile.LastName }}</h2>
                   </div>
               </div> <!-- end name section -->
           </div><!-- end row -->
