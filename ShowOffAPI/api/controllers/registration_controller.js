@@ -61,7 +61,7 @@ class AccountController {
 
     async partialUpdate(req, res, next) {
         try {
-        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'ResumeURL'];
+        const listOfField = ['Email', 'FirstName', 'GitHubURL', 'LastName', 'LinkedIn', 'Website'];
         // as of right now, this is a blatant partial update allowing any updates to the database,
         // if (req.body.Password || req.body.Username) {
         //     // we're not allowing a change of username of password, so if its in the body, break immediately
@@ -107,7 +107,7 @@ class AccountController {
             // go over non-required fields to avoid errors
             const GitHubURL = req.body.GitHubURL ? req.body.GitHubURL : null;
             const LinkedIn = req.body.LinkedIn ? req.body.LinkedIn : null;
-            const ResumeURL = req.body.ResumeURL ? req.body.ResumeURL : null;
+            const Website = req.body.Website ? req.body.Website : null;
 
             console.log('Updating profile for user:', req.body.Email);
 
@@ -126,7 +126,7 @@ class AccountController {
                 SelectedTheme: req.body.SelectedTheme,
                 GitHubURL: GitHubURL,
                 LinkedIn: LinkedIn,
-                ResumeURL: ResumeURL,
+                Website: Website,
                 FirstName: req.body.FirstName,
                 LastName: req.body.LastName,
             })
@@ -235,6 +235,7 @@ class AccountController {
                 } else {
                     newProfile.save(function(err, newProfile) {
                         if (err) {
+                            console.log('mongo error', err);
                             return console.error(err);
                         } else {
                             console.log('User profile add successful.')
@@ -309,27 +310,27 @@ class AccountController {
                 return Common.resultErr(res, 'No User ID supplied')
             }
 
-            // check headers and get token
-            console.log('Checking for token?!:', req.headers['authorization']);
-            const token = req.headers['authorization'].substr(7);
+            // // check headers and get token
+            // console.log('Checking for token?!:', req.headers['authorization']);
+            // const token = req.headers['authorization'].substr(7);
 
-            // verify token
-            jwt.verify(token, _JWTSECRET, (err, decoded) => {
-                if(err) { 
-                    console.log('TOKEN FAIL!', err);
-                    return Common.resultForbidden(res);
-                }
+            // // verify token
+            // jwt.verify(token, _JWTSECRET, (err, decoded) => {
+            //     if(err) { 
+            //         console.log('TOKEN FAIL!', err);
+            //         return Common.resultForbidden(res);
+            //     }
 
-                if(decoded) {
-                    console.log('Token pass:', decoded);
-                    if ( req.params.id === decoded.id ) {
-                        console.log('Id from token and parameter match, get approved');
-                    } else {
-                        console.log('Token and param ID do not match, failing...');
-                        return Common.resultForbidden(res);
-                    }
-                } else { console.log('token fail'); }
-            })
+            //     if(decoded) {
+            //         console.log('Token pass:', decoded);
+            //         if ( req.params.id === decoded.id ) {
+            //             console.log('Id from token and parameter match, get approved');
+            //         } else {
+            //             console.log('Token and param ID do not match, failing...');
+            //             return Common.resultForbidden(res);
+            //         }
+            //     } else { console.log('token fail'); }
+            // })
 
             // get user id
             const userId = req.params.id;

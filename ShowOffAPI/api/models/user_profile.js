@@ -8,7 +8,7 @@ const UserProfileSchema = new Schema({
     SelectedTheme: { type: String, required: true },
     GitHubURL: { type: String, required: false },
     LinkedIn: { type: String, required: false },
-    ResumeURL: { type: String, required: false },
+    Website: { type: String, required: false },
     Email: { type:String, required: true, unique: true },
     FirstName: { type: String, required: true },
     LastName: { type: String, required: true },
