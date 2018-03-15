@@ -264,7 +264,7 @@ class AccountController {
                 if (NameArray.length === 2){
                     const name_1 = NameArray[0]
                     const name_2 = NameArray[1]
-                    let CheckWholeName = await Account.find({FirstName: name_1 , LastName: name_2}, {_id: 1}).collation( { locale: 'en', strength: 1 } );
+                let CheckWholeName = await Account.find({FirstName: /.*name_1*/ , LastName: /.*name_2*/}, {_id: 1}).collation( { locale: "en", strength: 1 } );
                     if(CheckWholeName.hasOwnProperty(0) === true){
                         res.json(CheckWholeName);
                         break;
@@ -277,10 +277,10 @@ class AccountController {
                 }
                 else{
                     const nam = NameArray[name]
-                    Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
-                        res.json(profiles).collation( { locale: 'en', strength: 1 } )
+                Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
+                        res.json(profiles);
                         
-                    })
+                    }).collation( { locale: "en", strength: 1 } );
                     // var OneName = Account.find({$or: [{FirstName: nam}, {LastName: nam}]})
                     // AllNames[name] = OneName.toArray();
                     // console.log(AllNames)
