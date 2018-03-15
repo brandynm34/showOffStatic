@@ -1,17 +1,24 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { JRLoginService } from './../../services/jr-login-service';
+import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 
 @Component({
   selector: 'app-public-view',
   templateUrl: './public-view.component.html',
   styleUrls: ['./public-view.component.css']
 })
+
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
   private _numOfSkills = 0;
   private _numOfProjects = 0;
   public skillsArr = [];
   public projectsArr = [];
-  constructor() { }
+  // this is a object for the json
+  public portfolioData;
+  public profileData;
+  public stuff;
+  constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService) {  }
 
   ngOnInit() {
     for (let i = 0; i < this._numOfSkills; i++) {
@@ -21,6 +28,22 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this._numOfProjects; i++) {
       this.projectsArr.push('Project!');
     }
+    this._portfolio_service.getPortfolioInfo().subscribe(PortData => {
+      // this initializes a json object
+      this.portfolioData = PortData.json().data;
+      this.stuff = this.portfolioData.User_ID;
+      // used this for testing:
+      console.log('this is data', this.portfolioData);
+
+      this._login_service.getById(this.stuff).subscribe(logInData => {
+        // this initializes a json object
+        this.profileData = logInData.json().data;
+        // used this for testing:
+        console.log('this is login', this.profileData);
+      });
+
+    });
+
   }
 
   ngAfterViewInit() {

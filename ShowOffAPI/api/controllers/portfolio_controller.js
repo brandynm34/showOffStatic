@@ -172,6 +172,7 @@ class PortfolioController {
             // create object that will pushed into the database
             const newPortfolio = new Portfolio({
                 Email: req.body.Email,
+                UserPhoto: './../../../angular-src/src/assets/img/website/employees.png',
                 User_ID: req.body.User_ID,
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
