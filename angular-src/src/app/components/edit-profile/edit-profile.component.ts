@@ -83,6 +83,7 @@ export class EditProfileComponent implements OnInit {
       this.loggedInUser.Username).subscribe(result => {
       // console.log('profile result: ', result);
     });
+    this.dash.displayProfile = 'none'
   }
 
   closeModal() {
