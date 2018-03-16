@@ -19,8 +19,9 @@
                         <!-- <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                         </div> -->
-                        <form>
+                        <form method="POST" action="http://192.168.99.100:3000/api-new/image/save">
                             <input type='file' (change)="readUrl($event)" accept="image/jpeg">
+                            <button class="btn btn-success" (click)="upload()">Submit</button>
                         </form>
                     </div>
                 </div>
