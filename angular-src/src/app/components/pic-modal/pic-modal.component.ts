@@ -16,35 +16,37 @@ export class PicModalComponent implements OnInit {
   url = '../assets/img/website/employees.png';
   @ViewChild('fileInput') fileInput: ElementRef;
   constructor(private dash: DashboardComponent, fb: FormBuilder) {}
- 
+
   ngOnInit() {
   }
   closeModal() {
     this.dash.displayPicture = 'none' ;
   }
- 
-  readUrl(event:any) {
-    let file = event.target.files[0]
+
+  readUrl(event : any) {
+    let file = event.target.files[0];
 
     if (event.target.files && event.target.files[0]) {
-      if(file.type === 'image/jpeg'){
-        console.log(file)
+      if (file.type === 'image/jpeg') {
+        console.log(file);
         var reader = new FileReader();
-        
-    
-        reader.onload = (event:any) => {
+
+        reader.onload = (event : any) => {
           this.url = event.target.result;
 
-          console.log('file uploaded', file)
-          console.log('file name', file.name)
-        }
+          console.log('file uploaded', file);
+          console.log('file name', file.name);
+        };
+
       }
+
       reader.readAsDataURL(event.target.files[0]);
     }
+
   }
-  
 
   onSubmit() {
     // this.dash.displayPicture = 'none'
   }
+
 }
