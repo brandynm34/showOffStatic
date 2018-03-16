@@ -34,8 +34,8 @@ export class PicModalComponent implements OnInit {
         console.log(file);
         const reader = new FileReader();
 
-        reader.onload = (event: any) => {
-          this.url = event.target.result;
+        reader.onload = (readerEvent: any) => {
+          this.url = readerEvent.target.result;
 
           console.log('file uploaded', file);
           console.log('file name', file.name);
