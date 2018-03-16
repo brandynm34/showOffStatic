@@ -45,11 +45,12 @@
                         </form>
                     </div>
                 </div>
+                <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
             </div>
             <div class="modal-footer"> 
                 <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="update()">Save</button> 
             </div>
-            <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div>
+            
         </div>
     </div>
 </div>

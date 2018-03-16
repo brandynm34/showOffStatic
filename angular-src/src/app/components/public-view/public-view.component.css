@@ -185,15 +185,23 @@ h2{
 
 .public-icon-github {
     background-image: url(./../../../assets/img/contact/github-logo.png);
-    /* background-repeat: no-repeat; */
-    /* height: 50px !important;
-    width: 50px !important; */
 }
 
 .public-contact-text {
-    color: #a5c05b;
+  color: #a5c05b;
 }
 
+.public-icon-box {
+  /* align-content: center; */
+  width: 70px;
+  height: 70px
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 70px);
+  grid-gap: 10px;
+}
 
 
 
