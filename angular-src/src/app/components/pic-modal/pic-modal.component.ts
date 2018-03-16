@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { PhotoService } from './../../services/photo.service';
 
 @Component({
   selector: 'app-pic-modal',
@@ -14,16 +16,27 @@ export class PicModalComponent implements OnInit {
   PhotoName: String;
   public file;
   protected reader;
+  public fileToUpload: File;
 
   // loading: boolean = false;
   url = '../assets/img/website/employees.png';
   @ViewChild('fileInput') fileInput: ElementRef;
-  constructor(private dash: DashboardComponent, fb: FormBuilder) {}
+  constructor(private dash: DashboardComponent, fb: FormBuilder, private _photo: PhotoService) {}
 
   ngOnInit() {
   }
   closeModal() {
     this.dash.displayPicture = 'none' ;
+  }
+
+  public upload() {
+    console.log('Uploading...');
+    console.log(this.fileToUpload);
+    const formData = new FormData();
+    formData.append('upload', this.fileToUpload, 'myPhoto.jpg');
+    this._photo.uploadPhoto(this.fileToUpload).subscribe(result => {
+      console.log(result);
+    });
   }
 
   readUrl(event: any) {
@@ -32,6 +45,7 @@ export class PicModalComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       if (file.type === 'image/jpeg') {
         console.log(file);
+        this.fileToUpload = <File> event.target.files;
         const reader = new FileReader();
 
         reader.onload = (readerEvent: any) => {
@@ -41,6 +55,8 @@ export class PicModalComponent implements OnInit {
           console.log('file name', file.name);
         };
 
+      } else {
+        console.log('Invalid file type');
       }
 
       this.reader.readAsDataURL(event.target.files[0]);
@@ -49,6 +65,7 @@ export class PicModalComponent implements OnInit {
   }
 
   onSubmit() {
+
     // this.dash.displayPicture = 'none'
   }
 
