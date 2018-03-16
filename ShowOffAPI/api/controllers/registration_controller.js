@@ -23,6 +23,8 @@ class AccountController {
             .get(this.getById);
         router.route('/registration/partialUpdate')
             .post(AccountController.tokenCheck, this.partialUpdate);
+        router.route('/registration/advancedSearch')
+            .post(this.advancedSearch);
     }
 
     static tokenCheck( req, res, next ) {
@@ -353,6 +355,26 @@ class AccountController {
 
         } catch(err) {
             return Common.resultErr(res, err.message);    
+        }
+    }
+
+    async advancedSearch(req, res, next){
+        try {
+            let formData = req.body;
+            const userId = req.params.id;
+            // console.log('Hello boyz', formData);
+
+            const Account = mongoose.model("USER_PROFILE", registrationModel.UserProfileSchema);
+
+            const Portfolio = mongoose.model("USER_PORTFOLIO", portfolioModel.portfolioSchema);
+
+            const accountData = await Account.findOne({_id: userId});
+
+            console.log(formData.minSkills, formData.searchByUser);
+
+            res.json({message: 'Sending JSON'});
+        } catch (err){
+            return Common.resultErr(res, err.message);
         }
     }
 }

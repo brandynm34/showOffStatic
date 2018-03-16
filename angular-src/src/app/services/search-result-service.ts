@@ -27,6 +27,24 @@ export class SearchResultsService {
         return this._http.post(this._URL + 'api-new/registration/search', body, HttpOptions);
     }
 
+    public initiateAdvancedSearch(FormResults: object){
+        console.log(FormResults, "Form Results");
+        const body = {
+            githubAcc: FormResults["githubAcc"],
+            linkedInAcc: FormResults["linkedInAcc"],
+            minProjects: FormResults["minProjects"],
+            minSkills: FormResults["minSkills"],
+            searchByName: FormResults["searchByName"]
+        };
+
+        const HttpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this._http.post(this._URL + 'api-new/registration/advancedSearch', body, HttpOptions);
+    }
+
     public resultReset() {
         this.searchResults = [];
     }
