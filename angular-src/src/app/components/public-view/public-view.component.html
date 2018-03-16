@@ -1,8 +1,6 @@
 <div class="public-component"> <!-- begin public view component -->
   <div class="public-banner"> <!-- begin banner -->
     <div class="public-user-icon">
-      <!-- check out JR's PR -->
-      <!-- <img src= {{ portfolioData?.Icon }}  alt=""> -->
       <img src="{{ iconLinks[portfolioData['Icon']] }}" alt="">
     </div>
     <h1>{{ profileData?.FirstName }} {{ profileData?.LastName }} </h1>
@@ -15,23 +13,24 @@
       <div class="col-md-12">
           <h2 class="text-center">About me</h2>
       </div>
-
       <div class="col-md-3  public-about-me-box-left">
         <div class="public-about-me-icon">
         </div>
       </div> <!-- end left side of about me (icon) -->
       <div class="col-md-9 public-about-me-box-right">
-        <p class="public-arimo">{{ profileData?.AboutBlurb }} </p>
+        <p> {{ portfolioData?.AboutBlurb }} </p>
         <button class="btn btn-secondary">Get My Resume</button>
       </div><!-- end right side of about me (text blurb/resume button) -->
     </div> <!-- end about me box -->
   </div> <!-- end about me container -->
   <div class="public-skills-container container">
     <h2 class="text-center">My Skills</h2>
-    <div class="public-icon-box row">
-      <!-- NOTE: Public icons will be built dynamically with ngFor -->
-      <div *ngFor="let icon of skillsArr" class="public-icon"></div>
-    </div> <!-- end icon box -->
+    <!-- <div class="public-icon-box row"> -->
+      <div class=wrapper>
+        <div *ngFor="let skill of trueSkills; let index = index" id="{{ skillsLinks[skill] }}">
+          <img class="public-icon-box" src="{{ skillsLinks[skill] }}" alt="{{skill}}">
+        </div>
+      </div> <!-- end icon box -->
   </div> <!-- end skills container -->
   <div class="public-projects-container">
     <h2 class="text-center" id="projectTitle">My Projects</h2>
