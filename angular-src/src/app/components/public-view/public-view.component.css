@@ -31,8 +31,10 @@ h2{
     min-width: 125px;
     border-radius: 50%;
     border: 2px solid #7ba4ab;
-    margin-left: 50px;
-    background-color: #a5c05b;
+    padding-block-start: 40px;
+    padding-inline-start: 30px;
+    /* background-color: #a5c05b; */
+    /* background-image:  */
 }
 
 .public-hamburger {

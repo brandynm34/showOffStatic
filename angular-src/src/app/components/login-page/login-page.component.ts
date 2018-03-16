@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from "@angula
 import { AbstractControl } from "@angular/forms";
 
 import { JRLoginService } from "./../../services/jr-login-service";
+import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 import { Router } from "@angular/router";
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
   message: String;
 
-  constructor(public fb: FormBuilder, private _jr: JRLoginService, private router: Router) {
+  constructor(public fb: FormBuilder, private _jr: JRLoginService, private router: Router, private _port: JRPortfolioService) {
     this.form = fb.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -43,6 +44,8 @@ export class LoginPageComponent implements OnInit {
         console.log("Token:", result['token']);
         this.router.navigate(["/dashboard"]);
         this._jr.storeAuth(savedUsername, result['id'], result['token']);
+        console.log('Updating portfolio service login info as well...');
+        this._port.loginReset();
       } else {
         console.log("nope");
       }

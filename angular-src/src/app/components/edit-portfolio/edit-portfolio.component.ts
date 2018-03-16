@@ -44,6 +44,8 @@ export class EditPortfolioComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('running oninit');
+
     // grab the logged in user
     this._loggedInUser = this._login.getAuth();
     // for now, manually assign until login service is finished
@@ -157,6 +159,7 @@ export class EditPortfolioComponent implements OnInit {
     //   this.loggedInUser.Username).subscribe(result => {
     //   // console.log('profile result: ', result);
     // });
+    // this.dash.displayPortfolio = 'none'
 
   }
 
