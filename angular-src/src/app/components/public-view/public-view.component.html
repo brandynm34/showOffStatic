@@ -26,11 +26,6 @@
   <div class="public-skills-container container">
     <h2 class="text-center">My Skills</h2>
     <!-- <div class="public-icon-box row"> -->
-      <!-- NOTE: Public icons will be built dynamically with ngFor -->
-      <!-- <li *ngFor="let trueSkills of PortfolioData | async as skills; index as i; true as isTrue">
-        {{i}}/{{trueSkills.length}}. {{trueSkills}} <span *ngIf="isTrue">default</span>
-     </li> -->
-      <!-- <img src="{{ skillsLinks[portfolioData['trueSkills']] }}" alt=""> -->
       <div class=wrapper>
         <div *ngFor="let skill of trueSkills; let index = index" id="{{ skillsLinks[skill] }}">
           <img class="public-icon-box" src="{{ skillsLinks[skill] }}" alt="{{skill}}">
