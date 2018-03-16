@@ -28,9 +28,9 @@ class ImageController {
 
     async add(req, res, next) {
         try {
-            console.log('Body', req.body);
-            console.log('File', req.file);
+            console.log('Save endpoint hit??');
         } catch (err) {
+            console.log('endpoint hit but error thrown');
             return Common.resultErr(res, err.messsage);
         }
     }

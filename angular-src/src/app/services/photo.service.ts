@@ -4,6 +4,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { JRLoginService } from './../services/jr-login-service';
 
+// import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 
 export class PhotoService {
@@ -13,17 +15,27 @@ export class PhotoService {
 
     constructor( private _http: HttpClient, private _login: JRLoginService) {}
 
-    public uploadPhoto(file: File) {
-        const body = {
-            User_ID : this._authState.id,
-            Photo: 'Photo'
-        };
+    public uploadPhoto(file: File)  {
+
+        const endpoint = this._URL + 'api-new/image/save';
+        const formData: FormData = new FormData();
+
         const HttpOptions = {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'image/jpeg'
             }),
-            file: file
+
         };
-        return this._http.post(this._URL + 'api-new/registration/search', body, HttpOptions);
+        formData.append('fileKey', file, file.name);
+        return this._http
+            .post(endpoint, formData, HttpOptions);
+
+        // const body = {
+        //     User_ID : this._authState.id,
+        //     Photo: 'Photo',
+        //     File: File
+
+        // };
+        // return this._http.post(this._URL + 'api-new/registration/search', body, HttpOptions);
     }
 }
