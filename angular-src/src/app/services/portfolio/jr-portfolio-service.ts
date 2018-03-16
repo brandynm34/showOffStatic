@@ -16,6 +16,7 @@ export class JRPortfolioService implements OnInit {
 
     // initialize http angular stuffs
     constructor(private _http: Http, private _login: JRLoginService) {
+        console.log('Bringing in login info to portfolio service');
         this._loggedInUser = this._login.getAuth();
     }
 
@@ -29,7 +30,12 @@ export class JRPortfolioService implements OnInit {
         // front end as pass that in as a paramter. Which is better? *shrug*
         return this._http.get(this._URL + 'api-new/portfolio/get/' + this._loggedInUser.id);
     }
-    
+
+    loginReset() {
+        console.log('Bringing in login info to portfolio service');
+        this._loggedInUser = this._login.getAuth();
+    }
+
     getPortfolioById(id: string) {
         // this function pulls the portfolio by the id based on the input given as opposed to the current logged in user
         return this._http.get(this._URL + 'api-new/portfolio/get/' + id);
