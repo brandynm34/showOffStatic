@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { JRLoginService } from './../../services/jr-login-service';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-public-view',
@@ -10,7 +11,7 @@ import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-serv
 
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
-  private _numOfSkills = 0;
+  public _numOfSkills = 0;
   private _numOfProjects = 0;
   public skillsArr = [];
   public projectsArr = [];
@@ -18,6 +19,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   public portfolioData;
   public profileData;
   public stuff;
+  public trueSkills = [];
   public iconLinks = {
     'coder': './../../../assets/img/personal-icons/monitor-2.png',
     'front-end': './../../../assets/img/personal-icons/monitor-3.png',
@@ -29,7 +31,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     'angular': './../../../assets/img/skills/Angular.png',
     'bootstrap': './../../../assets/img/skills/Bootstrap.png',
     'c': './../../../assets/img/skills/C Programming.png',
-    'cSharp': './../../../assets/img/skills/C#.png',
+    'cSharp': './../../../assets/img/skills/CSharp.png',
     'plus': './../../../assets/img/skills/C++.png',
     'css': './../../../assets/img/skills/CSS.png',
     'docker': './../../../assets/img/skills/docker.png',
@@ -52,6 +54,11 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     'wordPress': './../../../assets/img/skills/WordPress.png'
   };
 
+  public actualSkillList = ['angular', 'bootstrap', 'c', 'cSharp',
+  'plus', 'css', 'docker', 'git', 'html', 'java', 'javascript', 'mongo',
+  'mySQL', 'node', 'php', 'gres', 'python', 'r', 'ruby', 'sas', 'sass',
+  'selenium', 'SQL', 'wordPress'];
+
   constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService) {  }
 
   ngOnInit() {
@@ -66,6 +73,15 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       // this initializes a json object
       this.portfolioData = PortData.json().data;
       this.stuff = this.portfolioData.User_ID;
+      console.log('this.portfolioData', this.portfolioData);
+      console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
+      for (const entry of this.actualSkillList) {
+        if (this.portfolioData.SkillsArray[entry] === true) {
+          this.trueSkills.push(entry);
+          console.log('checking: ', entry);
+        }
+      }
+      console.log('Final list:!!', this.trueSkills);
 
       // used this for testing:
       console.log('this is data', this.portfolioData);
