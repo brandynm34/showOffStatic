@@ -85,7 +85,9 @@ export class EditProfileComponent implements OnInit {
     });
   
     setTimeout(()=>{ 
-      this.dash.displayProfile = 'none'}, 1100)
+      this.dash.displayProfile = 'none';
+      this.updateSuccess = false;
+    }, 1100)
     
   }
 
