@@ -143,7 +143,11 @@ export class EditPortfolioComponent implements OnInit {
     });
     console.log('message', updatedPort)
    
-    setTimeout(()=>{ this.dash.displayPortfolio = 'none'}, 1100)
+    setTimeout(()=>{ 
+      this.dash.displayPortfolio = 'none';
+      this.updateSuccess = false;
+      
+    }, 1100)
     
 
     // // send profile info to portfolio service
