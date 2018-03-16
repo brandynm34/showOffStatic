@@ -1,8 +1,6 @@
 <div class="public-component"> <!-- begin public view component -->
   <div class="public-banner"> <!-- begin banner -->
     <div class="public-user-icon">
-      <!-- check out JR's PR -->
-      <!-- <img src= {{ portfolioData?.Icon }}  alt=""> -->
       <img src="{{ iconLinks[portfolioData['Icon']] }}" alt="">
     </div>
     <h1>{{ profileData?.FirstName }} {{ profileData?.LastName }} </h1>
@@ -21,7 +19,7 @@
         </div>
       </div> <!-- end left side of about me (icon) -->
       <div class="col-md-9 public-about-me-box-right">
-        <p class="public-arimo">{{ profileData?.AboutBlurb }} </p>
+        <p> {{ portfolioData?.AboutBlurb }} </p>
         <button class="btn btn-secondary">Get My Resume</button>
       </div><!-- end right side of about me (text blurb/resume button) -->
     </div> <!-- end about me box -->
@@ -30,7 +28,8 @@
     <h2 class="text-center">My Skills</h2>
     <div class="public-icon-box row">
       <!-- NOTE: Public icons will be built dynamically with ngFor -->
-      <div *ngFor="let icon of skillsArr" class="public-icon"></div>
+
+      <!-- <div *ngFor="let {{ portfolioData?.[SkillsArray] }} of skillsArr" class="public-icon"></div> -->
     </div> <!-- end icon box -->
   </div> <!-- end skills container -->
   <div class="public-projects-container">
