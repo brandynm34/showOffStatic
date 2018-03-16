@@ -1,4 +1,3 @@
-<div>
   <div class="container">
     <div class="container-fluid">
       <div class="backButton">
@@ -7,41 +6,41 @@
       <h1 class="text-center">Advanced Search</h1>
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <form action="" class="advanced-search-form">
+          <form action="" [formGroup]="form" (ngSubmit)="advSearchClick()" class="advanced-search-form">
             <div class="form-field">
               <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Search by name</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" formControlName="searchByName">
                 </div>
             </div> <!-- end name search -->
-            <div class="form-field">
+            <div class="form-field" [formGroup]="form"  name="linkedIn">
               <label class="radio-label" for="">Does user have a LinkedIn account?</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="linkedInInlineRadioOptions" id="linkedInInlineRadio1" value="linkedInYes">
+                  <input class="form-check-input" type="radio" name="linkedInAcc" id="linkedInInlineRadio1" value="linkedInYes" formControlName="linkedInAcc">
                   <label class="form-check-label" for="linkedInInlineRadio1">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="linkedInInlineRadioOptions" id="linkedInInlineRadio2" value="linkedInNow">
+                  <input class="form-check-input" type="radio" name="linkedInAcc" id="linkedInInlineRadio2" value="linkedInNo" formControlName="linkedInAcc">
                   <label class="form-check-label" for="linkedInInlineRadio2">No</label>
                 </div>
             </div> <!-- end linked-in check -->
             <div class="form-field">
                 <label class="radio-label" for="">Does user have a GitHub account?</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gitHubInlineRadioOptions" id="gitHubInlineRadio1" value="gitHubYes">
+                    <input class="form-check-input" type="radio" name="githubAcc" id="gitHubInlineRadio1" value="gitHubYes" formControlName="githubAcc">
                     <label class="form-check-label" for="gitHubInlineRadio1">Yes</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gitHubInlineRadioOptions" id="gitHubInlineRadio2" value="gitHubNo">
+                    <input class="form-check-input" type="radio" name="githubAcc" id="gitHubInlineRadio2" value="gitHubNo" formControlName="githubAcc">
                     <label class="form-check-label" for="gitHubInlineRadio2">No</label>
                   </div>
               </div> <!-- end linked-in check -->
               <div class="form-field">
                 <div class="form-group">
                   <label for="minProjects">Minimum number of projects:</label>
-                  <select class="form-control" id="minProjectsSelect">
+                  <select class="form-control" id="minProjectsSelect" formControlName="minProjects">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -54,28 +53,28 @@
               <div class="form-field">
                 <div class="form-group">
                   <label for="minSkills">List of skills</label>
-                    <select class="form-control" id="minSkillsSelect">
-                      <option value="">Angular</option>
-                      <option value="">Bootstrap</option>
-                      <option value="">C</option>
-                      <option value="">C++</option>
-                      <option value="">C#</option>
-                      <option value="">CSS</option>
-                      <option value="">HTML</option>
-                      <option value="">JavaScript</option>
-                      <option value="">MongoDB</option>
-                      <option value="">mySQL</option>
-                      <option value="">NodeJS</option>
-                      <option value="">PHP</option>
-                      <option value="">Postgres</option>
-                      <option value="">Python</option>
-                      <option value="">R</option>
-                      <option value="">Ruby</option>
-                      <option value="">SAS</option>
-                      <option value="">SASS</option>
-                      <option value="">Selenium</option>
-                      <option value="">SQL</option>
-                      <option value="">Wordpress</option>
+                    <select class="form-control" id="minSkillsSelect" formControlName="minSkills">
+                      <option>Angular</option>
+                      <option>Bootstrap</option>
+                      <option>C</option>
+                      <option>C++</option>
+                      <option>C#</option>
+                      <option>CSS</option>
+                      <option>HTML</option>
+                      <option>JavaScript</option>
+                      <option>MongoDB</option>
+                      <option>mySQL</option>
+                      <option>NodeJS</option>
+                      <option>PHP</option>
+                      <option>Postgres</option>
+                      <option>Python</option>
+                      <option>R</option>
+                      <option>Ruby</option>
+                      <option>SAS</option>
+                      <option>SASS</option>
+                      <option>Selenium</option>
+                      <option>SQL</option>
+                      <option>Wordpress</option>
                     </select>
                 </div>
               </div>
@@ -87,5 +86,3 @@
       </div><!-- end row -->
     </div>
   </div><!-- end container -->
-  
-</div>

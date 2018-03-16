@@ -191,9 +191,23 @@ h2{
 }
 
 .public-contact-text {
-    color: #a5c05b;
+  color: #a5c05b;
 }
 
+.public-icon-box {
+  align-content: center;
+  width: 70px;
+  height: 70px
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 70px);
+  /* grid-template-columns: repeat(_numOfSkills, 1fr); */
+  /* grid-template-columns: minmax(100px, 1fr); */
+  grid-gap: 10px;
+  /* align-content: center; */
+}
 
 
 
