@@ -71,3 +71,36 @@ body{
     margin-left: auto;
     background-color: #343a40
 } 
+hr{
+    text-align: center;
+    width: 75%;
+    border-top: 1px solid rgba(0,0,0,.3);
+} 
+.alert{
+    border-radius: .25rem;
+    text-align: center;
+}
+.progress{
+    margin-bottom: 16px;
+    /* width: 100%; */
+}
+.progress-bar{
+    background-color: #7ba4ab;
+}
+/* .bg-info {
+    background-color: #7ba4ab!important;
+} */
+input{
+    /* height: 38px !important; */
+    border-radius: .25rem !important;
+    background-color: white;
+    width: 100%;
+}
+/* .btn{
+    border-radius: .25rem !important;
+} */
+.form-control-file{
+    background-color: white;
+    /* height: 38px; */
+}
+

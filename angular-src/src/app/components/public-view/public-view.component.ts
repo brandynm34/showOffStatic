@@ -18,6 +18,13 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   public portfolioData;
   public profileData;
   public stuff;
+  public iconLinks = {
+    'coder': './../../../assets/img/personal-icons/monitor-2.png',
+    'front-end': './../../../assets/img/personal-icons/monitor-3.png',
+    'cloud': './../../../assets/img/personal-icons/network.png',
+    'mobile': './../../../assets/img/personal-icons/responsive-design-symbol.png',
+    'networker': './../../../assets/img/personal-icons/meeting.png'
+  };
   constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService) {  }
 
   ngOnInit() {
