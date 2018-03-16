@@ -27,15 +27,17 @@ export class PicModalComponent implements OnInit {
     let file = event.target.files[0]
 
     if (event.target.files && event.target.files[0]) {
-      console.log(file)
-      var reader = new FileReader();
-      
-  
-      reader.onload = (event:any) => {
-        this.url = event.target.result;
+      if(file.type === 'image/jpeg'){
+        console.log(file)
+        var reader = new FileReader();
+        
+    
+        reader.onload = (event:any) => {
+          this.url = event.target.result;
 
-        console.log('file uploaded', file)
-        console.log('file name', file.name)
+          console.log('file uploaded', file)
+          console.log('file name', file.name)
+        }
       }
       reader.readAsDataURL(event.target.files[0]);
     }
