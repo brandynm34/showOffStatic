@@ -32,8 +32,8 @@
      </li> -->
       <!-- <img src="{{ skillsLinks[portfolioData['trueSkills']] }}" alt=""> -->
       <div class=wrapper>
-        <div *ngFor="let skill of trueSkills; let index = index" class="public-icon-box" id="{{ skillsLinks[skill] }}">
-          <img src="{{ skillsLinks[skill] }}" alt="{{skill}}">
+        <div *ngFor="let skill of trueSkills; let index = index" id="{{ skillsLinks[skill] }}">
+          <img class="public-icon-box" src="{{ skillsLinks[skill] }}" alt="{{skill}}">
         </div>
       </div> <!-- end icon box -->
   </div> <!-- end skills container -->
