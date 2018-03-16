@@ -185,9 +185,6 @@ h2{
 
 .public-icon-github {
     background-image: url(./../../../assets/img/contact/github-logo.png);
-    /* background-repeat: no-repeat; */
-    /* height: 50px !important;
-    width: 50px !important; */
 }
 
 .public-contact-text {
@@ -195,7 +192,7 @@ h2{
 }
 
 .public-icon-box {
-  align-content: center;
+  /* align-content: center; */
   width: 70px;
   height: 70px
 }
@@ -203,10 +200,7 @@ h2{
 .wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, 70px);
-  /* grid-template-columns: repeat(_numOfSkills, 1fr); */
-  /* grid-template-columns: minmax(100px, 1fr); */
   grid-gap: 10px;
-  /* align-content: center; */
 }
 
 
