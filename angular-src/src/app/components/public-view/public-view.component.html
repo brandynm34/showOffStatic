@@ -1,7 +1,11 @@
 <div class="public-component"> <!-- begin public view component -->
   <div class="public-banner"> <!-- begin banner -->
-    <div class="public-user-icon"></div>
-    <h1>Your Name Here</h1>
+    <div class="public-user-icon">
+      <!-- check out JR's PR -->
+      <!-- <img src= {{ portfolioData?.Icon }}  alt=""> -->
+      <img src="{{ iconLinks[portfolioData['Icon']] }}" alt="">
+    </div>
+    <h1>{{ profileData?.FirstName }} {{ profileData?.LastName }} </h1>
     <div class="public-hamburger">
     </div>
   </div> <!-- end banner -->
@@ -17,7 +21,7 @@
         </div>
       </div> <!-- end left side of about me (icon) -->
       <div class="col-md-9 public-about-me-box-right">
-        <p class="public-arimo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita quae quod natus pariatur ipsa? Quam recusandae repellat deserunt laudantium similique, nihil ea perferendis, temporibus incidunt, quis doloribus distinctio sapiente!</p>
+        <p class="public-arimo">{{ profileData?.AboutBlurb }} </p>
         <button class="btn btn-secondary">Get My Resume</button>
       </div><!-- end right side of about me (text blurb/resume button) -->
     </div> <!-- end about me box -->
@@ -48,7 +52,7 @@
         </div>
         <div class="col-sm-3 public-contact-icon-box">
           <div class="public-contact-icon public-icon-github"></div>
-          <p>{{ portfolioData?.GitHubURL }}</p>
+          <p>{{ profileData?.GitHubURL }}</p>
         </div>
         <div class="col-sm-3 public-contact-icon-box">
           <div class="public-contact-icon public-icon-phone"></div>
@@ -56,7 +60,7 @@
         </div>
         <div class="col-sm-3 public-contact-icon-box">
           <div class="public-contact-icon public-icon-site"></div>
-          <p>{{ portfolioData?.Website }}</p>
+          <p>{{ profileData?.Website }}</p>
         </div>
       </div> <!-- end bootstrap row class -->
     </div> <!-- end bootstrap container class -->
