@@ -25,6 +25,33 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     'mobile': './../../../assets/img/personal-icons/responsive-design-symbol.png',
     'networker': './../../../assets/img/personal-icons/meeting.png'
   };
+  public skillsLinks = {
+    'angular': './../../../assets/img/skills/Angular.png',
+    'bootstrap': './../../../assets/img/skills/Bootstrap.png',
+    'c': './../../../assets/img/skills/C Programming.png',
+    'cSharp': './../../../assets/img/skills/C#.png',
+    'plus': './../../../assets/img/skills/C++.png',
+    'css': './../../../assets/img/skills/CSS.png',
+    'docker': './../../../assets/img/skills/docker.png',
+    'git': './../../../assets/img/skills/Git.png',
+    'html': './../../../assets/img/skills/HTML.png',
+    'java': './../../../assets/img/skills/java.png',
+    'javascript': './../../../assets/img/skills/JavaScript.png',
+    'mongo': './../../../assets/img/skills/mongoDB.png',
+    'mySQL': './../../../assets/img/skills/MySQL.png',
+    'node': './../../../assets/img/skills/node.png',
+    'php': './../../../assets/img/skills/PHP.png',
+    'gres': './../../../assets/img/skills/PostgreSQL.png',
+    'python': './../../../assets/img/skills/python.png',
+    'r': './../../../assets/img/skills/R Language.png',
+    'ruby': './../../../assets/img/skills/ruby.png',
+    'sas': './../../../assets/img/skills/SAS.png',
+    'sass': './../../../assets/img/skills/SASS.png',
+    'selenium': './../../../assets/img/skills/Selenium.png',
+    'SQL': './../../../assets/img/skills/SQL.png',
+    'wordPress': './../../../assets/img/skills/WordPress.png'
+  };
+
   constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService) {  }
 
   ngOnInit() {
@@ -39,6 +66,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       // this initializes a json object
       this.portfolioData = PortData.json().data;
       this.stuff = this.portfolioData.User_ID;
+
       // used this for testing:
       console.log('this is data', this.portfolioData);
 
