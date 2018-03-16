@@ -12,6 +12,9 @@ export class PicModalComponent implements OnInit {
   form: FormGroup;
   UserPhoto: String;
   PhotoName: String;
+  public file;
+  protected reader;
+
   // loading: boolean = false;
   url = '../assets/img/website/employees.png';
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -23,15 +26,15 @@ export class PicModalComponent implements OnInit {
     this.dash.displayPicture = 'none' ;
   }
 
-  readUrl(event : any) {
-    let file = event.target.files[0];
+  readUrl(event: any) {
+    const file = event.target.files[0];
 
     if (event.target.files && event.target.files[0]) {
       if (file.type === 'image/jpeg') {
         console.log(file);
-        var reader = new FileReader();
+        const reader = new FileReader();
 
-        reader.onload = (event : any) => {
+        reader.onload = (event: any) => {
           this.url = event.target.result;
 
           console.log('file uploaded', file);
@@ -40,7 +43,7 @@ export class PicModalComponent implements OnInit {
 
       }
 
-      reader.readAsDataURL(event.target.files[0]);
+      this.reader.readAsDataURL(event.target.files[0]);
     }
 
   }
