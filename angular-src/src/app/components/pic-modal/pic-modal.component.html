@@ -3,32 +3,34 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Edit Picture</h4> 
+                <h4 class="modal-title">Edit Picture</h4>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="container-fluid">  
+                    <div class="container-fluid">
                         <div class="profilePic">
-                            <img src="../assets/img/website/employees.png" alt="">
+
+                            <img [src]="url" alt=" ">
                         </div>  
+                        <hr>
                         <div class="alert alert-info" role="alert">
-                            Your picture needs to be imported as a square
+                            Your picture needs to be imported as a square and a .JPEG file
                         </div>
+                        <!-- <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                        </div> -->
                         <form>
-                            <div class="form-group">
-                              <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-                              <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
-                            </div>
-                          </form>
+                            <input type='file' (change)="readUrl($event)" accept="image/jpeg">
+                        </form>
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer"> 
-                <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="update()">Save</button> 
+                <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="onSubmit()">Save</button> 
             </div>
             <!-- <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div> -->
         </div>
     </div>
 </div>
 
-  
