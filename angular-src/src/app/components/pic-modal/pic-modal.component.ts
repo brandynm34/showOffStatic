@@ -43,10 +43,11 @@ export class PicModalComponent implements OnInit {
     const file = event.target.files[0];
 
     if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
       if (file.type === 'image/jpeg') {
         console.log(file);
         this.fileToUpload = <File> event.target.files;
-        const reader = new FileReader();
 
         reader.onload = (readerEvent: any) => {
           this.url = readerEvent.target.result;
@@ -58,8 +59,8 @@ export class PicModalComponent implements OnInit {
       } else {
         console.log('Invalid file type');
       }
-
-      this.reader.readAsDataURL(event.target.files[0]);
+      console.log('event target:', event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0]);
     }
 
   }
