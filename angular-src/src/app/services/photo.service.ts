@@ -48,4 +48,9 @@ export class PhotoService {
         // };
         // return this._http.post(this._URL + 'api-new/registration/search', body, HttpOptions);
     }
+
+    public retrievePhoto() {
+        this._authState = this._login.getAuth();
+        return this._http.get(this._URL + 'api-new/image/retrieve/' + this._authState.id, {responseType: 'blob'});
+    }
 }

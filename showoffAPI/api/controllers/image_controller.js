@@ -58,15 +58,28 @@ class ImageController {
                 User_ID: req.body.User_ID,
                 Name: req.body.fileName
             });
-            console.log('object to be sent', photoToBeSent);
-            await photoToBeSent.save(function(err, result) {
-                if (err) {
-                    console.log('Mongo error', err)
-                } else {
-                    console.log('Mongo success?!');
-                }
-            });
-            res.json({message: 'Endpoint hit'});
+            // console.log('object to be sent', photoToBeSent);
+
+            // see if theres an existing picture
+            const data = await PhotoDB.findOne({User_ID: req.body.User_ID});
+            if (!data) {
+                await photoToBeSent.save(function(err, result) {
+                    if (err) {
+                        console.log('Mongo error', err)
+                    } else {
+                        console.log('Mongo success?!');
+                    }
+                });
+                res.json({message: 'Picture Upload Success'});
+            } else {
+                // if there is, update instead of save
+                await PhotoDB.update({User_ID: req.body.User_ID}, {
+                    Photo: photoToBeSent.Photo
+                });
+                console.log('Photo update success');
+                res.json({message: 'Photo Update Success...'});
+            }
+            
         } catch (err) {
             console.log('endpoint hit but error thrown');
             return Common.resultErr(res, err.messsage);
