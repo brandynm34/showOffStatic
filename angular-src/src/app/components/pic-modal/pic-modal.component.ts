@@ -31,11 +31,9 @@ export class PicModalComponent implements OnInit {
 
   public upload() {
     console.log('Uploading...');
-    console.log(this.fileToUpload);
-    const formData = new FormData();
-    formData.append('upload', this.fileToUpload, 'myPhoto.jpg');
+    console.log('File to upload!:', this.fileToUpload);
     this._photo.uploadPhoto(this.fileToUpload).subscribe(result => {
-      console.log(result);
+      console.log('result:', result);
     });
   }
 
@@ -47,7 +45,7 @@ export class PicModalComponent implements OnInit {
 
       if (file.type === 'image/jpeg') {
         console.log(file);
-        this.fileToUpload = <File> event.target.files;
+        this.fileToUpload = <File> event.target.files[0];
 
         reader.onload = (readerEvent: any) => {
           this.url = readerEvent.target.result;
@@ -59,7 +57,6 @@ export class PicModalComponent implements OnInit {
       } else {
         console.log('Invalid file type');
       }
-      console.log('event target:', event.target.files[0]);
       reader.readAsDataURL(event.target.files[0]);
     }
 
