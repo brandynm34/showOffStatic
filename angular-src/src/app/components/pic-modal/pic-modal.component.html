@@ -21,14 +21,14 @@
                         </div> -->
                         <form method="POST" action="http://192.168.99.100:3000/api-new/image/save">
                             <input type='file' (change)="readUrl($event)" accept="image/jpeg">
-                            <button class="btn btn-success" (click)="upload()">Submit</button>
+                            <!-- <button class="btn btn-success" (click)="upload()">Submit</button> -->
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer"> 
-                <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="onSubmit()">Save</button> 
+                <button type="button" class="save btn btn-md btn-block btn-secondary" (click)="upload()">Save</button> 
             </div>
             <!-- <div class="alert alert-success" *ngIf="updateSuccess">Update successful!</div> -->
         </div>
