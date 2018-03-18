@@ -38,6 +38,8 @@ class ImageController {
             .post(upload.single('image'), this.add);
         router.route('/image/test')
             .get(this.test);
+        router.route('/image/retrieve/:id')
+            .get(this.retrieve);
     }
 
     async test(req, res, next) {
@@ -68,6 +70,31 @@ class ImageController {
         } catch (err) {
             console.log('endpoint hit but error thrown');
             return Common.resultErr(res, err.messsage);
+        }
+    }
+
+    async retrieve(req, res, next) {
+        try {
+            console.log('Image retrieval endpoint hit');
+            if (!req.params.id) {
+                console.log('No id supplied');
+                return Common.resultNotFound(res);
+            }
+
+            const User_ID = req.params.id;
+            const data = await PhotoDB.findOne({User_ID: User_ID});
+            if (!data) {
+                res.json({message: 'No results found'});
+            } else {
+                console.log('Photo found');
+                const image = data['Photo'];
+                res.setHeader('Content-Type', 'image/jpeg');
+                res.send(image);
+                // res.json(data);
+            }
+        } catch (err) {
+            console.log('retrieve endpoint hit but error thrown..');
+            return Common.resultErr(res, err.message);
         }
     }
 }
