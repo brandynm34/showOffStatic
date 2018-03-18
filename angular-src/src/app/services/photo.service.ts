@@ -53,4 +53,9 @@ export class PhotoService {
         this._authState = this._login.getAuth();
         return this._http.get(this._URL + 'api-new/image/retrieve/' + this._authState.id, {responseType: 'blob'});
     }
+
+    public retrievePhotoById(id: string) {
+        // use this function if you dont want to use the person whos logged in but wanna specify the user whos picture you wanna get
+        return this._http.get(this._URL + 'api-new/image/retrieve/' + id, {responseType: 'blob'});
+    }
 }
