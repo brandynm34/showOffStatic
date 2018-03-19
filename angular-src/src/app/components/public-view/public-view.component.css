@@ -101,7 +101,13 @@ h2{
     height: 175px;
     width: 175px;
     border-radius: 50%;
-    background-image:url( "./../../../assets/img/website/employees.png");
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+.public-about-me-pic{
+  height: 175px;
+    width: 175px;
+    border-radius: 50%;
     background-repeat: no-repeat;
     margin-bottom: 20px;
 }
@@ -192,16 +198,48 @@ h2{
 }
 
 .public-icon-box {
-  /* align-content: center; */
-  width: 70px;
-  height: 70px
+  width: 100px;
+  height: 100px
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 70px);
+  grid-template-columns: repeat(auto-fill, 100px);
   grid-gap: 10px;
+  content: center !important;
 }
+
+.modal {
+  content: center;
+}
+
+object {
+  height: 500px;
+  width: 1000px;
+  margin: -250px;
+  position: fixed;
+  margin-top: 0px;
+}
+
+/* @media screen and (max-width: 633px) {
+  #myModal {
+      display: 100%;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #myModal, #myModal * {
+    visibility:visible;
+  }
+  #myModal {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+} */
 
 
 
