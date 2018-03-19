@@ -35,6 +35,7 @@ export class PicModalComponent implements OnInit {
     this._photo.uploadPhoto(this.fileToUpload).subscribe(result => {
       console.log('result:', result);
     });
+    this.dash.displayPicture = 'none';
   }
 
   readUrl(event: any) {
