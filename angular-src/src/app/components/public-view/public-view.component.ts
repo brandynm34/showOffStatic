@@ -13,6 +13,7 @@ import { PhotoService } from './../../services/photo.service';
 
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
+  public id;
   public theirImage;
   public _numOfSkills = 0;
   private _numOfProjects = 0;
@@ -65,6 +66,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService, public _photo: PhotoService) {  }
 
   ngOnInit() {
+
     this._photo.retrievePhoto().subscribe(result => {
       this.blobToImage(result);
     });
@@ -96,6 +98,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       this._login_service.getById(this.stuff).subscribe(logInData => {
         // this initializes a json object
         this.profileData = logInData.json().data;
+        this.id = this.profileData.User_ID;
         // used this for testing:
         // console.log('this is login', this.profileData);
       });
