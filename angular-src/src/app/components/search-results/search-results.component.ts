@@ -40,14 +40,14 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
           entry.portfolio = portfolioInfo.json().data;
           const skills = portfolioInfo.json().data.SkillsArray;
           let skillCount = 0;
-          console.log('skillsarr:', skills);
+          // console.log('skillsarr:', skills);
           for (const skill in skills) {
             if (skills[skill] === true) { skillCount++; }
           }
-          console.log('Skillcount:', skillCount);
+          // console.log('Skillcount:', skillCount);
           entry.portfolio['skillCount'] = skillCount;
           this.resultsInfo.push(entry);
-          console.log('SR info ARR =>', this.resultsInfo);
+          // console.log('SR info ARR =>', this.resultsInfo);
         });
       });
     });

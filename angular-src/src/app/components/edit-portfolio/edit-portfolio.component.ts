@@ -44,7 +44,7 @@ export class EditPortfolioComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('running oninit');
+    // console.log('running oninit');
 
     // grab the logged in user
     this._loggedInUser = this._login.getAuth();
@@ -53,7 +53,7 @@ export class EditPortfolioComponent implements OnInit {
     //   Username: 'fleury14',
     //   id: '5a9dc86c39578a0041844f58'
     // };
-    console.log('current logged in user', this._loggedInUser);
+    // console.log('current logged in user', this._loggedInUser);
     
     
     // when page loads, grab the necessary values from the database via the service and subscribe to them

@@ -9,8 +9,8 @@ const _JWTSECRET = process.env.JWTSECRET;
 
 class AccountController {
     constructor(router) {
-        router.route('/registration/get')
-            .get(this.getAll);
+        // router.route('/registration/get')
+        //     .get(this.getAll);
         router.route('/registration/add')
             .post(this.add);
         router.route('/registration/update')
@@ -83,7 +83,7 @@ class AccountController {
         });
         const bodyToSend = {}
         listOfField.forEach((attr) => {
-            if(req.body[attr]) {bodyToSend[attr] = req.body[attr];}
+            if(req.body[attr]) {bodyToSend[attr] = String(req.body[attr]);}
         }); 
         
         console.log('Initiating partial update on the following user', req.body.Username, ' endpoint with the following body', bodyToSend);
@@ -124,13 +124,13 @@ class AccountController {
 
             // perform the update
             await Account.update({Email: req.body.Email}, {
-                Email: req.body.Email,
-                SelectedTheme: req.body.SelectedTheme,
-                GitHubURL: GitHubURL,
-                LinkedIn: LinkedIn,
-                Website: Website,
-                FirstName: req.body.FirstName,
-                LastName: req.body.LastName,
+                Email: String(req.body.Email),
+                SelectedTheme: String(req.body.SelectedTheme),
+                GitHubURL: String(GitHubURL),
+                LinkedIn: String(LinkedIn),
+                Website: String(Website),
+                FirstName: String(req.body.FirstName),
+                LastName: String(req.body.LastName),
             })
 
             // success!!!
@@ -190,19 +190,19 @@ class AccountController {
         }
     }
 
-    async getAll(req, res, next) {
-        // NOTE: THIS SHOULD NOT GO LIVE AS IT WILL RETURN ALL USERS. THIS IS FOR TESTING PURPOSES ONLY
-        try {
-            console.log('Get all GET request activated. NOTE: THIS FUNCTION SHOULD NOT GO LIVE');
-            const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
-            Account.find(function(err, profiles) {
-                if (err) { return console.error(err); }
-                res.json({results: profiles});
-                })
-            } catch (e) {
-                console.log('errrror:', e)
-        }
-    }
+    // async getAll(req, res, next) {
+    //     // NOTE: THIS SHOULD NOT GO LIVE AS IT WILL RETURN ALL USERS. THIS IS FOR TESTING PURPOSES ONLY
+    //     try {
+    //         console.log('Get all GET request activated. NOTE: THIS FUNCTION SHOULD NOT GO LIVE');
+    //         const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
+    //         Account.find(function(err, profiles) {
+    //             if (err) { return console.error(err); }
+    //             res.json({results: profiles});
+    //             })
+    //         } catch (e) {
+    //             console.log('errrror:', e)
+    //     }
+    // }
 
     async add(req, res, next) {
         try {
@@ -222,11 +222,11 @@ class AccountController {
             console.log('Registering user with the following information:', req.body)
             const newProfile = new Account({
                 SelectedTheme: 'base',
-                Username: req.body.Username,
-                FirstName: req.body.FirstName,
-                LastName: req.body.LastName,
+                Username: String(req.body.Username),
+                FirstName: String(req.body.FirstName),
+                LastName: String(req.body.LastName),
                 Password: hash,
-                Email: req.body.Email
+                Email: String(req.body.Email)
             })
             
             // make sure user name doesnt already exist
@@ -256,7 +256,7 @@ class AccountController {
             console.log('search endpoint hit');
 
             const Account = mongoose.model('USER_PROFILE', registrationModel.UserProfileSchema);
-            const NameArray = req.body.Search.split(" ");
+            const NameArray = String(req.body.Search).split(" ");
             // var AllNames = new Array;
 
             if (!req.body.Search) {
@@ -280,7 +280,7 @@ class AccountController {
                     }
                 }
                 else{
-                    const nam = NameArray[name]
+                    const nam = String(NameArray[name])
                 Account.find({$or: [{FirstName: nam}, {LastName: nam}]}, {_id: 1}, function(err, profiles){
                         res.json(profiles);
                         

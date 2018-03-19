@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this._jr.getAPIMessage("api/test").subscribe(message => {
-      console.log("result:", message.json());
+      // console.log("result:", message.json());
     });
   }
 
@@ -33,21 +33,21 @@ export class LoginPageComponent implements OnInit {
     const password = AC.get("confirmPassword").value;
   }
   onSubmit() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
     const savedUsername = this.form.value.username;
     const savedPassword = this.form.value.password;
 
     this._jr.loginPost(savedUsername, savedPassword).subscribe(result => {
-      console.log(result);
+      // console.log(result);
       if (result['status'] === 1) {
-        console.log("Success");
-        console.log("Token:", result['token']);
+        // console.log("Success");
+        // console.log("Token:", result['token']);
         this.router.navigate(["/dashboard"]);
         this._jr.storeAuth(savedUsername, result['id'], result['token']);
-        console.log('Updating portfolio service login info as well...');
+        // console.log('Updating portfolio service login info as well...');
         this._port.loginReset();
       } else {
-        console.log("nope");
+        // console.log("nope");
       }
     });
   }

@@ -16,7 +16,7 @@ export class JRPortfolioService implements OnInit {
 
     // initialize http angular stuffs
     constructor(private _http: Http, private _login: JRLoginService) {
-        console.log('Bringing in login info to portfolio service');
+        // console.log('Bringing in login info to portfolio service');
         this._loggedInUser = this._login.getAuth();
     }
 
@@ -32,7 +32,7 @@ export class JRPortfolioService implements OnInit {
     }
 
     loginReset() {
-        console.log('Bringing in login info to portfolio service');
+        // console.log('Bringing in login info to portfolio service');
         this._loggedInUser = this._login.getAuth();
     }
 

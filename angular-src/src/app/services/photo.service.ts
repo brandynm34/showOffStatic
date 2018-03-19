@@ -17,7 +17,7 @@ export class PhotoService {
 
     public uploadPhoto(file: File)  {
 
-        console.log('service recieved file:', file);
+        // console.log('service recieved file:', file);
         const endpoint = this._URL + 'api-new/image/save';
         const formData: FormData = new FormData();
 
@@ -37,7 +37,7 @@ export class PhotoService {
         formData.append('User_ID', User_ID);
         formData.append('fileName', file.name);
         formData.append('image', file, file.name);
-        console.log('FormData:', formData.getAll);
+        // console.log('FormData:', formData.getAll);
         return this._http.post(endpoint, formData, HttpOptions);
 
         // const body = {
