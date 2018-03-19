@@ -22,6 +22,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   private _numOfProjects = 0;
   public skillsArr = [];
   public projectsArr = [];
+  public activeIcon;
   // this is a object for the json
   public portfolioData;
   public profileData;
@@ -90,7 +91,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       console.log('Grabbing info by param');
       this._portfolio_service.getPortfolioById(this.param).subscribe(PortData => {
         this.portfolioData = PortData.json().data;
-        // console.log('this.portfolioData', this.portfolioData);
+        console.log('this.portfolioData', this.portfolioData);
         // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
         for (const entry of this.actualSkillList) {
           if (this.portfolioData.SkillsArray[entry] === true) {
@@ -105,7 +106,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
         this.id = this.profileData.User_ID;
         this.userRoute = 'public/:' + this.id;
         // used this for testing:
-        // console.log('this is login', this.profileData);
+        console.log('this is login', this.profileData);
       });
     } else {
       console.log('getting info by login');
@@ -122,6 +123,8 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
             // console.log('checking: ', entry);
           }
         }
+        this.activeIcon = this.iconLinks[ this.portfolioData['Icon'] ];
+
         // console.log('Final list:!!', this.trueSkills);
         // used this for testing:
         // console.log('this is data', this.portfolioData);

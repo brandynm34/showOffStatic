@@ -1,7 +1,7 @@
 <div class="public-component"> <!-- begin public view component -->
   <div class="public-banner"> <!-- begin banner -->
     <div class="public-user-icon">
-      <img src="{{ iconLinks[portfolioData['Icon']] }}" alt="">
+      <img src="{{ activeIcon || '' }}" alt="">
     </div>
     <h1>{{ profileData?.FirstName }} {{ profileData?.LastName }} </h1>
     <div class="public-hamburger">
