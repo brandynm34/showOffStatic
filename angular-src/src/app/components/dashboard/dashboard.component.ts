@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
   openEditPictureModal(){
     this.displayPicture = 'block';
-    console.log('diplayed', this.displayPicture)
+    // console.log('diplayed', this.displayPicture)
   }
 }
 
