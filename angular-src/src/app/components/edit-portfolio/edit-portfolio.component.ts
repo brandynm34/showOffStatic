@@ -67,8 +67,10 @@ export class EditPortfolioComponent implements OnInit {
         this['fieldProj' + (index + 1) + 'Link'] = data.Projects[index].link;
         this['fieldProj' + (index + 1) + 'SS'] = data.Projects[index].ss;
       }
+      console.log('data getting from subscription', data.SkillsArray);
       // loop through the skills array and check the apporpriate boxes
       for (const key in data.SkillsArray) {
+        // console.log('key', data.skillsArray[key]);
         this._listOfSkills.unshift(key);
         if (data.SkillsArray[key] === true) {
           (<HTMLInputElement>document.getElementById('defaultCheck' + key)).checked = true;
@@ -109,10 +111,11 @@ export class EditPortfolioComponent implements OnInit {
     };
 
     this._listOfSkills.forEach(skill => {
+      console.log('list of skills', this._listOfSkills);
       updatedPort.SkillsArray[skill] = (<HTMLInputElement>document.getElementById('defaultCheck' + skill)).checked;
     });
 
-  
+
     for (let i = 0; i < 6; i++) {
       if (this['fieldProj' + (i + 1) + 'Link'] && this['fieldProj' + (i + 1) + 'SS']) {
         const project = {
@@ -120,10 +123,10 @@ export class EditPortfolioComponent implements OnInit {
           ss: this['fieldProj' + (i + 1) + 'SS'] 
           };
         updatedPort.Projects.push(project);
-        
+
         } // end if
       } // end for
-      
+
       updatedPort['User_ID'] = this._loggedInUser.id;
     // console.log('object to send to db:', updatedPort);
     this._portService.updatePortfolio(updatedPort).subscribe(result => {
