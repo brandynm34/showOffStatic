@@ -72,8 +72,8 @@ app.use( function( req, res, next ) {
 // middleware to use for all requests
 app.use(function (req, res, next) {
   console.log('API hit');
-  console.log('cookie test?: ', req.session);
-  console.log('body', req.body);
+  // console.log('cookie test?: ', req.session);
+  // console.log('body', req.body);
   next();
 });
 
