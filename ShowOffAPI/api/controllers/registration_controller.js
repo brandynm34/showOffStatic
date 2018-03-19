@@ -9,8 +9,8 @@ const _JWTSECRET = process.env.JWTSECRET;
 
 class AccountController {
     constructor(router) {
-        router.route('/registration/get')
-            .get(this.getAll);
+        // router.route('/registration/get')
+        //     .get(this.getAll);
         router.route('/registration/add')
             .post(this.add);
         router.route('/registration/update')
