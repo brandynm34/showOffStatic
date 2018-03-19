@@ -166,9 +166,9 @@ class PortfolioController {
             });
             // create object that will pushed into the database
             const newPortfolio = new Portfolio({
-                Email: req.body.Email,
+                Email: String(req.body.Email),
                 UserPhoto: './../../../angular-src/src/assets/img/website/employees.png',
-                User_ID: req.body.User_ID,
+                User_ID: String(req.body.User_ID),
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
@@ -243,14 +243,14 @@ class PortfolioController {
                 } else {
                     console.log('Deleting portfolio with the username', req.body.Email);
                     // aaaaand delete
-                    Portfolio.remove({Email: req.body.Email}, function(err) {
-                        if (err) {
-                            res.json({message: err});
-                            console.error(err)
-                        } else {
-                            res.json({result: 'Delete successful'});
-                        }
-                    })
+                    // Portfolio.remove({Email: req.body.Email}, function(err) {
+                    //     if (err) {
+                    //         res.json({message: err});
+                    //         console.error(err)
+                    //     } else {
+                    //         res.json({result: 'Delete successful'});
+                    //     }
+                    // })
                 }
                 
             });
