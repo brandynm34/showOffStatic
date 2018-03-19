@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { JRLoginService } from './../../services/jr-login-service';
 import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { DashboardComponent } from './../dashboard/dashboard.component';
+import { PhotoService } from './../../services/photo.service';
 
 @Component({
   selector: 'app-public-view',
@@ -11,6 +13,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
+  public theirImage;
   public _numOfSkills = 0;
   private _numOfProjects = 0;
   public skillsArr = [];
@@ -59,9 +62,13 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   'mySQL', 'node', 'php', 'gres', 'python', 'r', 'ruby', 'sas', 'sass',
   'selenium', 'SQL', 'wordPress'];
 
-  constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService) {  }
+  constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService, public _photo: PhotoService) {  }
 
   ngOnInit() {
+    this._photo.retrievePhoto().subscribe(result => {
+      this.blobToImage(result);
+    });
+
     for (let i = 0; i < this._numOfSkills; i++) {
       this.skillsArr.push('Skill!');
     }
@@ -73,28 +80,39 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       // this initializes a json object
       this.portfolioData = PortData.json().data;
       this.stuff = this.portfolioData.User_ID;
-      console.log('this.portfolioData', this.portfolioData);
-      console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
+      // console.log('this.portfolioData', this.portfolioData);
+      // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
       for (const entry of this.actualSkillList) {
         if (this.portfolioData.SkillsArray[entry] === true) {
           this.trueSkills.push(entry);
-          console.log('checking: ', entry);
+          // console.log('checking: ', entry);
         }
       }
-      console.log('Final list:!!', this.trueSkills);
+      // console.log('Final list:!!', this.trueSkills);
 
       // used this for testing:
-      console.log('this is data', this.portfolioData);
+      // console.log('this is data', this.portfolioData);
 
       this._login_service.getById(this.stuff).subscribe(logInData => {
         // this initializes a json object
         this.profileData = logInData.json().data;
         // used this for testing:
-        console.log('this is login', this.profileData);
+        // console.log('this is login', this.profileData);
       });
 
     });
 
+  }
+
+  public blobToImage(image: Blob) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.theirImage = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
 
   ngAfterViewInit() {
@@ -139,5 +157,4 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
       }
     }
   }
-
 }
