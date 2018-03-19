@@ -128,7 +128,7 @@ class PortfolioController {
                 Twitter: String(Twitter),
                 Icon: String(req.body.Icon),
                 Website: String(req.body.Website),
-                SkillsArray: String(req.body.SkillsArray),
+                SkillsArray: req.body.SkillsArray,
                 PhoneNumber: String(PhoneNumber),
                 Projects: Projects,
                 Theme: String(Theme)
