@@ -39,7 +39,7 @@ export class AdvancedSearchComponent implements OnInit {
   advSearchClick(AC: AbstractControl) {
     // console.log(this.form.value);
     this._advanceSearch.initiateAdvancedSearch(this.form.value).subscribe(result => {
-      console.log(result);
+      // console.log(result);
     });
 
     // const inputtedName = this.form.value.searchByName;
