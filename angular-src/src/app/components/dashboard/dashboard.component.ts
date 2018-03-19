@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from './../../services/photo.service';
 // import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
@@ -10,10 +11,26 @@ export class DashboardComponent implements OnInit {
   displayProfile = 'none';
   displayPortfolio = 'none';
   displayPicture = 'none';
-  constructor() {}
+  public bgImage: any;
+  constructor(private _photo: PhotoService) {}
 
   ngOnInit() {
+    this._photo.retrievePhoto().subscribe(result => {
+      this.blobToImage(result);
+    });
   }
+
+  public blobToImage(image: Blob) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.bgImage = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
+
   openEditProfileModal() {
     this.displayProfile = 'block';
   }

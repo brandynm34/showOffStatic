@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const UserPhotoSchema = new Schema({
     // _id: { type: String, required: true, unique: true },
     // removed id because its already stored by mongo automatically
-    Photo: { type: String, required: true },
+    Photo: { type: Buffer, required: true },
     Title: { type: String, required: false },
     Name: { type: String, required: false},
     User_ID: { type: String, required: true}
