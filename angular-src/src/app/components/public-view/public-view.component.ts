@@ -4,6 +4,7 @@ import { JRPortfolioService } from './../../services/portfolio/jr-portfolio-serv
 import { forEach } from '@angular/router/src/utils/collection';
 import { DashboardComponent } from './../dashboard/dashboard.component';
 import { PhotoService } from './../../services/photo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-view',
@@ -13,7 +14,9 @@ import { PhotoService } from './../../services/photo.service';
 
 export class PublicViewComponent implements OnInit, AfterViewInit {
 
+  public param;
   public id;
+  public userRoute;
   public theirImage;
   public _numOfSkills = 0;
   private _numOfProjects = 0;
@@ -63,9 +66,13 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
   'mySQL', 'node', 'php', 'gres', 'python', 'r', 'ruby', 'sas', 'sass',
   'selenium', 'SQL', 'wordPress'];
 
-  constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService, public _photo: PhotoService) {  }
+  constructor(private _portfolio_service: JRPortfolioService, private _login_service: JRLoginService,
+     public _photo: PhotoService, private _actRoute: ActivatedRoute) {  }
 
   ngOnInit() {
+
+    this.param = this._actRoute.snapshot.params.id;
+    console.log(this.param);
 
     this._photo.retrievePhoto().subscribe(result => {
       this.blobToImage(result);
@@ -78,32 +85,58 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this._numOfProjects; i++) {
       this.projectsArr.push('Project!');
     }
-    this._portfolio_service.getPortfolioInfo().subscribe(PortData => {
-      // this initializes a json object
-      this.portfolioData = PortData.json().data;
-      this.stuff = this.portfolioData.User_ID;
-      // console.log('this.portfolioData', this.portfolioData);
-      // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
-      for (const entry of this.actualSkillList) {
-        if (this.portfolioData.SkillsArray[entry] === true) {
-          this.trueSkills.push(entry);
-          // console.log('checking: ', entry);
+    if (this.param) {
+      // if there is a paramater pass, use that first
+      console.log('Grabbing info by param');
+      this._portfolio_service.getPortfolioById(this.param).subscribe(PortData => {
+        this.portfolioData = PortData.json().data;
+        // console.log('this.portfolioData', this.portfolioData);
+        // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
+        for (const entry of this.actualSkillList) {
+          if (this.portfolioData.SkillsArray[entry] === true) {
+            this.trueSkills.push(entry);
+            // console.log('checking: ', entry);
+          }
         }
-      }
-      // console.log('Final list:!!', this.trueSkills);
-
-      // used this for testing:
-      // console.log('this is data', this.portfolioData);
-
-      this._login_service.getById(this.stuff).subscribe(logInData => {
+      });
+      this._login_service.getById(this.param).subscribe(logInData => {
         // this initializes a json object
         this.profileData = logInData.json().data;
         this.id = this.profileData.User_ID;
+        this.userRoute = 'public/:' + this.id;
         // used this for testing:
         // console.log('this is login', this.profileData);
       });
+    } else {
+      console.log('getting info by login');
+      // otherwise lets grab the info of whoever is logged in
+      this._portfolio_service.getPortfolioInfo().subscribe(PortData => {
+        // this initializes a json object
+        this.portfolioData = PortData.json().data;
+        this.stuff = this.portfolioData.User_ID;
+        console.log('this.portfolioData', this.portfolioData);
+        // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
+        for (const entry of this.actualSkillList) {
+          if (this.portfolioData.SkillsArray[entry] === true) {
+            this.trueSkills.push(entry);
+            // console.log('checking: ', entry);
+          }
+        }
+        // console.log('Final list:!!', this.trueSkills);
+        // used this for testing:
+        // console.log('this is data', this.portfolioData);
 
-    });
+        this._login_service.getById(this.stuff).subscribe(logInData => {
+          // this initializes a json object
+          this.profileData = logInData.json().data;
+          this.id = this.profileData.User_ID;
+          this.userRoute = 'public/:' + this.id;
+          // used this for testing:
+          console.log('this is login', this.profileData);
+        });
+
+      });
+    }
 
   }
 
