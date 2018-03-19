@@ -15,24 +15,28 @@
       </div>
       <div class="col-md-3  public-about-me-box-left">
         <div class="public-about-me-icon">
+            <img class="public-about-me-pic"[src]="theirImage || '../assets/img/website/employees.png'" alt="" >
         </div>
       </div> <!-- end left side of about me (icon) -->
       <div class="col-md-9 public-about-me-box-right">
         <p> {{ portfolioData?.AboutBlurb }} </p>
         <div>
-            <a data-toggle="modal" data-target="#myModal"> <i class="fa fa-4x fa-file-pdf-o sr-icons"></i></a>
+            <a data-toggle="modal" data-target="#myModal">
+              <button class="btn btn-secondary">Get My Resume</button>
+            </a>
         </div>
-
+        <!-- fa-file-pdf-o sr-icons -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <object data="./../../../assets/img/website/FoxResume.pdf" type="application/pdf" width="100%" height="100%">
-                        <p class="text-faded">Your computer does not support Adobe:<a href="img/Resume.pdf">to the PDF!</a></p>
+                  <!-- <p> {{ portfolioData?.Resume }} </p> -->
+                  <!-- <p class="text-faded">Your computer does not support Adobe:<a {{ portfolioData?.Resume }}> to the PDF!</a></p> -->
                     </object>
                 </div>
             </div>
         </div>
-        <button class="btn btn-secondary">Get My Resume</button>
+        <p></p>
       </div><!-- end right side of about me (text blurb/resume button) -->
     </div> <!-- end about me box -->
   </div> <!-- end about me container -->
