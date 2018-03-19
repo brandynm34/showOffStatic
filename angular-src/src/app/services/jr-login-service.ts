@@ -38,16 +38,16 @@ export class JRLoginService {
         this.authState.id = id;
         this.authState.token = token;
 
-        // store id in localstorage
-        // NOTE: THIS IS SUPER INSECURE AND SHOULD NOT GO LIVE
-        // COREY MAY ACTUALLY KILL ME IF IT DOES
-        localStorage.setItem('loggedInUser', JSON.stringify(this.authState));
+        // store id in sessionstorage
+        // NOTE: THIS IS SUPER INSECURE AND CAN BE EASILY EDITED
+        // TO DO: IMPLEMENT COOKIE TO STORE THIS INFORMATION MORE SECURELY
+        sessionStorage.setItem('loggedInUser', JSON.stringify(this.authState));
 
-        console.log('Authorized User is Stored');
+        // console.log('Authorized User is Stored');
     }
 
     getAuth() {
-        return JSON.parse(localStorage.getItem('loggedInUser'));
+        return JSON.parse(sessionStorage.getItem('loggedInUser'));
     }
 
     // This is using the old angular http module
@@ -83,10 +83,10 @@ export class JRLoginService {
              id: null,
              token: null
          };
-         // remove from localstorage
-         localStorage.removeItem('loggedInUser');
+         // remove from sessionstorage
+         sessionStorage.removeItem('loggedInUser');
 
-         console.log('logged out');
+        //  console.log('logged out');
          this.router.navigate(['login-page']);
     }
 
@@ -100,7 +100,7 @@ export class JRLoginService {
             Email: Email
         };
 
-        console.log('object to be sent', registUser);
+        // console.log('object to be sent', registUser);
         const headers = new Headers({'Content-Type': 'application/json'});
         const options = new RequestOptions({headers: headers});
         return this._http.post(this._URL + 'api-new/registration/add', registUser, options);

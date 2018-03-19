@@ -52,14 +52,14 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmit(AC: AbstractControl) {
-    console.log(this.form.value);
+    // console.log(this.form.value);
     const savedUsername = this.form.value.username;
     const savedFirstName = this.form.value.firstName;
     const savedLastName = this.form.value.lastName;
     const savedEmail = this.form.value.email;
     const savedPassword = this.form.value.password;
 
-    console.log('user name test', savedUsername);
+    // console.log('user name test', savedUsername);
 
     this._jr
       .registerPost(
@@ -70,13 +70,13 @@ export class RegisterPageComponent implements OnInit {
         savedEmail
       )
       .subscribe(result => {
-        console.log('result from registration add', result.json());
+        // console.log('result from registration add', result.json());
         if (result.json().result) {
           this.router.navigate(['/register']);
           this.registerDupe = true;
         } else {
           this._portService.addPortfolio(result.json().id, result.json().Email).subscribe(addportresult => {
-            console.log('portfolioresult', addportresult);
+            // console.log('portfolioresult', addportresult);
           });
           this.router.navigate(['/login-page']);
           this.registerDupe = false;

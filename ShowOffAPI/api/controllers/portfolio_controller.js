@@ -10,8 +10,6 @@ class PortfolioController {
     constructor(router) {
         router.route('/portfolio/add')
             .post(this.add);
-        router.route('/portfolio/get')
-            .get(this.getAll);
         router.route('/portfolio/get/:id')
             .get(this.getById);
         router.route('/portfolio/update')
@@ -71,7 +69,7 @@ class PortfolioController {
             }
 
             // get user id
-            const userId = req.params.id;
+            const userId = String(req.params.id);
 
             // declare collection
             const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
@@ -124,16 +122,16 @@ class PortfolioController {
 
             // perform the update
             await Portfolio.update({User_ID: req.body.User_ID}, {
-                Email: req.body.Email,
-                AboutBlurb: AboutBlurb,
-                Facebook: Facebook,
-                Twitter: Twitter,
-                Icon: req.body.Icon,
-                Website: req.body.Website,
-                SkillsArray: req.body.SkillsArray,
-                PhoneNumber: PhoneNumber,
+                Email: String(req.body.Email),
+                AboutBlurb: String(AboutBlurb),
+                Facebook: String(Facebook),
+                Twitter: String(Twitter),
+                Icon: String(req.body.Icon),
+                Website: String(req.body.Website),
+                SkillsArray: String(req.body.SkillsArray),
+                PhoneNumber: String(PhoneNumber),
                 Projects: Projects,
-                Theme: Theme
+                Theme: String(Theme)
             })
 
             // success!!!
@@ -142,15 +140,6 @@ class PortfolioController {
 
         } catch(err) {
             return Common.resultErr(res, err.message);
-        }
-    }
-
-    async getAll(req, res, next) {
-        try {
-            console.log('GET-ALL ENDPOINT HIT');
-            res.json({message: 'getall endpoint hit'});
-        } catch (e) {
-            console.log('errrror:', e)
         }
     }
 
@@ -177,9 +166,9 @@ class PortfolioController {
             });
             // create object that will pushed into the database
             const newPortfolio = new Portfolio({
-                Email: req.body.Email,
+                Email: String(req.body.Email),
                 UserPhoto: './../../../angular-src/src/assets/img/website/employees.png',
-                User_ID: req.body.User_ID,
+                User_ID: String(req.body.User_ID),
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
@@ -254,14 +243,14 @@ class PortfolioController {
                 } else {
                     console.log('Deleting portfolio with the username', req.body.Email);
                     // aaaaand delete
-                    Portfolio.remove({Email: req.body.Email}, function(err) {
-                        if (err) {
-                            res.json({message: err});
-                            console.error(err)
-                        } else {
-                            res.json({result: 'Delete successful'});
-                        }
-                    })
+                    // Portfolio.remove({Email: req.body.Email}, function(err) {
+                    //     if (err) {
+                    //         res.json({message: err});
+                    //         console.error(err)
+                    //     } else {
+                    //         res.json({result: 'Delete successful'});
+                    //     }
+                    // })
                 }
                 
             });

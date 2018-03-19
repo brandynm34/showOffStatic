@@ -28,7 +28,7 @@ export class SearchResultsService {
     }
 
     public initiateAdvancedSearch(FormResults: object){
-        console.log(FormResults, "Form Results");
+        // console.log(FormResults, "Form Results");
         const body = {
             githubAcc: FormResults["githubAcc"],
             linkedInAcc: FormResults["linkedInAcc"],
@@ -54,7 +54,7 @@ export class SearchResultsService {
     }
 
     public checkResults() {
-        console.log('Current search results:', this.searchResults);
+        // console.log('Current search results:', this.searchResults);
         return this.searchResults.length;
     }
 
