@@ -43,7 +43,7 @@ export class JRLoginService {
         // TO DO: IMPLEMENT COOKIE TO STORE THIS INFORMATION MORE SECURELY
         sessionStorage.setItem('loggedInUser', JSON.stringify(this.authState));
 
-        console.log('Authorized User is Stored');
+        // console.log('Authorized User is Stored');
     }
 
     getAuth() {
@@ -86,7 +86,7 @@ export class JRLoginService {
          // remove from sessionstorage
          sessionStorage.removeItem('loggedInUser');
 
-         console.log('logged out');
+        //  console.log('logged out');
          this.router.navigate(['login-page']);
     }
 
