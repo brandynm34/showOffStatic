@@ -88,34 +88,36 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
     }
     if (this.param) {
       // if there is a paramater pass, use that first
-      console.log('Grabbing info by param');
+      // console.log('Grabbing info by param');
       this._portfolio_service.getPortfolioById(this.param).subscribe(PortData => {
-        this.portfolioData = PortData.json().data;
-        console.log('this.portfolioData', this.portfolioData);
-        // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
-        for (const entry of this.actualSkillList) {
-          if (this.portfolioData.SkillsArray[entry] === true) {
-            this.trueSkills.push(entry);
-            // console.log('checking: ', entry);
-          }
+      this.portfolioData = PortData.json().data;
+      this.activeIcon = this.iconLinks[ this.portfolioData['Icon'] ];
+      // console.log('this.portfolioData', this.portfolioData);
+      // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
+      for (const entry of this.actualSkillList) {
+        if (this.portfolioData.SkillsArray[entry] === true) {
+          this.trueSkills.push(entry);
+          // console.log('checking: ', entry);
         }
-      });
-      this._login_service.getById(this.param).subscribe(logInData => {
-        // this initializes a json object
-        this.profileData = logInData.json().data;
-        this.id = this.profileData.User_ID;
-        this.userRoute = 'public/:' + this.id;
-        // used this for testing:
-        console.log('this is login', this.profileData);
-      });
+      }
+    });
+    this._login_service.getById(this.param).subscribe(logInData => {
+      // this initializes a json object
+      this.profileData = logInData.json().data;
+      this.id = this.profileData.User_ID;
+      this.userRoute = 'public/:' + this.id;
+      // used this for testing:
+      // console.log('this is login', this.profileData);
+    });
     } else {
-      console.log('getting info by login');
+      // console.log('getting info by login');
       // otherwise lets grab the info of whoever is logged in
       this._portfolio_service.getPortfolioInfo().subscribe(PortData => {
         // this initializes a json object
         this.portfolioData = PortData.json().data;
         this.stuff = this.portfolioData.User_ID;
-        console.log('this.portfolioData', this.portfolioData);
+        this.activeIcon = this.iconLinks[ this.portfolioData['Icon'] ];
+        // console.log('this.portfolioData', this.portfolioData);
         // console.log('portfolio skils array this.portfolioData.skillsArray', this.portfolioData.SkillsArray);
         for (const entry of this.actualSkillList) {
           if (this.portfolioData.SkillsArray[entry] === true) {
@@ -123,7 +125,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
             // console.log('checking: ', entry);
           }
         }
-        this.activeIcon = this.iconLinks[ this.portfolioData['Icon'] ];
+
 
         // console.log('Final list:!!', this.trueSkills);
         // used this for testing:
@@ -135,7 +137,7 @@ export class PublicViewComponent implements OnInit, AfterViewInit {
           this.id = this.profileData.User_ID;
           this.userRoute = 'public/:' + this.id;
           // used this for testing:
-          console.log('this is login', this.profileData);
+          // console.log('this is login', this.profileData);
         });
 
       });
