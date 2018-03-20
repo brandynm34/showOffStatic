@@ -156,7 +156,7 @@ class PortfolioController {
             const Portfolio = mongoose.model('USER_PORTFOLIO', PortfolioModel.portfolioSchema);
 
             // make sure the portfolio doesnt exist so that we're not overwiting info
-            Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
+            await Portfolio.findOne({User_ID: req.body.User_ID}, function(err, result) {
                 if (result) {
                     // if there is a result, then a portfolio exists. cease and desist
                     console.log('Portfolio already exists, aborting add');
@@ -206,7 +206,7 @@ class PortfolioController {
             });
             console.log('Saving:', newPortfolio);
             // send object to the database
-            newPortfolio.save(function(err, newPortfolio) {
+            await newPortfolio.save(function(err, newPortfolio) {
                 if (err) {
                     return console.error(err);
                     res.json({message: err});
