@@ -128,11 +128,16 @@ export class EditPortfolioComponent implements OnInit {
       } // end for
 
       updatedPort['User_ID'] = this._loggedInUser.id;
-    // console.log('object to send to db:', updatedPort);
+    console.log('object to send to db:', updatedPort);
     this._portService.updatePortfolio(updatedPort).subscribe(result => {
       // console.log(result);
       if (result.status === 200) {
         this.updateSuccess = true;
+        setTimeout(() => {
+          this.dash.displayPortfolio = 'none';
+          this.updateSuccess = false;
+    
+        }, 1100);
       }
     });
 
@@ -146,11 +151,7 @@ export class EditPortfolioComponent implements OnInit {
     });
     console.log('message', updatedPort);
 
-    setTimeout(() => {
-      this.dash.displayPortfolio = 'none';
-      this.updateSuccess = false;
-
-    }, 1100);
+ 
 
     // // send profile info to portfolio service
     // this._login.getById.updatePortfolioFromPortfolio(this.fieldEmail).subscribe(result => {
