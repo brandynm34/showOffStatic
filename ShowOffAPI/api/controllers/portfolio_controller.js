@@ -172,7 +172,7 @@ class PortfolioController {
                 AboutBlurb: `This is text about me. I'm awesome. Let's talk about how awesome I am.`,
                 Facebook: `https://www.facebook.com`,
                 Twitter: `YourTwitterHandle`,
-                Icon: `Keyboard`,
+                Icon: `coder`,
                 Website: 'yourWebsite.com',
                 SkillsArray: {
                     angular: false,
