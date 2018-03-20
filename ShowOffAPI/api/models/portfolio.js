@@ -13,7 +13,9 @@ const portfolioSchema = new Schema({
     // Icon: { data: Buffer, contentType: String},
     Icon: { type:String, required: true},
     Website: { type:String },
-    SkillsArray: {type:Object, required: true},
+    SkillsArray: {type:{angular: Boolean, bootstrap: Boolean, c: Boolean, cSharp:Boolean, cPlusPlus: Boolean, css: Boolean, docker: Boolean, git: Boolean,
+    html: Boolean, java: Boolean, javascript: Boolean, mongodb: Boolean, mySQL: Boolean, nodeJS: Boolean, php: Boolean, postgres: Boolean,
+    python: Boolean, r: Boolean, ruby: Boolean, sas: Boolean, sass: Boolean, selenium: Boolean, sql: Boolean, wordpress: Boolean }, required: true},
     PhoneNumber: { type:String, required: false},
     Projects: { type:[{link:String, ss:String}], required: false},
     Theme: { type: String, required: false}
